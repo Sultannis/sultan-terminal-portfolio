@@ -2,13 +2,16 @@
   <main class="main">
     <Heading>Sultan Mustafin</Heading>
     <PositionsList />
+    <Hint>Type ‘commands’ to see the list of available commands</Hint>
+    <CommandsInput />
   </main>
 </template>
 
 <script setup lang="ts">
-import TheWelcome from "@/components/TheWelcome.vue";
-import Heading from "../components/common/Heading.vue";
 import PositionsList from "../components/PositionsList.vue";
+import Heading from "../components/common/Heading/Heading.vue";
+import Hint from "../components/home/Hint/Hint.vue";
+import CommandsInput from "../components/home/CommandsTextArea/CommandsTextArea.vue";
 </script>
 
 <style scoped>
