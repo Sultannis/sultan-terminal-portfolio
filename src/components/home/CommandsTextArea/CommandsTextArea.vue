@@ -1,21 +1,32 @@
 <template>
-  <textarea value="C:\> " class="text-area" autofocus wrap="hard"> </textarea>
+  <div class="wrapper">
+    <span class="wrapper__span">C:\></span>
+    <input class="wrapper__input" role="textbox" autofocus />
+  </div>
 </template>
 
 <script setup lang="ts"></script>
 
 <style scoped>
-.text-area {
-  height: auto;
+.wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.wrapper__span {
+  margin-right: 10px;
+}
+
+.wrapper__input {
   width: 100%;
-  margin-top: 10px;
   background-color: transparent;
   border: none;
   color: var(--color-text);
   font-size: 16px;
 }
 
-.text-area:focus {
+.wrapper__input:focus {
   outline: none;
 }
 </style>
