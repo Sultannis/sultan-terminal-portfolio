@@ -15,9 +15,9 @@
 
 <style scoped>
 .hint {
-  margin-top: 30px;
   display: flex;
   align-items: center;
+  margin-top: 30px;
   font-size: 13px;
 }
 

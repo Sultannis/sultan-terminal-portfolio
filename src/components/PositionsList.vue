@@ -24,7 +24,7 @@ const positionsList = ref([
 
 .list__item:hover {
   cursor: pointer;
-  color: var(--color-text-highlighted);
+  color: var(--color-text-highlighted-blue);
   transition: color 0.1s linear;
 }
 </style>

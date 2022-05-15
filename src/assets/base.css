@@ -10,7 +10,9 @@
 
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: #fff;
-    --color-text-highlighted: #2974C8;
+    --color-text-highlighted-blue: #2974C8;
+    --color-text-highlighted-yellow: #f3d96b;
+    --color-text-highlighted-green: #1acc6b;
   }
 
 *,
@@ -32,10 +34,6 @@ body {
   background: var(--color-background);
   line-height: 1.6;
   font-family: "IBM Plex Mono", sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 input {
