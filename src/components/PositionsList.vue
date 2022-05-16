@@ -1,6 +1,13 @@
 <template>
   <ul class="list">
-    <li class="list__item" v-for="position in positionsList">{{ position }}</li>
+    <li
+      @click="$emit('position-click', position.id)"
+      class="list__item"
+      :key="position.id"
+      v-for="position in positionsList"
+    >
+      {{ position.name }}
+    </li>
   </ul>
 </template>
 
@@ -8,9 +15,18 @@
 import { ref } from "vue";
 
 const positionsList = ref([
-  "Web developer",
-  "Bussines school student",
-  "Caffeine addict",
+  {
+    id: 1,
+    name: "Web developer",
+  },
+  {
+    id: 2,
+    name: "Bussines school student",
+  },
+  {
+    id: 3,
+    name: "Caffeine addict",
+  },
 ]);
 </script>
 

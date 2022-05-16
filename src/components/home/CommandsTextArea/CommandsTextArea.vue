@@ -1,11 +1,21 @@
 <template>
   <div class="wrapper">
     <span class="wrapper__span">C:\></span>
-    <input class="wrapper__input" role="textbox" autofocus />
+    <input
+      class="wrapper__input"
+      role="textbox"
+      onblur=""
+      autofocus
+      ref="command_input"
+    />
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+
+const command_input = ref(null);
+</script>
 
 <style scoped>
 .wrapper {

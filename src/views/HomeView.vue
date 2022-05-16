@@ -1,7 +1,7 @@
 <template>
   <main class="main">
     <Heading>Sultan Mustafin</Heading>
-    <PositionsList />
+    <PositionsList @position-click="addCommand" />
     <Hint>Type ‘commands’ to see the list of available commands</Hint>
     <CommandsOutput v-if="commandQueue.length" :command-queue="commandQueue" />
     <CommandsInput />
@@ -13,50 +13,64 @@ import PositionsList from "../components/PositionsList.vue";
 import Heading from "../components/common/Heading/Heading.vue";
 import Hint from "../components/home/Hint/Hint.vue";
 import CommandsInput from "../components/home/CommandsTextArea/CommandsTextArea.vue";
-import { ref } from "vue";
+import { ref, type Ref } from "vue";
 import CommandsOutput from "../components/home/CommandsOutput/CommandsOutput.vue";
 
-const commandQueue = ref([
-  {
-    title: "Experience as a web developer",
-    type: "web-developer",
-    lines: [
-      "- Working as a commercial web developer since January of 2019",
-      "- Specialize on creating web platforms that allow close interaction with end user. Actively involved and interested in developing independent projects and startups. Lately been working in EdTech and E-commerce spheres.",
-    ],
-    lists: [
-      {
-        title: "-  Skills",
-        items: [
-          "JavaScript",
-          "TypeScript",
-          "Vue js",
-          "Nuxt js",
-          "Node js",
-          "Nest js",
-          "Express js  ",
-          "HTML",
-          "CSS",
-        ],
-      },
-    ],
-    hints: ["Type ‘projects’ to see the list of projects"],
-  },
-  {
-    title: "Bussines school student",
-    type: "bs-student",
-    lines: [],
-    hints: [],
-    lists: [],
-  },
-  {
-    title: "Caffeine",
-    type: "caffeine addict",
-    lines: [],
-    hints: [],
-    lists: [],
-  },
-]);
+interface Command {
+  title: String;
+  type: String;
+  lines: String[];
+  lists: Array<{ title: String; items: String[] }>;
+  hints: String[];
+}
+
+const commandQueue: Ref<Command[]> = ref([]);
+
+function addCommand(positionId: number) {
+  if (positionId === 1) {
+    commandQueue.value.push({
+      title: "Experience as a web developer",
+      type: "web-developer",
+      lines: [
+        "- Working as a commercial web developer since January of 2019",
+        "- Specialize on creating web platforms that allow close interaction with end user. Actively involved and interested in developing independent projects and startups. Lately been working in EdTech and E-commerce spheres.",
+      ],
+      lists: [
+        {
+          title: "-  Skills",
+          items: [
+            "JavaScript",
+            "TypeScript",
+            "Vue js",
+            "Nuxt js",
+            "Node js",
+            "Nest js",
+            "Express js  ",
+            "HTML",
+            "CSS",
+          ],
+        },
+      ],
+      hints: ["Type ‘projects’ to see the list of projects"],
+    });
+  } else if (positionId === 2) {
+    commandQueue.value.push({
+      title: "Bussines school student",
+      type: "bs-student",
+      lines: [],
+      lists: [],
+      hints: [],
+    });
+  } else if (positionId === 3) {
+    commandQueue.value.push({
+      title: "Caffeine addict",
+      type: "caffeine-addict",
+      lines: [],
+      lists: [],
+      hints: [],
+    });
+  }
+}
 </script>
 
 <style scoped>

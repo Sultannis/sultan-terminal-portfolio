@@ -13,7 +13,16 @@
     --color-text-highlighted-blue: #2974C8;
     --color-text-highlighted-yellow: #f3d96b;
     --color-text-highlighted-green: #1acc6b;
-  }
+}
+
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #001e48;
+}
 
 *,
 *::before,

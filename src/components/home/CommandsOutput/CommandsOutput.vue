@@ -18,16 +18,17 @@
 
 <script setup lang="ts">
 import Hint from "../Hint/Hint.vue";
+
+interface Command {
+  title: String;
+  type: String;
+  lines: String[];
+  lists: Array<{ title: String; items: String[] }>;
+  hints: String[];
+}
+
 defineProps<{
-  commandQueue: Array<{
-    title: string;
-    lines: Array<String>;
-    lists: Array<{
-      title: String;
-      items: Array<String>;
-    }>;
-    hints: Array<String>;
-  }>;
+  commandQueue: Command[];
 }>();
 </script>
 
