@@ -2,6 +2,8 @@
   <div class="wrapper">
     <span class="wrapper__span">C:\></span>
     <input
+      @keyup.enter="submitCommand()"
+      v-model="commandValue"
       class="wrapper__input"
       role="textbox"
       onblur=""
@@ -15,6 +17,11 @@
 import { ref } from "vue";
 
 const command_input = ref(null);
+let commandValue = ref("");
+
+const submitCommand = () => {
+  commandValue.value = "";
+};
 </script>
 
 <style scoped>

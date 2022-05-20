@@ -4,7 +4,7 @@
     <PositionsList @position-click="addCommand" />
     <Hint>Type ‘commands’ to see the list of available commands</Hint>
     <CommandsOutput v-if="commandQueue.length" :command-queue="commandQueue" />
-    <CommandsInput />
+    <CommandsInput @command-submit="submitCommand" />
   </main>
 </template>
 
@@ -12,7 +12,7 @@
 import PositionsList from "../components/PositionsList.vue";
 import Heading from "../components/common/Heading/Heading.vue";
 import Hint from "../components/home/Hint/Hint.vue";
-import CommandsInput from "../components/home/CommandsTextArea/CommandsTextArea.vue";
+import CommandsInput from "../components/home/CommandsInput/CommandsInput.vue";
 import { ref, type Ref } from "vue";
 import CommandsOutput from "../components/home/CommandsOutput/CommandsOutput.vue";
 
@@ -25,6 +25,53 @@ interface Command {
 }
 
 const commandQueue: Ref<Command[]> = ref([]);
+
+function submitCommand(command: string) {
+  console.log(command);
+  if (command === "web-dev") {
+    commandQueue.value.push({
+      title: "Experience as a web developer",
+      type: "web-developer",
+      lines: [
+        "- Working as a commercial web developer since January of 2019",
+        "- Specialize on creating web platforms that allow close interaction with end user. Actively involved and interested in developing independent projects and startups. Lately been working in EdTech and E-commerce spheres.",
+      ],
+      lists: [
+        {
+          title: "-  Skills",
+          items: [
+            "JavaScript",
+            "TypeScript",
+            "Vue js",
+            "Nuxt js",
+            "Node js",
+            "Nest js",
+            "Express js  ",
+            "HTML",
+            "CSS",
+          ],
+        },
+      ],
+      hints: ["Type ‘projects’ to see the list of projects"],
+    });
+  } else if (command === "bs-student") {
+    commandQueue.value.push({
+      title: "Bussines school student",
+      type: "bs-student",
+      lines: [],
+      lists: [],
+      hints: [],
+    });
+  } else if (command === "caffeine") {
+    commandQueue.value.push({
+      title: "Caffeine addict",
+      type: "caffeine-addict",
+      lines: [],
+      lists: [],
+      hints: [],
+    });
+  }
+}
 
 function addCommand(positionId: number) {
   if (positionId === 1) {
