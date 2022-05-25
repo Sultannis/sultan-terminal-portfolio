@@ -27,7 +27,6 @@ interface Command {
 const commandQueue: Ref<Command[]> = ref([]);
 
 function submitCommand(command: string) {
-  console.log(command);
   if (command === "web-dev") {
     commandQueue.value.push({
       title: "Experience as a web developer",

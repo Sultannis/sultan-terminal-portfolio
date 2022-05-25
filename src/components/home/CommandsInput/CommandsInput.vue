@@ -16,10 +16,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+const emit = defineEmits(["command-submit"]);
+
 const command_input = ref(null);
 let commandValue = ref("");
 
 const submitCommand = () => {
+  emit("command-submit", commandValue.value);
   commandValue.value = "";
 };
 </script>
