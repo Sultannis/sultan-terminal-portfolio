@@ -13,7 +13,7 @@ import PositionsList from "../components/PositionsList.vue";
 import Heading from "../components/common/Heading/Heading.vue";
 import Hint from "../components/home/Hint/Hint.vue";
 import CommandsInput from "../components/home/CommandsInput/CommandsInput.vue";
-import { ref, type Ref } from "vue";
+import { nextTick, ref, type Ref } from "vue";
 import CommandsOutput from "../components/home/CommandsOutput/CommandsOutput.vue";
 
 interface Command {
@@ -70,6 +70,8 @@ function submitCommand(command: string) {
       hints: [],
     });
   }
+
+  nextTick(scrollToTheBottom);
 }
 
 function addCommand(positionId: number) {
@@ -117,6 +119,13 @@ function addCommand(positionId: number) {
     });
   }
 }
+
+const scrollToTheBottom = () => {
+  window.scrollTo(
+    0,
+    document.body.scrollHeight || document.documentElement.scrollHeight
+  );
+};
 </script>
 
 <style scoped>

@@ -8,7 +8,6 @@
       role="textbox"
       onblur=""
       autofocus
-      ref="command_input"
     />
   </div>
 </template>
@@ -18,7 +17,7 @@ import { ref } from "vue";
 
 const emit = defineEmits(["command-submit"]);
 
-const command_input = ref(null);
+const input = ref<null | { focus: () => null }>(null);
 let commandValue = ref("");
 
 const submitCommand = () => {
