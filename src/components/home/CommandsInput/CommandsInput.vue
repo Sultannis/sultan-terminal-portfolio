@@ -2,7 +2,9 @@
   <div class="wrapper">
     <span class="wrapper__span">C:\></span>
     <input
-      @keyup.enter="submitCommand()"
+      :class="dynamicClasses"
+      @keyup.enter="submitCommand"
+      @input="handleCommandInput"
       v-model="commandValue"
       class="wrapper__input"
       role="textbox"
@@ -13,9 +15,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { Commands } from "@/constants/commands";
+import { ref, computed, type Ref } from "vue";
 
-const emit = defineEmits(["command-submit"]);
+const commandFound: Ref<boolean> = ref(false);
+
+const emit = defineEmits(["command-submit", "command-entered"]);
+
+const dynamicClasses = computed(() => ({
+  wrapper__input_found: commandFound.value,
+}));
 
 const input = ref<null | { focus: () => null }>(null);
 let commandValue = ref("");
@@ -23,6 +32,18 @@ let commandValue = ref("");
 const submitCommand = () => {
   emit("command-submit", commandValue.value);
   commandValue.value = "";
+};
+
+const handleCommandInput = () => {
+  commandFound.value = checkCommandPresence(commandValue.value);
+};
+
+const checkCommandPresence = (commandIdentifier: string) => {
+  return (
+    Commands.filter(
+      (command) => command.commandIdentifier === commandIdentifier
+    ).length > 0
+  );
 };
 </script>
 
@@ -43,6 +64,10 @@ const submitCommand = () => {
   border: none;
   color: var(--color-text);
   font-size: 16px;
+}
+
+.wrapper__input_found {
+  color: var(--color-text-highlighted-yellow);
 }
 
 .wrapper__input:focus {

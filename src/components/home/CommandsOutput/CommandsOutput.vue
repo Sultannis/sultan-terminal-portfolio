@@ -41,7 +41,7 @@ defineProps<{
 }
 
 .output__error {
-  color: #cf3031;
+  color: #e43b3b;
 }
 
 .list {

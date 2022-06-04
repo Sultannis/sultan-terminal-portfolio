@@ -4,7 +4,10 @@
     <PositionsList @position-click="submitCommand" />
     <Hint>Type ‘commands’ to see the list of available commands</Hint>
     <CommandsOutput v-if="commandQueue.length" :command-queue="commandQueue" />
-    <CommandsInput @command-submit="submitCommand" />
+    <CommandsInput
+      @command-submit="submitCommand"
+      :command-present="commandPresent"
+    />
   </main>
 </template>
 
@@ -13,13 +16,14 @@ import PositionsList from "../components/PositionsList.vue";
 import Heading from "../components/common/Heading/Heading.vue";
 import Hint from "../components/home/Hint/Hint.vue";
 import CommandsInput from "../components/home/CommandsInput/CommandsInput.vue";
-import { nextTick, ref, type Ref } from "vue";
+import { nextTick, reactive, ref, type Ref } from "vue";
 import CommandsOutput from "../components/home/CommandsOutput/CommandsOutput.vue";
 import { Commands } from "@/constants/commands";
 import { generateNotFoundCommand } from "@/helpers/generate-not-found-command";
 import type { Command } from "@/interfaces/command.interface";
 
 const commandQueue: Ref<Command[]> = ref([]);
+let commandPresent: Ref<boolean> = ref(false);
 
 const submitCommand = (commandIdentifier: string) => {
   const command = Commands.find(
