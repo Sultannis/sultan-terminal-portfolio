@@ -1,7 +1,7 @@
 <template>
   <ul class="list">
     <li
-      @click="$emit('position-click', position.id)"
+      @click="$emit('position-click', position.commandIdentifier)"
       class="list__item"
       :key="position.id"
       v-for="position in positionsList"
@@ -18,14 +18,17 @@ const positionsList = ref([
   {
     id: 1,
     name: "Web developer",
+    commandIdentifier: "web-dev",
   },
   {
     id: 2,
     name: "Bussines school student",
+    commandIdentifier: "bs-student",
   },
   {
     id: 3,
     name: "Caffeine addict",
+    commandIdentifier: "caffeine",
   },
 ]);
 </script>

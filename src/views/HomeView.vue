@@ -1,7 +1,7 @@
 <template>
   <main class="main">
     <Heading>Sultan Mustafin</Heading>
-    <PositionsList @position-click="addCommand" />
+    <PositionsList @position-click="submitCommand" />
     <Hint>Type ‘commands’ to see the list of available commands</Hint>
     <CommandsOutput v-if="commandQueue.length" :command-queue="commandQueue" />
     <CommandsInput @command-submit="submitCommand" />
@@ -15,110 +15,26 @@ import Hint from "../components/home/Hint/Hint.vue";
 import CommandsInput from "../components/home/CommandsInput/CommandsInput.vue";
 import { nextTick, ref, type Ref } from "vue";
 import CommandsOutput from "../components/home/CommandsOutput/CommandsOutput.vue";
-
-interface Command {
-  title: String;
-  type: String;
-  lines: String[];
-  lists: Array<{ title: String; items: String[] }>;
-  hints: String[];
-}
+import { Commands } from "@/constants/commands";
+import { generateNotFoundCommand } from "@/helpers/generate-not-found-command";
+import type { Command } from "@/interfaces/command.interface";
 
 const commandQueue: Ref<Command[]> = ref([]);
 
-function submitCommand(command: string) {
-  if (command === "web-dev") {
-    commandQueue.value.push({
-      title: "Experience as a web developer",
-      type: "web-developer",
-      lines: [
-        "- Working as a commercial web developer since January of 2019",
-        "- Specialize on creating web platforms that allow close interaction with end user. Actively involved and interested in developing independent projects and startups. Lately been working in EdTech and E-commerce spheres.",
-      ],
-      lists: [
-        {
-          title: "-  Skills",
-          items: [
-            "JavaScript",
-            "TypeScript",
-            "Vue js",
-            "Nuxt js",
-            "Node js",
-            "Nest js",
-            "Express js  ",
-            "HTML",
-            "CSS",
-          ],
-        },
-      ],
-      hints: ["Type ‘projects’ to see the list of projects"],
-    });
-  } else if (command === "bs-student") {
-    commandQueue.value.push({
-      title: "Bussines school student",
-      type: "bs-student",
-      lines: [],
-      lists: [],
-      hints: [],
-    });
-  } else if (command === "caffeine") {
-    commandQueue.value.push({
-      title: "Caffeine addict",
-      type: "caffeine-addict",
-      lines: [],
-      lists: [],
-      hints: [],
-    });
+const submitCommand = (commandIdentifier: string) => {
+  const command = Commands.find(
+    (command) => command.commandIdentifier === commandIdentifier
+  );
+
+  if (command) {
+    commandQueue.value.push(command);
+  } else {
+    const notFoundCommand = generateNotFoundCommand(commandIdentifier);
+    commandQueue.value.push(notFoundCommand);
   }
 
   nextTick(scrollToTheBottom);
-}
-
-function addCommand(positionId: number) {
-  if (positionId === 1) {
-    commandQueue.value.push({
-      title: "Experience as a web developer",
-      type: "web-developer",
-      lines: [
-        "- Working as a commercial web developer since January of 2019",
-        "- Specialize on creating web platforms that allow close interaction with end user. Actively involved and interested in developing independent projects and startups. Lately been working in EdTech and E-commerce spheres.",
-      ],
-      lists: [
-        {
-          title: "-  Skills",
-          items: [
-            "JavaScript",
-            "TypeScript",
-            "Vue js",
-            "Nuxt js",
-            "Node js",
-            "Nest js",
-            "Express js  ",
-            "HTML",
-            "CSS",
-          ],
-        },
-      ],
-      hints: ["Type ‘projects’ to see the list of projects"],
-    });
-  } else if (positionId === 2) {
-    commandQueue.value.push({
-      title: "Bussines school student",
-      type: "bs-student",
-      lines: [],
-      lists: [],
-      hints: [],
-    });
-  } else if (positionId === 3) {
-    commandQueue.value.push({
-      title: "Caffeine addict",
-      type: "caffeine-addict",
-      lines: [],
-      lists: [],
-      hints: [],
-    });
-  }
-}
+};
 
 const scrollToTheBottom = () => {
   window.scrollTo(

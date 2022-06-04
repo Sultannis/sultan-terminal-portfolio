@@ -3,6 +3,7 @@
     <div v-for="command of commandQueue" class="output__item">
       <span class="output__title">{{ command.title }}</span>
       <div v-for="line of command.lines" class="output__line">{{ line }}</div>
+      <div v-if="command.error" class="output__error">{{ command.error }}</div>
       <div v-for="list of command.lists" class="list">
         <div class="list__title">{{ list.title }}</div>
         <ul class="list__content">
@@ -17,15 +18,8 @@
 </template>
 
 <script setup lang="ts">
+import type { Command } from "@/interfaces/command.interface";
 import Hint from "../Hint/Hint.vue";
-
-interface Command {
-  title: String;
-  type: String;
-  lines: String[];
-  lists: Array<{ title: String; items: String[] }>;
-  hints: String[];
-}
 
 defineProps<{
   commandQueue: Command[];
@@ -44,6 +38,10 @@ defineProps<{
 
 .output__item {
   margin-top: 10px;
+}
+
+.output__error {
+  color: #cf3031;
 }
 
 .list {
