@@ -37,10 +37,26 @@ export const Commands = [
   },
   {
     commandIdentifier: "caffeine",
-    title: "Caffeine addict",
+    title: "Caffeine",
     type: "caffeine-addict",
-    lines: [],
+    lines: [
+      "- Caffeine is a central nervous system (CNS) stimulant of the methylxanthine class. It is used as a cognitive enhancer, increasing alertness and attentional performance",
+    ],
     lists: [],
+    hints: [],
+    error: null,
+  },
+  {
+    commandIdentifier: "commands",
+    title: "Available commands",
+    type: "available-commands",
+    lines: [],
+    lists: [
+      {
+        title: "",
+        items: ["web-dev", "bs-student", "caffeine", "commands"],
+      },
+    ],
     hints: [],
     error: null,
   },

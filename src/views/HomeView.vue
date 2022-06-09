@@ -51,7 +51,7 @@ const scrollToTheBottom = () => {
 <style scoped>
 .main {
   width: 100vw;
-  max-width: 1000px;
+  max-width: 95vw;
   padding: 50px;
   overflow-y: auto;
   overflow-x: hidden;
