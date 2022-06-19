@@ -54,9 +54,30 @@ export const Commands = [
     lists: [
       {
         title: "",
-        items: ["web-dev", "bs-student", "caffeine", "commands"],
+        items: ["web-dev", "bs-student", "caffeine", "commands", "clear"],
       },
     ],
+    hints: [],
+    error: null,
+  },
+  {
+    commandIdentifier: "projects",
+    title: "Projects",
+    type: "projects",
+    lines: [
+      "<a href='https://unapp.space/' >- UnApp</a>",
+      "Created frontend application using Vue Js and RESTful API using Nest Js. Was one of co-founders of the startup and was actively involved in management and bussines workflows of the team",
+    ],
+    lists: [],
+    hints: [],
+    error: null,
+  },
+  {
+    commandIdentifier: "clear",
+    title: "",
+    type: "clear",
+    lines: [],
+    lists: [],
     hints: [],
     error: null,
   },

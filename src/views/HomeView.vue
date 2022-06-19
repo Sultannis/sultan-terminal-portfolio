@@ -32,12 +32,17 @@ const submitCommand = (commandIdentifier: string) => {
 
   if (command) {
     commandQueue.value.push(command);
+    if (command.commandIdentifier === "clear") clearCommandOutput();
   } else {
     const notFoundCommand = generateNotFoundCommand(commandIdentifier);
     commandQueue.value.push(notFoundCommand);
   }
 
   nextTick(scrollToTheBottom);
+};
+
+const clearCommandOutput = () => {
+  commandQueue.value = [];
 };
 
 const scrollToTheBottom = () => {
