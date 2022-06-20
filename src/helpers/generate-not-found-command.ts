@@ -4,6 +4,7 @@ export const generateNotFoundCommand = (commandIdentifier: string) => {
     title: null,
     type: "not-found",
     lines: [],
+    projects: [],
     lists: [],
     hints: [],
     error: `The term '${commandIdentifier}' is not recognized as a command`,

@@ -68,6 +68,7 @@ export const Commands = [
     commandIdentifier: "projects",
     title: "Projects",
     type: "projects",
+    lines: [],
     projects: [
       {
         linkTitle: "UnApp",
