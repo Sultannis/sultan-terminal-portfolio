@@ -12,6 +12,14 @@
           </li>
         </ul>
       </div>
+      <div v-for="project of command.projects" class="project">
+        <a :href="project.link" target="blank" class="project__link">{{
+          project.linkTitle
+        }}</a>
+
+        <div class="project__description">- {{ project.description }}</div>
+        <div class="project__content">{{ project.content }}</div>
+      </div>
       <Hint v-for="hint of command.hints">{{ hint }}</Hint>
     </div>
   </div>
@@ -54,5 +62,17 @@ defineProps<{
 
 .list__title {
   color: var(--color-text-highlighted-green);
+}
+
+.project {
+  margin-top: 10px;
+}
+
+.project__link {
+  color: var(--color-text-highlighted-purple);
+}
+
+.project__content {
+  margin-top: 10px;
 }
 </style>
