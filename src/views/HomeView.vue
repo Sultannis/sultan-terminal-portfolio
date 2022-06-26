@@ -15,10 +15,15 @@
       </div>
     </div>
     <Hint>Type ‘commands’ to see the list of available commands</Hint>
-    <CommandsOutput v-if="commandQueue.length" :command-queue="commandQueue" />
+    <CommandsOutput
+      @link-click="focusInput"
+      v-if="commandQueue.length"
+      :command-queue="commandQueue"
+    />
     <CommandsInput
       @command-submit="submitCommand"
       :command-present="commandPresent"
+      :focus-trigger="inputFocusTrigger"
     />
   </main>
 </template>
@@ -35,6 +40,7 @@ import { generateNotFoundCommand } from "@/helpers/generate-not-found-command";
 import type { Command } from "@/interfaces/command.interface";
 
 const commandQueue: Ref<Command[]> = ref([]);
+let inputFocusTrigger: Ref<number> = ref(0);
 let commandPresent: Ref<boolean> = ref(false);
 
 const submitCommand = (commandIdentifier: string) => {
@@ -50,7 +56,12 @@ const submitCommand = (commandIdentifier: string) => {
     commandQueue.value.push(notFoundCommand);
   }
 
+  focusInput();
   nextTick(scrollToTheBottom);
+};
+
+const focusInput = () => {
+  inputFocusTrigger.value++;
 };
 
 const clearCommandOutput = () => {
