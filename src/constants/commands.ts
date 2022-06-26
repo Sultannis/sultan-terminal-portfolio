@@ -26,7 +26,7 @@ export const Commands = [
     ],
     imagePath: "",
     hints: ["Type ‘projects’ to see the list of projects"],
-    error: null,
+    error: "",
   },
   {
     commandIdentifier: "student",
@@ -39,7 +39,7 @@ export const Commands = [
     lists: [],
     imagePath: "/assets/istanbul-university.40e16a10.jpg",
     hints: [],
-    error: null,
+    error: "",
   },
   {
     commandIdentifier: "caffeine",
@@ -52,7 +52,7 @@ export const Commands = [
     lists: [],
     imagePath: "",
     hints: [],
-    error: null,
+    error: "",
   },
   {
     commandIdentifier: "commands",
@@ -68,7 +68,7 @@ export const Commands = [
     ],
     imagePath: "",
     hints: [],
-    error: null,
+    error: "",
   },
   {
     commandIdentifier: "projects",
@@ -95,7 +95,7 @@ export const Commands = [
     lists: [],
     imagePath: "",
     hints: [""],
-    error: null,
+    error: "",
   },
   {
     commandIdentifier: "clear",
@@ -106,6 +106,6 @@ export const Commands = [
     lists: [],
     imagePath: "",
     hints: [],
-    error: null,
+    error: "",
   },
 ];

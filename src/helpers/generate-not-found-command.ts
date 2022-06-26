@@ -1,7 +1,7 @@
 export const generateNotFoundCommand = (commandIdentifier: string) => {
   return {
     commandIdentifier: null,
-    title: null,
+    title: "",
     type: "not-found",
     lines: [],
     projects: [],

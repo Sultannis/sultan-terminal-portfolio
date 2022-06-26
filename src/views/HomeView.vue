@@ -41,7 +41,7 @@
 import PositionsList from "../components/PositionsList.vue";
 import Hint from "../components/home/Hint/Hint.vue";
 import CommandsInput from "../components/home/CommandsInput/CommandsInput.vue";
-import { nextTick, onMounted, ref, type Ref } from "vue";
+import { nextTick, ref, type Ref } from "vue";
 import CommandsOutput from "../components/home/CommandsOutput/CommandsOutput.vue";
 import { Commands } from "@/constants/commands";
 import { generateNotFoundCommand } from "@/helpers/generate-not-found-command";
