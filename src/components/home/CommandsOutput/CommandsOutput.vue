@@ -13,9 +13,13 @@
         </ul>
       </div>
       <div v-for="project of command.projects" class="project">
-        <a :href="project.link" target="blank" class="project__link">{{
-          project.linkTitle
-        }}</a>
+        <a
+          @click="$emit('link-click')"
+          :href="project.link"
+          target="blank"
+          class="project__link"
+          >{{ project.linkTitle }}</a
+        >
 
         <div class="project__description">- {{ project.description }}</div>
         <div class="project__content">{{ project.content }}</div>

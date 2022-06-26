@@ -8,6 +8,7 @@
       v-model="commandValue"
       class="wrapper__input"
       role="textbox"
+      ref="input"
       onblur=""
       autofocus
     />
@@ -16,7 +17,11 @@
 
 <script setup lang="ts">
 import { Commands } from "@/constants/commands";
-import { ref, computed, type Ref } from "vue";
+import { ref, computed, type Ref, watch } from "vue";
+
+const props = defineProps({
+  focusTrigger: { type: Number, required: false, default: 0 },
+});
 
 const commandFound: Ref<boolean> = ref(false);
 
@@ -45,6 +50,15 @@ const checkCommandPresence = (commandIdentifier: string) => {
     ).length > 0
   );
 };
+
+// watch works directly on a ref
+watch(
+  () => props.focusTrigger,
+  () => {
+    input.value?.focus();
+    console.log("wassap");
+  }
+);
 </script>
 
 <style scoped>
