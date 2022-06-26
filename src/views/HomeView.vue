@@ -11,7 +11,7 @@
           alt=""
           class="main__hidden"
         />
-        <glitch-image src="../assets/images/black-profile.jpg"></glitch-image>
+        <glitch-image src="/assets/black-profile.caf77fee.jpg"></glitch-image>
       </div>
     </div>
     <Hint>Type ‘commands’ to see the list of available commands</Hint>
