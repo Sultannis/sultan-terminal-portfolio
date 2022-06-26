@@ -1,7 +1,14 @@
 <template>
   <main class="main">
-    <Heading>Sultan Mustafin</Heading>
-    <PositionsList @position-click="submitCommand" />
+    <div class="main__row">
+      <div class="main__column">
+        <Heading>Sultan Mustafin</Heading>
+        <PositionsList @position-click="submitCommand" />
+      </div>
+      <div class="main__image">
+        <glitch-image src="/src/assets/images/black-profile.jpg"></glitch-image>
+      </div>
+    </div>
     <Hint>Type ‘commands’ to see the list of available commands</Hint>
     <CommandsOutput v-if="commandQueue.length" :command-queue="commandQueue" />
     <CommandsInput
@@ -16,7 +23,7 @@ import PositionsList from "../components/PositionsList.vue";
 import Heading from "../components/common/Heading/Heading.vue";
 import Hint from "../components/home/Hint/Hint.vue";
 import CommandsInput from "../components/home/CommandsInput/CommandsInput.vue";
-import { nextTick, reactive, ref, type Ref } from "vue";
+import { nextTick, ref, type Ref } from "vue";
 import CommandsOutput from "../components/home/CommandsOutput/CommandsOutput.vue";
 import { Commands } from "@/constants/commands";
 import { generateNotFoundCommand } from "@/helpers/generate-not-found-command";
@@ -60,5 +67,14 @@ const scrollToTheBottom = () => {
   padding: 50px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.main__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.main__image {
+  height: 168px;
 }
 </style>
