@@ -6,7 +6,7 @@
         <PositionsList @position-click="submitCommand" />
       </div>
       <div class="main__image">
-        <glitch-image src="/assets/black-profile.caf77fee.jpg"></glitch-image>
+        <glitch-image src="/assets/black-profile.5c800805.jpg"></glitch-image>
       </div>
     </div>
     <Hint>Type ‘commands’ to see the list of available commands</Hint>
