@@ -37,7 +37,7 @@ export const Commands = [
     ],
     projects: [],
     lists: [],
-    imagePath: "/assets/istanbul-university.b48daf33.jpg",
+    imagePath: "/assets/istanbul-university.40e16a10.jpg",
     hints: [],
     error: null,
   },
