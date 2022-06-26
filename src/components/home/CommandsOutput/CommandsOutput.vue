@@ -84,5 +84,6 @@ defineProps<{
 
 .output__image {
   height: 200px;
+  width: 300px;
 }
 </style>
