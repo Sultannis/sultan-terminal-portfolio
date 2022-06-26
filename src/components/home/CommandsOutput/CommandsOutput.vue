@@ -83,6 +83,7 @@ defineProps<{
 }
 
 .output__image {
+  margin-top: 15px;
   height: 200px;
   width: 300px;
 }
