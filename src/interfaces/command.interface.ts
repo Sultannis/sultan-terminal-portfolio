@@ -9,6 +9,7 @@ export interface Command {
     content: string;
   }>;
   lists: Array<{ title: string; items: string[] }>;
+  imagePath: string;
   hints: string[];
   error: string | null;
 }
