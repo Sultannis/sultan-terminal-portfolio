@@ -94,7 +94,7 @@ export const Commands = [
     ],
     lists: [],
     imagePath: "",
-    hints: [""],
+    hints: [],
     error: "",
   },
   {
