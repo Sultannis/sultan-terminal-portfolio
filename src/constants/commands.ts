@@ -1,6 +1,6 @@
 export const Commands = [
   {
-    commandIdentifier: "web-dev",
+    commandIdentifier: "work",
     title: "Experience as a web developer",
     type: "web-developer",
     lines: [
@@ -28,9 +28,9 @@ export const Commands = [
     error: null,
   },
   {
-    commandIdentifier: "bs-student",
+    commandIdentifier: "student",
     title: "Bussines school student",
-    type: "bs-student",
+    type: "student",
     lines: [],
     projects: [],
     lists: [],
@@ -58,7 +58,7 @@ export const Commands = [
     lists: [
       {
         title: "",
-        items: ["web-dev", "bs-student", "caffeine", "commands", "clear"],
+        items: ["work", "student", "caffeine", "commands", "projects", "clear"],
       },
     ],
     hints: [],
