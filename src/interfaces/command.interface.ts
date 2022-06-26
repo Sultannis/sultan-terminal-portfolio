@@ -1,5 +1,5 @@
 export interface Command {
-  title: string | null;
+  title: string;
   type: string;
   lines: string[];
   projects: Array<{
@@ -11,5 +11,5 @@ export interface Command {
   lists: Array<{ title: string; items: string[] }>;
   imagePath: string;
   hints: string[];
-  error: string | null;
+  error: string;
 }

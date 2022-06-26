@@ -1,9 +1,21 @@
 <template>
   <div class="output">
     <div v-for="command of commandQueue" class="output__item">
-      <span class="output__title">{{ command.title }}</span>
+      <GlitchedWriter
+        :options="{ steps: 1 }"
+        :text="command.title"
+        appear
+        class="output__title"
+      />
       <div v-for="line of command.lines" class="output__line">{{ line }}</div>
-      <div v-if="command.error" class="output__error">{{ command.error }}</div>
+      <GlitchedWriter
+        :options="{ steps: 2 }"
+        :text="command.error"
+        appear
+        class="output__error"
+      />
+
+      <div v-if="command.error" class="">{{}}</div>
       <div v-for="list of command.lists" class="list">
         <div class="list__title">{{ list.title }}</div>
         <ul class="list__content">
@@ -34,6 +46,7 @@
 <script setup lang="ts">
 import type { Command } from "@/interfaces/command.interface";
 import Hint from "../Hint/Hint.vue";
+import GlitchedWriter from "vue-glitched-writer";
 
 defineProps<{
   commandQueue: Command[];
