@@ -6,11 +6,6 @@
         <PositionsList @position-click="submitCommand" />
       </div>
       <div class="main__image">
-        <img
-          src="@/assets/images/black-profile.jpg"
-          alt=""
-          class="main__hidden"
-        />
         <glitch-image src="/assets/black-profile.caf77fee.jpg"></glitch-image>
       </div>
     </div>
@@ -24,6 +19,12 @@
       @command-submit="submitCommand"
       :command-present="commandPresent"
       :focus-trigger="inputFocusTrigger"
+    />
+    <img src="@/assets/images/black-profile.jpg" alt="" class="main__hidden" />
+    <img
+      src="@/assets/images/istanbul-university.jpg"
+      alt=""
+      class="main__hidden"
     />
   </main>
 </template>

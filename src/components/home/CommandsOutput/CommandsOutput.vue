@@ -20,9 +20,11 @@
           class="project__link"
           >{{ project.linkTitle }}</a
         >
-
         <div class="project__description">- {{ project.description }}</div>
         <div class="project__content">{{ project.content }}</div>
+      </div>
+      <div v-if="command.imagePath" class="output__image">
+        <glitch-image :src="command.imagePath"></glitch-image>
       </div>
       <Hint v-for="hint of command.hints">{{ hint }}</Hint>
     </div>
@@ -78,5 +80,9 @@ defineProps<{
 
 .project__content {
   margin-top: 10px;
+}
+
+.output__image {
+  height: 200px;
 }
 </style>
