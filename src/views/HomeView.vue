@@ -6,7 +6,12 @@
         <PositionsList @position-click="submitCommand" />
       </div>
       <div class="main__image">
-        <glitch-image src="@/assets/images/black-profile.jpg"></glitch-image>
+        <img
+          src="@/assets/images/black-profile.jpg"
+          alt=""
+          class="main__hidden"
+        />
+        <glitch-image src="../assets/images/black-profile.jpg"></glitch-image>
       </div>
     </div>
     <Hint>Type ‘commands’ to see the list of available commands</Hint>
@@ -76,5 +81,9 @@ const scrollToTheBottom = () => {
 }
 .main__image {
   height: 168px;
+}
+
+.main__hidden {
+  display: none;
 }
 </style>
