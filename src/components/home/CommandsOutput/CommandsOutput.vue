@@ -2,19 +2,13 @@
   <div class="output">
     <div v-for="command of commandQueue" class="output__item">
       <GlitchedWriter
-        :options="{ steps: 1 }"
+        :options="{ delays: [0, 0], steps: 0 }"
         :text="command.title"
         appear
         class="output__title"
       />
       <div v-for="line of command.lines" class="output__line">{{ line }}</div>
-      <GlitchedWriter
-        :options="{ steps: 2 }"
-        :text="command.error"
-        appear
-        class="output__error"
-      />
-
+      <div class="output__error">{{ command.error }}</div>
       <div v-if="command.error" class="">{{}}</div>
       <div v-for="list of command.lists" class="list">
         <div class="list__title">{{ list.title }}</div>
