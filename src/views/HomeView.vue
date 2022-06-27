@@ -14,9 +14,9 @@
         <glitch-image src="/assets/black-profile.5c800805.jpg"></glitch-image>
       </div>
     </div>
-    <Hint v-show="showContent"
-      >Type ‘commands’ to see the list of available commands</Hint
-    >
+    <Hint v-show="showContent">
+      Type ‘commands’ to see the list of available commands
+    </Hint>
     <CommandsOutput
       @link-click="focusInput"
       v-if="commandQueue.length"
