@@ -29,6 +29,16 @@
         <div class="project__description">- {{ project.description }}</div>
         <div class="project__content">{{ project.content }}</div>
       </div>
+      <div v-for="link of command.links" class="link">
+        <div class="link__title">- {{ link.title }}</div>
+        <a
+          @click="$emit('link-click')"
+          :href="link.link"
+          target="blank"
+          class="project__link"
+          >{{ link.linkTitle }}</a
+        >
+      </div>
       <div v-if="command.imagePath" class="output__image">
         <glitch-image :src="command.imagePath"></glitch-image>
       </div>
@@ -93,5 +103,9 @@ defineProps<{
   margin-top: 15px;
   height: 200px;
   width: 300px;
+}
+
+.link {
+  margin-top: 10px;
 }
 </style>

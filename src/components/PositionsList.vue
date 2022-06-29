@@ -22,7 +22,7 @@ const positionsList = ref([
   },
   {
     id: 2,
-    name: "Bussines school student",
+    name: "Business school student",
     commandIdentifier: "student",
   },
   {
