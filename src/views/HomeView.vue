@@ -11,7 +11,7 @@
         <PositionsList v-show="showContent" @position-click="submitCommand" />
       </div>
       <div class="main__image">
-        <glitch-image src="/assets/black-profile.5c800805.jpg"></glitch-image>
+        <glitch-image src="/assets/black-profile.08f4f015.jpg"></glitch-image>
       </div>
     </div>
     <Hint v-show="showContent">
