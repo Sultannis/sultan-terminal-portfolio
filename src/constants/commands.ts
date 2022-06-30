@@ -66,7 +66,15 @@ export const Commands = [
     lists: [
       {
         title: "",
-        items: ["work", "student", "caffeine", "commands", "projects", "clear"],
+        items: [
+          "work",
+          "student",
+          "caffeine",
+          "commands",
+          "projects",
+          "contacts",
+          "clear",
+        ],
       },
     ],
     imagePath: "",
@@ -81,7 +89,7 @@ export const Commands = [
     lines: [],
     projects: [
       {
-        linkTitle: "UnApp",
+        linkTitle: "https://unapp.space",
         link: "https://unapp.space",
         description:
           "Educational platform for university admission process preparation.",
@@ -89,7 +97,7 @@ export const Commands = [
           "Created frontend application using Vue Js and RESTful API using Nest Js. Was one of co-founders of the startup and was actively involved in management and bussines decisions of the team. Implemented the online payment system",
       },
       {
-        linkTitle: "Sali Market",
+        linkTitle: "https://sali.market",
         link: "https://sali.market",
         description: "Online shop for plumber equipment sale.",
         content:
