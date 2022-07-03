@@ -12,7 +12,7 @@ export const Commands = [
     ],
     projects: [],
     lists: [],
-    imagePath: "/src/assets/images/desk.jpg",
+    imagePath: "/assets/desk.621123fe.jpg",
     links: [],
     hints: ["Type ‘work’ to open the work experience"],
     error: "",
@@ -85,6 +85,7 @@ export const Commands = [
       {
         title: "",
         items: [
+          "about",
           "work",
           "student",
           "caffeine",
