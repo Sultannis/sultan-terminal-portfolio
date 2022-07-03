@@ -1,12 +1,9 @@
 <template>
   <div class="output">
     <div v-for="command of commandQueue" class="output__item">
-      <GlitchedWriter
-        :options="{ delays: [0, 0], steps: 0 }"
-        :text="command.title"
-        appear
-        class="output__title"
-      />
+      <div class="output__title">
+        {{ command.title }}
+      </div>
       <div v-for="line of command.lines" class="output__line">{{ line }}</div>
       <div class="output__error">{{ command.error }}</div>
       <div v-if="command.error" class="">{{}}</div>
