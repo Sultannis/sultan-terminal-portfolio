@@ -34,6 +34,7 @@
       alt=""
       class="main__hidden"
     />
+    <img src="@/assets/images/desk.jpg" alt="" class="main__hidden" />
   </main>
 </template>
 

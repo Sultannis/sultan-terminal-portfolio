@@ -1,5 +1,23 @@
 export const Commands = [
   {
+    commandIdentifier: "about",
+    title: "About",
+    type: "Available records",
+    lines: [
+      "- Sultan Mustafin Zhenisovich",
+      "- Date of birth: 18/11/2002.",
+      "- Place of birth: Taraz, South Kazakhstan",
+      "- StartUp enthusiast",
+      "- Web developer",
+    ],
+    projects: [],
+    lists: [],
+    imagePath: "/src/assets/images/desk.jpg",
+    links: [],
+    hints: ["Type ‘work’ to open the work experience"],
+    error: "",
+  },
+  {
     commandIdentifier: "work",
     title: "Experience as a web developer",
     type: "web-developer",
@@ -10,7 +28,7 @@ export const Commands = [
     projects: [],
     lists: [
       {
-        title: "-  Skills",
+        title: "- Skills",
         items: [
           "JavaScript",
           "TypeScript",
@@ -34,7 +52,7 @@ export const Commands = [
     title: "Bussines school student",
     type: "student",
     lines: [
-      "- Istanbul University bachelor degree student. Currenly studing my first year at bussines administration school.",
+      "- Istanbul University bachelor degree student. Currenly studing first year in bussines administration school.",
     ],
     projects: [],
     lists: [],
