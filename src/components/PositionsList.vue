@@ -13,17 +13,14 @@ const positionsList = ref([
   {
     id: 1,
     name: "Web developer",
-    commandIdentifier: "work",
   },
   {
     id: 2,
     name: "Business school student",
-    commandIdentifier: "student",
   },
   {
     id: 3,
     name: "Startup enthusiast",
-    commandIdentifier: "caffeine",
   },
 ]);
 </script>

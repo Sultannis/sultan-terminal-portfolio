@@ -3,15 +3,15 @@
     <div class="main__row">
       <div class="main__column">
         <span class="main__heading"> Sultan Mustafin </span>
-        <PositionsList v-show="showContent" />
+        <PositionsList />
       </div>
       <img
         class="main__image"
-        src="../assets/images/glitched-profile-gif.gif"
-        alt=""
+        src="../assets/images/glitched-profile.gif"
+        alt="profile-picture"
       />
     </div>
-    <Hint v-show="showContent">
+    <Hint v-show="contentVisible">
       Type ‘commands’ to see the list of available commands
     </Hint>
     <CommandsOutput
@@ -20,7 +20,7 @@
       :command-queue="commandQueue"
     />
     <CommandsInput
-      v-show="showContent"
+      v-show="contentVisible"
       @command-submit="submitCommand"
       :command-present="commandPresent"
       :focus-trigger="inputFocusTrigger"
@@ -30,42 +30,29 @@
 
 <script setup lang="ts">
 import { nextTick, onMounted, ref, type Ref } from "vue";
+import { PowerGlitch } from "powerglitch";
+import { generateNotFoundCommand } from "@/helpers/generate-not-found-command";
+import { Commands } from "@/constants/commands";
+import type { Command } from "@/interfaces/command.interface";
 import PositionsList from "../components/PositionsList.vue";
 import Hint from "../components/home/Hint/Hint.vue";
 import CommandsInput from "../components/home/CommandsInput/CommandsInput.vue";
 import CommandsOutput from "../components/home/CommandsOutput/CommandsOutput.vue";
-import { Commands } from "@/constants/commands";
-import { generateNotFoundCommand } from "@/helpers/generate-not-found-command";
-import type { Command } from "@/interfaces/command.interface";
-import { PowerGlitch } from "powerglitch";
 
 const commandQueue: Ref<Command[]> = ref([]);
 let inputFocusTrigger: Ref<number> = ref(0);
 let commandPresent: Ref<boolean> = ref(false);
-let showContent: Ref<boolean> = ref(true);
-
-onMounted(() => {
-  PowerGlitch.glitch(".main__image", {
-    playMode: "always",
-    timing: {
-      iterations: Infinity,
-      duration: 10000,
-    },
-    glitchTimeSpan: {},
-    slice: {
-      velocity: 1,
-    },
-  });
-});
+let contentVisible: Ref<boolean> = ref(true);
 
 const submitCommand = (commandIdentifier: string) => {
   const command = Commands.find(
     (command) => command.commandIdentifier === commandIdentifier
   );
 
+  if (command && command.commandIdentifier === "clear") clearCommandOutput();
+
   if (command) {
     commandQueue.value.push(command);
-    if (command.commandIdentifier === "clear") clearCommandOutput();
   } else {
     const notFoundCommand = generateNotFoundCommand(commandIdentifier);
     commandQueue.value.push(notFoundCommand);

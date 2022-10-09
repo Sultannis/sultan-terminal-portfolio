@@ -6,7 +6,6 @@
       </div>
       <div v-for="line of command.lines" class="output__line">{{ line }}</div>
       <div class="output__error">{{ command.error }}</div>
-      <div v-if="command.error" class="">{{}}</div>
       <div v-for="list of command.lists" class="list">
         <div class="list__title">{{ list.title }}</div>
         <ul class="list__content">
@@ -36,17 +35,27 @@
           >{{ link.linkTitle }}</a
         >
       </div>
-      <div v-if="command.imagePath" class="output__image">
-        <glitch-image :src="command.imagePath"></glitch-image>
-      </div>
+      <img
+        v-if="command.imageName"
+        :src="`../../../assets/images/${command.imageName}`"
+        class="output__image"
+      />
       <Hint v-for="hint of command.hints">{{ hint }}</Hint>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { onMounted } from "vue";
 import type { Command } from "@/interfaces/command.interface";
+import { PowerGlitch } from "powerglitch";
 import Hint from "../Hint/Hint.vue";
+
+onMounted(() => {});
+
+const getImagePath = (imageName: string) => {
+  return new URL("../../../assets/images/" + imageName + ".gif");
+};
 
 defineProps<{
   commandQueue: Command[];
