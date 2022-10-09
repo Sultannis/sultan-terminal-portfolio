@@ -25,18 +25,11 @@
       :command-present="commandPresent"
       :focus-trigger="inputFocusTrigger"
     />
-    <img src="@/assets/images/black-profile.jpg" alt="" class="main__hidden" />
-    <img
-      src="@/assets/images/istanbul-university.jpg"
-      alt=""
-      class="main__hidden"
-    />
-    <img src="@/assets/images/desk.jpg" alt="" class="main__hidden" />
   </main>
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref, type Ref } from "vue";
+import { nextTick, onMounted, ref, type Ref } from "vue";
 import PositionsList from "../components/PositionsList.vue";
 import Hint from "../components/home/Hint/Hint.vue";
 import CommandsInput from "../components/home/CommandsInput/CommandsInput.vue";
@@ -44,11 +37,26 @@ import CommandsOutput from "../components/home/CommandsOutput/CommandsOutput.vue
 import { Commands } from "@/constants/commands";
 import { generateNotFoundCommand } from "@/helpers/generate-not-found-command";
 import type { Command } from "@/interfaces/command.interface";
+import { PowerGlitch } from "powerglitch";
 
 const commandQueue: Ref<Command[]> = ref([]);
 let inputFocusTrigger: Ref<number> = ref(0);
 let commandPresent: Ref<boolean> = ref(false);
 let showContent: Ref<boolean> = ref(true);
+
+onMounted(() => {
+  PowerGlitch.glitch(".main__image", {
+    playMode: "always",
+    timing: {
+      iterations: Infinity,
+      duration: 10000,
+    },
+    glitchTimeSpan: {},
+    slice: {
+      velocity: 1,
+    },
+  });
+});
 
 const submitCommand = (commandIdentifier: string) => {
   const command = Commands.find(
