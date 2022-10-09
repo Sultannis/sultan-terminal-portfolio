@@ -47,7 +47,6 @@
 <script setup lang="ts">
 import type { Command } from "@/interfaces/command.interface";
 import Hint from "../Hint/Hint.vue";
-import GlitchedWriter from "vue-glitched-writer";
 
 defineProps<{
   commandQueue: Command[];

@@ -9,6 +9,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "powerglitch": "^2.2.0",
     "vue": "^3.2.33",
     "vue-glitched-writer": "^1.2.2",
     "vue-router": "^4.0.14"
