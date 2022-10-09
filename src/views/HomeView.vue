@@ -2,8 +2,20 @@
   <main class="main">
     <div class="main__row">
       <div class="main__column">
-        <span class="main__heading"> Sultan Mustafin </span>
-        <PositionsList />
+        <glitched-writer
+          @finish="showPositionsList"
+          text="Sultan Mustafin"
+          :options="{
+            interval: 50,
+          }"
+          appear
+          preset="typewriter"
+          class="main__heading"
+        />
+        <PositionsList
+          v-if="positionsListVisible"
+          @last-writer-finished="showContent"
+        />
       </div>
       <img
         class="main__image"
@@ -30,6 +42,7 @@
 
 <script setup lang="ts">
 import { nextTick, ref, type Ref } from "vue";
+import GlitchedWriter from "vue-glitched-writer";
 import { generateNotFoundCommand } from "@/helpers/generate-not-found-command";
 import { Commands } from "@/constants/commands";
 import type { Command } from "@/interfaces/command.interface";
@@ -41,7 +54,8 @@ import CommandsOutput from "../components/home/CommandsOutput/CommandsOutput.vue
 const commandQueue: Ref<Command[]> = ref([]);
 let inputFocusTrigger: Ref<number> = ref(0);
 let commandPresent: Ref<boolean> = ref(false);
-let contentVisible: Ref<boolean> = ref(true);
+let positionsListVisible: Ref<boolean> = ref(false);
+let contentVisible: Ref<boolean> = ref(false);
 
 const submitCommand = (commandIdentifier: string) => {
   const command = Commands.find(
@@ -59,6 +73,14 @@ const submitCommand = (commandIdentifier: string) => {
 
   focusInput();
   nextTick(scrollToTheBottom);
+};
+
+const showPositionsList = () => {
+  positionsListVisible.value = true;
+};
+
+const showContent = () => {
+  contentVisible.value = true;
 };
 
 const focusInput = () => {
