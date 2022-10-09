@@ -11,7 +11,8 @@
   "dependencies": {
     "vue": "^3.2.33",
     "vue-glitched-writer": "^1.2.2",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.14",
+    "vue-typer": "^1.2.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",

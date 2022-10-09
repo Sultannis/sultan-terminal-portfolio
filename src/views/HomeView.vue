@@ -29,8 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, onMounted, ref, type Ref } from "vue";
-import { PowerGlitch } from "powerglitch";
+import { nextTick, ref, type Ref } from "vue";
 import { generateNotFoundCommand } from "@/helpers/generate-not-found-command";
 import { Commands } from "@/constants/commands";
 import type { Command } from "@/interfaces/command.interface";

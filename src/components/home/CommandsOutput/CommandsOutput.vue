@@ -46,16 +46,8 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
 import type { Command } from "@/interfaces/command.interface";
-import { PowerGlitch } from "powerglitch";
 import Hint from "../Hint/Hint.vue";
-
-onMounted(() => {});
-
-const getImagePath = (imageName: string) => {
-  return new URL("../../../assets/images/" + imageName + ".gif");
-};
 
 defineProps<{
   commandQueue: Command[];
