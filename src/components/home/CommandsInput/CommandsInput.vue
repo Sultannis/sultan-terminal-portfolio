@@ -35,28 +35,24 @@ const input = ref<null | { focus: () => null }>(null);
 let commandValue = ref("");
 
 const submitCommand = () => {
-  emit("command-submit", commandValue.value);
+  emit("command-submit", commandValue.value.trim());
   commandValue.value = "";
 };
 
 const handleCommandInput = () => {
-  commandFound.value = checkCommandPresence(commandValue.value);
+  commandFound.value = checkCommandPresence(commandValue.value.trim());
 };
 
 const checkCommandPresence = (commandIdentifier: string) => {
-  return (
-    Commands.filter(
-      (command) => command.commandIdentifier === commandIdentifier
-    ).length > 0
+  return !!Commands.find(
+    (command) => command.commandIdentifier === commandIdentifier
   );
 };
 
-// watch works directly on a ref
 watch(
   () => props.focusTrigger,
   () => {
     input.value?.focus();
-    console.log("wassap");
   }
 );
 </script>

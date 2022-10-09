@@ -1,36 +1,55 @@
 <template>
   <ul class="list">
-    <li
-      @click="$emit('position-click', position.commandIdentifier)"
-      class="list__item"
-      :key="position.id"
-      v-for="position in positionsList"
-    >
-      {{ position.name }}
+    <li class="list__item" :key="position.id" v-for="position in positionsList">
+      <glitched-writer
+        @finish="showNext()"
+        v-if="position.visible"
+        :text="`- ${position.name}`"
+        :options="{
+          interval: 30,
+        }"
+        appear
+        preset="typewriter"
+        class="list__item"
+      />
     </li>
   </ul>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
+import GlitchedWriter from "vue-glitched-writer";
+
+const emit = defineEmits(["last-writer-finished"]);
+
+let currentVisiblePositionIndex = 1;
 
 const positionsList = ref([
   {
     id: 1,
     name: "Web developer",
-    commandIdentifier: "work",
+    visible: true,
   },
   {
     id: 2,
     name: "Business school student",
-    commandIdentifier: "student",
+    visible: false,
   },
   {
     id: 3,
-    name: "Caffeine addict",
-    commandIdentifier: "caffeine",
+    name: "Startup enthusiast",
+    visible: false,
   },
 ]);
+
+const showNext = () => {
+  if (positionsList.value[currentVisiblePositionIndex]) {
+    positionsList.value[currentVisiblePositionIndex].visible = true;
+    currentVisiblePositionIndex++;
+  } else {
+    setInterval(() => emit("last-writer-finished"), 500);
+  }
+};
 </script>
 
 <style scoped>
@@ -39,11 +58,7 @@ const positionsList = ref([
   padding-left: 20px;
   margin-top: 40px;
   font-weight: 400;
-}
-
-.list__item:hover {
-  cursor: pointer;
-  color: var(--color-text-highlighted-blue);
-  transition: color 0.1s linear;
+  list-style-type: none;
+  cursor: default;
 }
 </style>
