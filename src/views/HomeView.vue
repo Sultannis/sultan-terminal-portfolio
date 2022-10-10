@@ -81,6 +81,7 @@ const showPositionsList = () => {
 
 const showContent = () => {
   contentVisible.value = true;
+  focusInput();
 };
 
 const focusInput = () => {
