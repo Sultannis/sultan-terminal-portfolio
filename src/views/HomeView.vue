@@ -37,6 +37,9 @@
       :command-present="commandPresent"
       :focus-trigger="inputFocusTrigger"
     />
+    <RouterLink v-if="!commandQueue.length" class="main__lang-link" to="/rus">
+      Я не знаю английский
+    </RouterLink>
   </main>
 </template>
 
@@ -125,5 +128,16 @@ const scrollToTheBottom = () => {
 
 .main__hidden {
   display: none;
+}
+
+.main__lang-link {
+  position: absolute;
+  bottom: 30px;
+  left: 2.5vw;
+  color: var(--color-text-highlighted-blue);
+}
+
+.main__lang-link.active {
+  color: var(--color-text-highlighted-blue);
 }
 </style>
