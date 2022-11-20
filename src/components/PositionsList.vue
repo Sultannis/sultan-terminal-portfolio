@@ -1,6 +1,6 @@
 <template>
   <ul class="list">
-    <li class="list__item" :key="position.id" v-for="position in positionsList">
+    <li class="list__item" :key="position.id" v-for="position in workingList">
       <glitched-writer
         @finish="showNext()"
         v-if="position.visible"
@@ -17,34 +17,40 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, reactive, type PropType } from "vue";
 import GlitchedWriter from "vue-glitched-writer";
 
+const { list } = defineProps({
+  list: {
+    type: Array as PropType<{ id: number; name: string }[]>,
+    required: true,
+  },
+});
+const workingList: Array<{ id: number; name: String; visible: Boolean }> =
+  reactive([]);
 const emit = defineEmits(["last-writer-finished"]);
+
+onMounted(() => {
+  fillWorkingList();
+  console.log("mounted called");
+  console.log(workingList);
+});
+
+const fillWorkingList = () => {
+  list.forEach((listItem, index) => {
+    workingList.push({
+      id: +listItem.id,
+      name: listItem.name,
+      visible: index === 0 ? true : false,
+    });
+  });
+};
 
 let currentVisiblePositionIndex = 1;
 
-const positionsList = ref([
-  {
-    id: 1,
-    name: "Web developer",
-    visible: true,
-  },
-  {
-    id: 2,
-    name: "Business school student",
-    visible: false,
-  },
-  {
-    id: 3,
-    name: "Startup enthusiast",
-    visible: false,
-  },
-]);
-
 const showNext = () => {
-  if (positionsList.value[currentVisiblePositionIndex]) {
-    positionsList.value[currentVisiblePositionIndex].visible = true;
+  if (workingList[currentVisiblePositionIndex]) {
+    workingList[currentVisiblePositionIndex].visible = true;
     currentVisiblePositionIndex++;
   } else {
     setInterval(() => emit("last-writer-finished"), 500);
