@@ -16,12 +16,17 @@
       </div>
       <div v-for="project of command.projects" class="project">
         <a
+          v-if="project.link"
           @click="$emit('link-click')"
           :href="project.link"
           target="blank"
-          class="project__link"
-          >{{ project.linkTitle }}</a
+          class="project__title project__title_link"
         >
+          {{ project.linkTitle }}
+        </a>
+        <div v-else target="blank" class="project__title">
+          {{ project.linkTitle }}
+        </div>
         <div class="project__description">- {{ project.description }}</div>
         <div class="project__content">{{ project.content }}</div>
       </div>
@@ -91,6 +96,17 @@ defineProps<{
 .project__link {
   color: var(--color-text-highlighted-purple);
 }
+
+.project__title {
+  color: var(--color-text-highlighted-blue);
+  text-decoration: none;
+  cursor: default;
+}
+
+.project__title_link {
+  text-decoration: underline;
+  cursor: pointer;
+} 
 
 .project__content {
   margin-top: 10px;

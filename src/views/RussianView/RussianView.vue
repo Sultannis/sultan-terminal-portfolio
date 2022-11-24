@@ -4,7 +4,7 @@
       <div class="main__column">
         <glitched-writer
           @finish="showPositionsList"
-          text="Sultan Mustafin"
+          text="Султан Мустафин"
           :options="{
             interval: 50,
           }"
@@ -14,18 +14,18 @@
         />
         <PositionsList
           v-if="positionsListVisible"
-          :list="POSITIONS_LIST"
+          :list="RUSSIAN_POSITIONS_LIST"
           @last-writer-finished="showContent"
         />
       </div>
       <img
         class="main__image"
-        src="../assets/images/glitched-profile.gif"
+        src="../../assets/images/glitched-profile.gif"
         alt="profile-picture"
       />
     </div>
     <Hint v-show="contentVisible">
-      Type ‘commands’ to see the list of available commands
+      Впишите ‘commands’ чтобы увидеть список доступных комманд
     </Hint>
     <CommandsOutput
       @link-click="focusInput"
@@ -38,8 +38,8 @@
       :command-present="commandPresent"
       :focus-trigger="inputFocusTrigger"
     />
-    <RouterLink v-if="!commandQueue.length" class="main__lang-link" to="/rus">
-      Я не знаю английский
+    <RouterLink v-if="!commandQueue.length" class="main__lang-link" to="/">
+      I don't know russian
     </RouterLink>
   </main>
 </template>
@@ -48,13 +48,13 @@
 import { nextTick, ref, type Ref } from "vue";
 import GlitchedWriter from "vue-glitched-writer";
 import { generateNotFoundCommand } from "@/helpers/generate-not-found-command";
-import { Commands } from "@/constants/commands";
+import { COMMANDS_IN_RUSSIAN } from "@/constants/commandsInRussian";
 import type { Command } from "@/interfaces/command.interface";
-import PositionsList from "../components/PositionsList.vue";
-import Hint from "../components/home/Hint/Hint.vue";
-import CommandsInput from "../components/home/CommandsInput/CommandsInput.vue";
-import CommandsOutput from "../components/home/CommandsOutput/CommandsOutput.vue";
-import { POSITIONS_LIST } from "@/constants/positionsList";
+import PositionsList from "../../components/PositionsList.vue";
+import Hint from "../../components/home/Hint/Hint.vue";
+import CommandsInput from "../../components/home/CommandsInput/CommandsInput.vue";
+import CommandsOutput from "../../components/home/CommandsOutput/CommandsOutput.vue";
+import { RUSSIAN_POSITIONS_LIST } from "@/constants/russianPositionsList";
 
 const commandQueue: Ref<Command[]> = ref([]);
 let inputFocusTrigger: Ref<number> = ref(0);
@@ -63,7 +63,7 @@ let positionsListVisible: Ref<boolean> = ref(false);
 let contentVisible: Ref<boolean> = ref(false);
 
 const submitCommand = (commandIdentifier: string) => {
-  const command = Commands.find(
+  const command = COMMANDS_IN_RUSSIAN.find(
     (command) => command.commandIdentifier === commandIdentifier
   );
 
