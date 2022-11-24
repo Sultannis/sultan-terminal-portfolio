@@ -5,7 +5,7 @@ export const Commands = [
     type: "Available records",
     lines: [
       "- Sultan Mustafin Zhenisovich",
-      "- Date of birth: 18/11/2002.",
+      "- Date of birth: 18/11/2002",
       "- Place of birth: Taraz, South Kazakhstan",
       "- StartUp enthusiast",
       "- Web developer",
@@ -48,20 +48,6 @@ export const Commands = [
     error: "",
   },
   {
-    commandIdentifier: "student",
-    title: "Bussines school student",
-    type: "student",
-    lines: [
-      "- Istanbul University bachelor degree student. Currenly studing first year in bussines administration school.",
-    ],
-    projects: [],
-    lists: [],
-    imageName: "glitched-iu.gif",
-    links: [],
-    hints: [],
-    error: "",
-  },
-  {
     commandIdentifier: "commands",
     title: "Available commands",
     type: "available-commands",
@@ -70,15 +56,7 @@ export const Commands = [
     lists: [
       {
         title: "",
-        items: [
-          "about",
-          "work",
-          "student",
-          "commands",
-          "projects",
-          "contacts",
-          "clear",
-        ],
+        items: ["about", "work", "commands", "projects", "contacts", "clear"],
       },
     ],
     imageName: "",
@@ -93,7 +71,7 @@ export const Commands = [
     lines: [],
     projects: [
       {
-        linkTitle: "https://unapp.space",
+        linkTitle: "UnApp Space",
         link: "https://unapp.space",
         description:
           "Educational platform for university admission process preparation.",
@@ -101,8 +79,8 @@ export const Commands = [
           "Created frontend application using Vue Js and RESTful API using Nest Js. Was one of co-founders of the startup and was actively involved in management and bussines decisions of the team. Implemented the online payment system",
       },
       {
-        linkTitle: "https://sali.market",
-        link: "https://sali.market",
+        linkTitle: "Sali Market",
+        link: "",
         description: "Online shop for plumber equipment sale.",
         content:
           "Created online platform for selling plumbing equipment. Developed responsive frontend application using Nuxt Js framework. Created user interface design and designed MySql database architecture. Created RESTful API using Nest js framework and Knex js ORM. Configured SSR data fetch. Used TypeScript to integrate typing for every layer of application.",

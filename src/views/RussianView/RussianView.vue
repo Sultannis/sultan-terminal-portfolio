@@ -1,8 +1,54 @@
+<template>
+  <main class="main">
+    <div class="main__row">
+      <div class="main__column">
+        <glitched-writer
+          @finish="showPositionsList"
+          text="Султан Мустафин"
+          :options="{
+            interval: 50,
+          }"
+          appear
+          preset="typewriter"
+          class="main__heading"
+        />
+        <PositionsList
+          v-if="positionsListVisible"
+          :list="RUSSIAN_POSITIONS_LIST"
+          @last-writer-finished="showContent"
+        />
+      </div>
+      <img
+        class="main__image"
+        src="../../assets/images/glitched-profile.gif"
+        alt="profile-picture"
+      />
+    </div>
+    <Hint v-show="contentVisible">
+      Впишите ‘commands’ чтобы увидеть список доступных комманд
+    </Hint>
+    <CommandsOutput
+      @link-click="focusInput"
+      v-if="commandQueue.length"
+      :command-queue="commandQueue"
+    />
+    <CommandsInput
+      v-show="contentVisible"
+      @command-submit="submitCommand"
+      :command-present="commandPresent"
+      :focus-trigger="inputFocusTrigger"
+    />
+    <RouterLink v-if="!commandQueue.length" class="main__lang-link" to="/">
+      I don't know russian
+    </RouterLink>
+  </main>
+</template>
+
 <script setup lang="ts">
 import { nextTick, ref, type Ref } from "vue";
 import GlitchedWriter from "vue-glitched-writer";
 import { generateNotFoundCommand } from "@/helpers/generate-not-found-command";
-import { Commands } from "@/constants/commands";
+import { COMMANDS_IN_RUSSIAN } from "@/constants/commandsInRussian";
 import type { Command } from "@/interfaces/command.interface";
 import PositionsList from "../../components/PositionsList.vue";
 import Hint from "../../components/home/Hint/Hint.vue";
@@ -17,7 +63,7 @@ let positionsListVisible: Ref<boolean> = ref(false);
 let contentVisible: Ref<boolean> = ref(false);
 
 const submitCommand = (commandIdentifier: string) => {
-  const command = Commands.find(
+  const command = COMMANDS_IN_RUSSIAN.find(
     (command) => command.commandIdentifier === commandIdentifier
   );
 
@@ -58,52 +104,6 @@ const scrollToTheBottom = () => {
   );
 };
 </script>
-
-<template>
-  <main class="main">
-    <div class="main__row">
-      <div class="main__column">
-        <glitched-writer
-          @finish="showPositionsList"
-          text="Sultan Mustafin"
-          :options="{
-            interval: 50,
-          }"
-          appear
-          preset="typewriter"
-          class="main__heading"
-        />
-        <PositionsList
-          :list="RUSSIAN_POSITIONS_LIST"
-          v-if="positionsListVisible"
-          @last-writer-finished="showContent"
-        />
-      </div>
-      <img
-        class="main__image"
-        src="../assets/images/glitched-profile.gif"
-        alt="profile-picture"
-      />
-    </div>
-    <Hint v-show="contentVisible">
-      Впишите ‘commands’ чтобы увидеть список доступных комманд
-    </Hint>
-    <CommandsOutput
-      @link-click="focusInput"
-      v-if="commandQueue.length"
-      :command-queue="commandQueue"
-    />
-    <CommandsInput
-      v-show="contentVisible"
-      @command-submit="submitCommand"
-      :command-present="commandPresent"
-      :focus-trigger="inputFocusTrigger"
-    />
-    <RouterLink v-if="!commandQueue.length" class="main__lang-link" to="/rus">
-      I don't know russian
-    </RouterLink>
-  </main>
-</template>
 
 <style scoped>
 .main {

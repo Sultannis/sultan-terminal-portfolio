@@ -6,7 +6,7 @@ export const POSITIONS_LIST = [
   },
   {
     id: 2,
-    name: "Business school student",
+    name: "UI/UX designer",
     visible: false,
   },
   {

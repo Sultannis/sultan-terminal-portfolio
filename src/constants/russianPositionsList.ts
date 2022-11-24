@@ -6,7 +6,7 @@ export const RUSSIAN_POSITIONS_LIST = [
   },
   {
     id: 2,
-    name: "Выпускник бизнес факультета",
+    name: "UI/UX дизайнер",
     visible: false,
   },
   {
