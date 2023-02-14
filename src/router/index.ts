@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import RussianView from "../views/RussianView/RussianView.vue";
+import GlitchedView from "../views/GlitchedView/GlitchedView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +15,11 @@ const router = createRouter({
       path: "/rus",
       name: "home-rus",
       component: RussianView,
+    },
+    {
+      path: "/glitch",
+      name: "glitch",
+      component: GlitchedView,
     },
   ],
 });
