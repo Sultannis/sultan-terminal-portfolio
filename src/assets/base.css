@@ -41,12 +41,13 @@
 body {
   min-height: 100vh;
   color: var(--color-text);
-  background: #000;
+  background: #000000;
+  background: radial-gradient(circle, #160814 0%, rgba(0,0,0,1) 67%);
   line-height: 1.6;
   font-family: "IBM Plex Mono", sans-serif;
+
 }
 
 input {
   font-family: "IBM Plex Mono", sans-serif;
-
 }
