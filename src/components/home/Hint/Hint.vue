@@ -11,8 +11,6 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
-
 <style scoped>
 .hint {
   display: flex;

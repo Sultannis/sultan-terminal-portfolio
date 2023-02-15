@@ -27,7 +27,7 @@
     <Hint v-show="contentVisible">
       Type ‘commands’ to see the list of available commands
     </Hint>
-    <CommandsOutput
+    <CommandsOutputList
       @link-click="focusInput"
       v-if="commandQueue.length"
       :command-queue="commandQueue"
@@ -53,7 +53,7 @@ import type { Command } from "@/interfaces/command.interface";
 import PositionsList from "../components/PositionsList.vue";
 import Hint from "../components/home/Hint/Hint.vue";
 import CommandsInput from "../components/home/CommandsInput/CommandsInput.vue";
-import CommandsOutput from "../components/home/CommandsOutput/CommandsOutput.vue";
+import CommandsOutputList from "../components/home/CommandsOutputList/CommandsOutputList.vue";
 import { POSITIONS_LIST } from "@/constants/positionsList";
 
 const commandQueue: Ref<Command[]> = ref([]);

@@ -53,7 +53,7 @@ import type { Command } from "@/interfaces/command.interface";
 import PositionsList from "../../components/PositionsList.vue";
 import Hint from "../../components/home/Hint/Hint.vue";
 import CommandsInput from "../../components/home/CommandsInput/CommandsInput.vue";
-import CommandsOutput from "../../components/home/CommandsOutput/CommandsOutput.vue";
+import CommandsOutput from "../../components/home/CommandsOutputList/CommandsOutputList.vue";
 import { RUSSIAN_POSITIONS_LIST } from "@/constants/russianPositionsList";
 
 const commandQueue: Ref<Command[]> = ref([]);
