@@ -7,5 +7,5 @@ import { RouterView } from "vue-router";
 </script>
 
 <style>
-@import "@/assets/base.css";
+@import "@/assets/base.scss";
 </style>

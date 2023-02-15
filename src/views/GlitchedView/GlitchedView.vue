@@ -1,13 +1,46 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { PowerGlitch } from "powerglitch";
+import { onMounted } from "vue";
+
+const powerGlitchOptions = {
+  playMode: "manual",
+  createContainers: true,
+  hideOverflow: false,
+  timing: {
+    duration: 6000,
+  },
+  glitchTimeSpan: {
+    start: 0.8,
+    end: 1,
+  },
+  shake: {
+    velocity: 15,
+    amplitudeX: 0.2,
+    amplitudeY: 0.2,
+  },
+  slice: {
+    count: 6,
+    velocity: 15,
+    minHeight: 0.02,
+    maxHeight: 0.15,
+    hueRotate: true,
+  },
+};
+
+onMounted(() => {
+  PowerGlitch.glitch(".main", powerGlitchOptions);
+});
+
+setTimeout(() => {
+  powerGlitchOptions.timing.duration = 1000;
+  PowerGlitch.glitch(".main", powerGlitchOptions);
+}, 15000);
+</script>
 
 <template>
   <main class="main">
     <pre>
       <div class="main__masks">
-        <img src="../../assets/gifs/effect-static.webp" class="main__mask" />
-        <div class="main__mask gradient"></div>
-        <div class="main__mask"></div>
-        <div class="main__mask"></div>
       </div>
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint velit nisi
@@ -17,6 +50,7 @@
         dolorum, tempora molestias nam fugiat odit culpa assumenda asperiores eum,
         minus quasi nesciunt veniam consectetur. Ex.
       </p>
+      <input type="text">
     </pre>
   </main>
 </template>
@@ -31,6 +65,8 @@
   left: 0;
 
   opacity: 0.02;
+
+  overflow: hidden;
 }
 
 .gradient {
