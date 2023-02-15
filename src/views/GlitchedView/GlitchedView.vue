@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { GlitchedElement } from "vue-powerglitch";
-import { onMounted } from "vue";
+import { GlitchedElement, type GlitchedElementRef } from "vue-powerglitch";
+import { onMounted, ref, type Ref } from "vue";
 
 const powerGlitchOptions = {
-  playMode: "manual",
+  playMode: "always",
   createContainers: true,
   hideOverflow: false,
   timing: {
-    duration: 6000,
+    duration: 1200,
   },
   glitchTimeSpan: {
-    start: 0.8,
+    start: 0,
     end: 1,
   },
   shake: {
@@ -27,15 +27,18 @@ const powerGlitchOptions = {
   },
 };
 
+const glitched: Ref<GlitchedElementRef | undefined> = ref();
+
 setTimeout(() => {
   powerGlitchOptions.timing.duration = 1000;
-}, 15000);
+  glitched.value?.stopGlitch();
+}, 1000);
 </script>
 
 <template>
   <img src="../../assets/gifs/effect-static.webp" class="main__mask" />
   <div class="main__mask gradient"></div>
-  <GlitchedElement class="main">
+  <GlitchedElement ref="glitched" :options="powerGlitchOptions" class="main">
     <main class="main">
       <pre>
         <div class="main__masks">
