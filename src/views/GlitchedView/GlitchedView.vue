@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { GlitchedElement, type GlitchedElementRef } from "vue-powerglitch";
 import { onMounted, ref, type Ref } from "vue";
+import sound from "@/assets/audio/static-noise.mp3";
+
+onMounted(() => {});
+const play = () => {
+  const staticNoise = new Audio(sound);
+  document.body.append(staticNoise);
+  staticNoise.volume = 0.6;
+  staticNoise.play();
+};
 
 const powerGlitchOptions = {
   playMode: "always",
@@ -36,12 +45,12 @@ setTimeout(() => {
 </script>
 
 <template>
-  <img src="../../assets/gifs/effect-static.webp" class="main__mask" />
-  <div class="main__mask gradient"></div>
   <GlitchedElement ref="glitched" :options="powerGlitchOptions" class="main">
-    <main class="main">
+    <main class="main" @click="play">
       <pre>
         <div class="main__masks">
+          <img src="../../assets/gifs/effect-static.webp" class="main__mask" />
+          <div class="main__mask gradient"></div>
         </div>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint velit nisi
