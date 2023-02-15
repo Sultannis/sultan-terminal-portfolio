@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Command } from "@/interfaces/command.interface";
+import CommandItem from "@/components/home/CommandItem/CommandItem.vue";
 
 defineProps<{
   commandQueue: Command[];

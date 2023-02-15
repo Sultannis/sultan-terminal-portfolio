@@ -32,8 +32,6 @@ const emit = defineEmits(["last-writer-finished"]);
 
 onMounted(() => {
   fillWorkingList();
-  console.log("mounted called");
-  console.log(workingList);
 });
 
 const fillWorkingList = () => {
