@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PowerGlitch } from "powerglitch";
+import { GlitchedElement } from "vue-powerglitch";
 import { onMounted } from "vue";
 
 const powerGlitchOptions = {
@@ -27,35 +27,39 @@ const powerGlitchOptions = {
   },
 };
 
-onMounted(() => {
-  PowerGlitch.glitch(".main", powerGlitchOptions);
-});
-
 setTimeout(() => {
   powerGlitchOptions.timing.duration = 1000;
-  PowerGlitch.glitch(".main", powerGlitchOptions);
 }, 15000);
 </script>
 
 <template>
-  <main class="main">
-    <pre>
-      <div class="main__masks">
-      </div>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint velit nisi
-        beatae aliquid et accusantium perferendis repellendus, rem, non, facere id
-        dolorem deserunt ea temporibus ipsam eos inventore sit officia architecto.
-        Dolore mollitia fuga iusto quos earum magnam beatae quod modi, eaque soluta
-        dolorum, tempora molestias nam fugiat odit culpa assumenda asperiores eum,
-        minus quasi nesciunt veniam consectetur. Ex.
-      </p>
-      <input type="text">
-    </pre>
-  </main>
+  <img src="../../assets/gifs/effect-static.webp" class="main__mask" />
+  <div class="main__mask gradient"></div>
+  <GlitchedElement class="main">
+    <main class="main">
+      <pre>
+        <div class="main__masks">
+        </div>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint velit nisi
+          beatae aliquid et accusantium perferendis repellendus, rem, non, facere id
+          dolorem deserunt ea temporibus ipsam eos inventore sit officia architecto.
+          Dolore mollitia fuga iusto quos earum magnam beatae quod modi, eaque soluta
+          dolorum, tempora molestias nam fugiat odit culpa assumenda asperiores eum,
+          minus quasi nesciunt veniam consectetur. Ex.
+        </p>
+        <input type="text">
+      </pre>
+    </main>
+  </GlitchedElement>
 </template>
 
 <style>
+.main {
+  z-index: 2;
+  position: relative;
+}
+
 .main__mask {
   height: 100vh;
   width: 100vw;
@@ -65,6 +69,7 @@ setTimeout(() => {
   left: 0;
 
   opacity: 0.02;
+  z-index: 1;
 
   overflow: hidden;
 }
