@@ -9,6 +9,8 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@types/howler": "^2.2.7",
+    "howler": "^2.2.3",
     "vue": "^3.2.45",
     "vue-glitched-writer": "^1.2.2",
     "vue-powerglitch": "^1.0.0",

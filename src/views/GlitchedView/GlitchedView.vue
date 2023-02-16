@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { GlitchedElement, type GlitchedElementRef } from "vue-powerglitch";
 import { onMounted, ref, type Ref } from "vue";
-import sound from "@/assets/audio/static-noise.mp3";
+import { Howl } from "howler";
+import sound from "@/assets/audio/static-noise.ogg";
 
 onMounted(() => {});
 const play = () => {
-  const staticNoise = new Audio(sound);
-  document.body.append(staticNoise);
-  staticNoise.volume = 0.6;
-  staticNoise.play();
+  const staticHoise = new Howl({
+    src: [sound],
+    loop: true,
+  });
+
+  staticHoise.play();
 };
 
 const powerGlitchOptions = {
@@ -46,7 +49,7 @@ setTimeout(() => {
 
 <template>
   <GlitchedElement ref="glitched" :options="powerGlitchOptions" class="main">
-    <main class="main" @click="play">
+    <main class="main" @click.once="play">
       <pre>
         <div class="main__masks">
           <img src="../../assets/gifs/effect-static.webp" class="main__mask" />
