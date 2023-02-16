@@ -26,15 +26,6 @@ onMounted(() => {
           <img src="../../assets/gifs/effect-static.webp" class="main__mask" />
           <div class="main__mask gradient"></div>
         </div>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint velit nisi
-          beatae aliquid et accusantium perferendis repellendus, rem, non, facere id
-          dolorem deserunt ea temporibus ipsam eos inventore sit officia architecto.
-          Dolore mollitia fuga iusto quos earum magnam beatae quod modi, eaque soluta
-          dolorum, tempora molestias nam fugiat odit culpa assumenda asperiores eum,
-          minus quasi nesciunt veniam consectetur. Ex.
-        </p>
-        <input type="text">
       </pre>
     </main>
   </GlitchedElement>
@@ -74,17 +65,4 @@ onMounted(() => {
   opacity: 1;
 }
 
-pre {
-  animation: text-blink 0.01s steps(2) infinite;
-}
-
-@keyframes text-blink {
-  from,
-  to {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
 </style>
