@@ -1,42 +1,25 @@
 <script setup lang="ts">
+import { onMounted, ref, type Ref } from "vue";
 import { GlitchedElement, type GlitchedElementRef } from "vue-powerglitch";
-import { ref, type Ref } from "vue";
-
-const powerGlitchOptions = {
-  playMode: "always",
-  createContainers: true,
-  hideOverflow: false,
-  timing: {
-    duration: 1200,
-  },
-  glitchTimeSpan: {
-    start: 0,
-    end: 1,
-  },
-  shake: {
-    velocity: 15,
-    amplitudeX: 0.2,
-    amplitudeY: 0.2,
-  },
-  slice: {
-    count: 6,
-    velocity: 15,
-    minHeight: 0.02,
-    maxHeight: 0.15,
-    hueRotate: true,
-  },
-};
+import {
+  powerGlitchOptions,
+  handlePageGlitches,
+} from "@/composables/use-glitches";
+import { startStaticNoise } from "@/composables/use-sound";
 
 const glitched: Ref<GlitchedElementRef | undefined> = ref();
-
-setTimeout(() => {
-  powerGlitchOptions.timing.duration = 1000;
-  glitched.value?.stopGlitch();
-}, 1000);
+onMounted(() => {
+  handlePageGlitches(glitched.value?.startGlitch, glitched.value?.stopGlitch);
+});
 </script>
 
 <template>
-  <GlitchedElement ref="glitched" :options="powerGlitchOptions" class="main">
+  <GlitchedElement
+    ref="glitched"
+    :options="powerGlitchOptions"
+    class="main"
+    @click.once="startStaticNoise()"
+  >
     <main class="main">
       <pre>
         <div class="main__masks">
