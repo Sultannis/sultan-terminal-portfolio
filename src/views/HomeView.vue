@@ -79,11 +79,6 @@ const scrollToTheBottom = () => {
           @last-writer-finished="showContent"
         />
       </div>
-      <img
-        class="main__image"
-        src="../assets/images/glitched-profile.gif"
-        alt="profile-picture"
-      />
     </div>
     <Hint v-show="contentVisible">
       Type ‘commands’ to see the list of available commands
@@ -112,31 +107,13 @@ const scrollToTheBottom = () => {
 }
 
 .main__heading {
-  font-size: 2em;
-  font-weight: 600;
+  font-size: 40px;
+  font-weight: 700;
 }
 
 .main__row {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-}
-.main__image {
-  height: 168px;
-}
-
-.main__hidden {
-  display: none;
-}
-
-.main__lang-link {
-  position: absolute;
-  bottom: 30px;
-  left: 2.5vw;
-  color: var(--color-text-highlighted-blue);
-}
-
-.main__lang-link.active {
-  color: var(--color-text-highlighted-blue);
 }
 </style>

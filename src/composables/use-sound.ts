@@ -28,6 +28,7 @@ const useGlitchSound = () => {
       glitchSound.play(soundId);
     }
   };
+
   const stopGlitchSound = () => {
     glitchSound.pause(soundId);
   };

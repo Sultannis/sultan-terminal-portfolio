@@ -61,7 +61,6 @@ const showNext = () => {
   font-size: 16px;
   padding-left: 20px;
   margin-top: 40px;
-  font-weight: 400;
   list-style-type: none;
   cursor: default;
 }

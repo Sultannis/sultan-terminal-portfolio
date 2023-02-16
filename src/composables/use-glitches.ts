@@ -15,8 +15,8 @@ const powerGlitchOptions = {
   },
   shake: {
     velocity: 19,
-    amplitudeX: 0.42,
-    amplitudeY: 0,
+    amplitudeX: 0.25,
+    amplitudeY: 0.02,
   },
   slice: {
     count: 5,

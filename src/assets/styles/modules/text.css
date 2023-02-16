@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'Cubicfive';
+  src: url('../../fonts/cubicfive/cubicfive-regular.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Cubicfive';
+  src: url('../../fonts/cubicfive/cubicfive-italic.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cubicfive';
+  src: url('../../fonts/cubicfive/cubicfive-600.ttf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Pixeloid';
+  src: url('../../fonts/pixeloid/pixeloid-regular.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Pixeloid';
+  src: url('../../fonts/pixeloid/pixeloid-bold.ttf');
+  font-weight: 700;
+}
+
+
+input {
+  font-family: "Pixeloid", sans-serif;
+  caret-shape: block;
+}
+
+body {
+  font-family: "Pixeloid", sans-serif;
+  font-weight: normal;
+  color: var(--color-text);
+  line-height: 1.6;
+  text-shadow: 8px 0px 0px rgba(0,0,0,1);
+  text-transform: uppercase;
+}
+
+main {
+  animation: text-blink 0.01s steps(2) infinite;
+}
+
+@keyframes text-blink {
+  from,
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

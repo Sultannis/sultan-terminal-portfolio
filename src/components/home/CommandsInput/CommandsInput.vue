@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <span class="wrapper__span">C:\></span>
+    <span class="wrapper__span">></span>
     <input
       :class="dynamicClasses"
       @keyup.enter="submitCommand"
