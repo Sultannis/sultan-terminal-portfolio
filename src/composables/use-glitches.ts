@@ -1,0 +1,5 @@
+const handlePageGlitches = () => {
+  
+}
+
+export {handlePageGlitches}
