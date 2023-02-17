@@ -1,18 +1,11 @@
 import { useGlitchSound } from "./use-sound";
+import type { PowerGlitchOptions, RecursivePartial } from "powerglitch";
 
 const { startGlitchSound, stopGlitchSound } = useGlitchSound();
 
-const powerGlitchOptions = {
-  playMode: "always",
-  createContainers: true,
-  hideOverflow: false,
-  timing: {
-    duration: 2650,
-  },
-  glitchTimeSpan: {
-    start: 0,
-    end: 1,
-  },
+const powerGlitchOptions: RecursivePartial<PowerGlitchOptions> = {
+  playMode: "manual",
+  timing: { duration: 1500, iterations: 1 },
   shake: {
     velocity: 19,
     amplitudeX: 0.25,
@@ -25,7 +18,6 @@ const powerGlitchOptions = {
     maxHeight: 0.09,
     hueRotate: true,
   },
-  pulse: false,
 };
 
 const handlePageGlitches = (
@@ -37,6 +29,8 @@ const handlePageGlitches = (
   }
 
   const functionToCall = () => {
+    const glitchSpan = 500 + Math.floor(Math.random() * 1000);
+
     startGlitch();
     startGlitchSound();
 
@@ -47,10 +41,10 @@ const handlePageGlitches = (
       const randomDelay = 15000 + Math.floor(Math.random() * 30000);
 
       setTimeout(functionToCall, randomDelay);
-    }, 1000);
+    }, glitchSpan);
   };
 
-  functionToCall();
+  setTimeout(functionToCall, 1000);
 };
 
 export { handlePageGlitches, powerGlitchOptions };

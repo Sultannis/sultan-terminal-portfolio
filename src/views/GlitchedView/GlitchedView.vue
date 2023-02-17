@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { nextTick, onMounted, ref, type Ref } from "vue";
-import { GlitchedElement, type GlitchedElementRef } from "vue-powerglitch";
 import {
   powerGlitchOptions,
   handlePageGlitches,
@@ -15,10 +14,22 @@ import Hint from "../../components/home/Hint/Hint.vue";
 import CommandsInput from "../../components/home/CommandsInput/CommandsInput.vue";
 import CommandsOutputList from "../../components/home/CommandsOutputList/CommandsOutputList.vue";
 import { POSITIONS_LIST } from "@/constants/positionsList";
+import { PowerGlitch } from "powerglitch";
 
-const glitched: Ref<GlitchedElementRef | undefined> = ref();
+const glitch = ref(null);
+
 onMounted(() => {
-  handlePageGlitches(glitched.value?.startGlitch, glitched.value?.stopGlitch);
+  console.log(glitch);
+  console.log(glitch.value);
+  if (glitch.value) {
+    console.log(glitch);
+    const { startGlitch, stopGlitch } = PowerGlitch.glitch(
+      glitch.value,
+      powerGlitchOptions
+    );
+    console.log(startGlitch, stopGlitch);
+    handlePageGlitches(startGlitch, stopGlitch);
+  }
 });
 
 const commandQueue: Ref<Command[]> = ref([]);
@@ -75,54 +86,49 @@ const consoleCheck = () => {
 </script>
 
 <template>
-  <GlitchedElement
-    ref="glitched"
-    :options="powerGlitchOptions"
-    class="main"
-    @click.once="startStaticNoise"
-  >
-    <main class="main__content">
-      <div class="main__row">
-        <div class="main__column" @click="consoleCheck">
-          <glitched-writer
-            @finish="showPositionsList"
-            text="Sultan Mustafin"
-            :options="{
-              interval: 50,
-            }"
-            appear
-            preset="typewriter"
-            class="main__heading"
-          />
-          <PositionsList
-            v-if="positionsListVisible"
-            :list="POSITIONS_LIST"
-            @last-writer-finished="showContent"
-          />
-        </div>
+  <div ref="glitch" class="main" @click.once="startStaticNoise">
+    <div class="main__row">
+      <div class="main__column" @click="consoleCheck">
+        <glitched-writer
+          @finish="showPositionsList"
+          text="Sultan Mustafin"
+          :options="{
+            interval: 50,
+          }"
+          appear
+          preset="typewriter"
+          class="main__heading"
+        />
+        <PositionsList
+          v-if="positionsListVisible"
+          :list="POSITIONS_LIST"
+          @last-writer-finished="showContent"
+        />
       </div>
-      <Hint v-show="contentVisible">
-        Type ‘commands’ to see the list of available commands
-      </Hint>
-      <CommandsOutputList
-        @link-click="focusInput"
-        v-if="commandQueue.length"
-        :command-queue="commandQueue"
-      />
-      <CommandsInput
-        v-show="contentVisible"
-        @command-submit="submitCommand"
-        :command-present="commandPresent"
-        :focus-trigger="inputFocusTrigger"
-      />
-    </main>
-  </GlitchedElement>
+    </div>
+    <Hint v-show="contentVisible">
+      Type ‘commands’ to see the list of available commands
+    </Hint>
+    <CommandsOutputList
+      @link-click="focusInput"
+      v-if="commandQueue.length"
+      :command-queue="commandQueue"
+    />
+    <CommandsInput
+      v-show="contentVisible"
+      @command-submit="submitCommand"
+      :command-present="commandPresent"
+      :focus-trigger="inputFocusTrigger"
+    />
+  </div>
 </template>
 
 <style scoped>
 .main {
   min-height: 100vh;
   min-width: 100vw;
+  max-height: 100vh;
+  max-width: 100vw;
   padding: 50px;
 
   background: radial-gradient(circle, #210c1e 0%, rgb(0, 0, 0) 77%);
@@ -130,9 +136,6 @@ const consoleCheck = () => {
 
   z-index: 2;
   position: relative;
-
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .main__heading {
