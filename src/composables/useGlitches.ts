@@ -1,4 +1,4 @@
-import { useGlitchSound } from "./use-sound";
+import { useGlitchSound } from "./useSound";
 import type { PowerGlitchOptions, RecursivePartial } from "powerglitch";
 
 const { startGlitchSound, stopGlitchSound } = useGlitchSound();
@@ -20,7 +20,7 @@ const powerGlitchOptions: RecursivePartial<PowerGlitchOptions> = {
   },
 };
 
-const handlePageGlitches = (
+const usePageGlitches = (
   startGlitch: (() => void) | undefined,
   stopGlitch: (() => void) | undefined
 ) => {
@@ -47,4 +47,4 @@ const handlePageGlitches = (
   setTimeout(functionToCall, 1000);
 };
 
-export { handlePageGlitches, powerGlitchOptions };
+export { usePageGlitches, powerGlitchOptions };

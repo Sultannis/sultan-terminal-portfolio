@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { PowerGlitch } from "powerglitch";
-import {
-  powerGlitchOptions,
-  handlePageGlitches,
-} from "@/composables/use-glitches";
+import { powerGlitchOptions, usePageGlitches } from "@/composables/useGlitches";
 
 onMounted(() => {
   if (!glitch.value) return;
@@ -13,7 +10,7 @@ onMounted(() => {
     glitch.value,
     powerGlitchOptions
   );
-  handlePageGlitches(startGlitch, stopGlitch);
+  usePageGlitches(startGlitch, stopGlitch);
 });
 
 const glitch = ref(null);
