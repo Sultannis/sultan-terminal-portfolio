@@ -7,6 +7,9 @@ const startStaticNoise = () => {
     src: [sound],
     loop: true,
     volume: 0.8,
+    onplay() {
+      staticHoise.fade(0, 1, 1000);
+    },
   });
 
   staticHoise.play();

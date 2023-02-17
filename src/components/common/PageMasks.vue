@@ -2,7 +2,7 @@
 
 <template>
   <div class="app-masks">
-    <img src="./assets/gifs/effect-static.webp" class="app-masks__item" />
+    <img src="@/assets/gifs/effect-static.webp" class="app-masks__item" />
     <div class="app-masks__item app-masks__item_gradient"></div>
   </div>
 </template>
