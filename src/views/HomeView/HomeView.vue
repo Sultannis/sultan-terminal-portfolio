@@ -2,8 +2,8 @@
 import { onMounted, ref } from "vue";
 import { PowerGlitch } from "powerglitch";
 import { powerGlitchOptions, usePageGlitches } from "@/composables/useGlitches";
+import { startStaticNoise, useTypingSound } from "@/composables/useSound";
 import PageMasks from "@/components/common/PageMasks.vue";
-import { startStaticNoise } from "@/composables/useSound";
 
 onMounted(() => {
   if (!glitch.value) return;
@@ -13,7 +13,11 @@ onMounted(() => {
     powerGlitchOptions
   );
   usePageGlitches(startGlitch, stopGlitch);
+
+  const { startTypingSound } = useTypingSound();
   startStaticNoise();
+
+  startTypingSound();
 });
 
 const glitch = ref(null);
