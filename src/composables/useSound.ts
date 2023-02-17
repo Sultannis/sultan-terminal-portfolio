@@ -12,13 +12,15 @@ const startStaticNoise = () => {
     volume: 0.8,
     onplay(soundId) {
       if (!started) {
-        staticNoise.fade(0, 1, 1000, soundId);
+        staticNoise.fade(0, 1, 2000, soundId);
         started = true;
       }
     },
   });
 
-  staticNoise.play();
+  setTimeout(() => {
+    staticNoise.play();
+  }, 800);
 };
 
 const useGlitchSound = () => {
