@@ -6,7 +6,7 @@ const startStaticNoise = () => {
   const staticHoise = new Howl({
     src: [sound],
     loop: true,
-    volume: 0.5,
+    volume: 0.8,
   });
 
   staticHoise.play();
@@ -16,7 +16,7 @@ const useGlitchSound = () => {
   const glitchSound = new Howl({
     src: [glitchSounds],
     loop: true,
-    volume: 0.5,
+    volume: 0.3,
   });
 
   let soundId: number = 0;
