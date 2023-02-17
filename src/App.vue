@@ -1,7 +1,7 @@
 <template>
-  <div class="app__masks">
-    <img src="./assets/gifs/effect-static.webp" class="app__mask" />
-    <div class="app__mask app__mask_gradient"></div>
+  <div class="app-masks">
+    <img src="./assets/gifs/effect-static.webp" class="app-masks__item" />
+    <div class="app-masks__item app-masks__item_gradient"></div>
   </div>
   <RouterView />
 </template>
@@ -13,7 +13,7 @@ import { RouterView } from "vue-router";
 <style>
 @import "@/assets/styles/base.css";
 
-.app__mask {
+.app-masks__item {
   height: 100vh;
   width: 100vw;
 
@@ -28,7 +28,7 @@ import { RouterView } from "vue-router";
   pointer-events: none;
 }
 
-.app__mask_gradient {
+.app-masks__item_gradient {
   background-image: repeating-linear-gradient(
     transparent,
     transparent 2px,
