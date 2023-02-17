@@ -1,23 +1,28 @@
 import { Howl } from "howler";
-import sound from "@/assets/audio/static-noise.ogg";
-import glitchSounds from "@/assets/audio/glitch-sounds.mp3";
+import staticNoiseRecording from "@/assets/audio/static-noise.ogg";
+import glitchSoundsRecording from "@/assets/audio/glitch-sounds.mp3";
+import keyPressSoundRecording from "@/assets/audio/key-press-sound.mp3";
+
+const keyPressSound = new Howl({
+  src: [keyPressSoundRecording],
+});
 
 const startStaticNoise = () => {
-  const staticHoise = new Howl({
-    src: [sound],
+  const staticNoise = new Howl({
+    src: [staticNoiseRecording],
     loop: true,
     volume: 0.8,
     onplay() {
-      staticHoise.fade(0, 1, 1000);
+      staticNoise.fade(0, 1, 1000);
     },
   });
 
-  staticHoise.play();
+  staticNoise.play();
 };
 
 const useGlitchSound = () => {
   const glitchSound = new Howl({
-    src: [glitchSounds],
+    src: [glitchSoundsRecording],
     loop: true,
     volume: 0.3,
   });
@@ -39,4 +44,8 @@ const useGlitchSound = () => {
   return { startGlitchSound, stopGlitchSound };
 };
 
-export { startStaticNoise, useGlitchSound };
+const playKeyPressSound = () => {
+  keyPressSound.play();
+};
+
+export { startStaticNoise, useGlitchSound, playKeyPressSound };

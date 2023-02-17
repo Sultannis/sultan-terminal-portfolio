@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
+import { playKeyPressSound } from "@/composables/useSound";
 
 const emit = defineEmits(["start"]);
 
@@ -15,6 +16,8 @@ const startClicked = ref(false);
 
 const handleStart = () => {
   startClicked.value = true;
+
+  playKeyPressSound();
 
   setTimeout(() => {
     emit("start");
