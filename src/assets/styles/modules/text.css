@@ -38,7 +38,7 @@ input {
 body {
   font-family: "Pixeloid", sans-serif;
   font-weight: normal;
-  color: var(--color-text);
+  color: var(--color-main-red);
   line-height: 1.6;
   text-shadow: 8px 0px 0px rgba(0,0,0,1);
   text-transform: uppercase;

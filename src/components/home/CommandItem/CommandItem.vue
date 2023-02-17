@@ -59,7 +59,7 @@ defineProps<{
 
 <style scoped>
 .output__title {
-  color: var(--color-text-highlighted-yellow);
+  color: var(--color-main-red-highlighted-yellow);
   margin-bottom: 5px;
 }
 
@@ -80,7 +80,7 @@ defineProps<{
 }
 
 .list__title {
-  color: var(--color-text-highlighted-green);
+  color: var(--color-main-red-highlighted-green);
 }
 
 .project {
@@ -88,11 +88,11 @@ defineProps<{
 }
 
 .project__link {
-  color: var(--color-text-highlighted-purple);
+  color: var(--color-main-red-highlighted-purple);
 }
 
 .project__title {
-  color: var(--color-text-highlighted-blue);
+  color: var(--color-main-red-highlighted-blue);
   text-decoration: none;
   cursor: default;
 }

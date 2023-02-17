@@ -4,7 +4,7 @@
   
   --gradient-background: radial-gradient(circle, var(--color-background-red) 0%, var(--color-background-dark) 77%);
 
-  --color-text: #bd0820d6;
+  --color-main-red: #bd0820d6;
   --color-text-highlighted-blue: #2974C8;
   --color-text-highlighted-yellow: #f3d96b;
   --color-text-highlighted-green: #1acc6b;

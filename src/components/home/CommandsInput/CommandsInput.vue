@@ -72,12 +72,12 @@ watch(
   width: 100%;
   background-color: transparent;
   border: none;
-  color: var(--color-text);
+  color: var(--color-main-red);
   font-size: 16px;
 }
 
 .wrapper__input_found {
-  color: var(--color-text-highlighted-yellow);
+  color: var(--color-main-red-highlighted-yellow);
 }
 
 .wrapper__input:focus {
