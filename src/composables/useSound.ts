@@ -2,11 +2,7 @@ import { Howl } from "howler";
 import staticNoiseRecording from "@/assets/audio/static-noise.ogg";
 import glitchSoundsRecording from "@/assets/audio/glitch-sounds.mp3";
 import keyPressSoundRecording from "@/assets/audio/key-press-sound.mp3";
-import keyboardTypingSounds from "@/assets/audio/keyboard-typing-sounds.m4a";
-
-const keyPressSound = new Howl({
-  src: [keyPressSoundRecording],
-});
+import keyboardTypingSounds from "@/assets/audio/keyboard-typing-sounds.m4a?url";
 
 const startStaticNoise = () => {
   let started = false;
@@ -73,6 +69,10 @@ const useTypingSound = () => {
 };
 
 const playKeyPressSound = () => {
+  const keyPressSound = new Howl({
+    src: [keyPressSoundRecording],
+  });
+
   keyPressSound.play();
 };
 
