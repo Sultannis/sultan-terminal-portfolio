@@ -6,10 +6,6 @@
   <RouterView />
 </template>
 
-<script setup lang="ts">
-import { RouterView } from "vue-router";
-</script>
-
 <style>
 @import "@/assets/styles/base.css";
 
@@ -22,7 +18,7 @@ import { RouterView } from "vue-router";
   left: 0;
 
   opacity: 0.02;
-  z-index: 3;
+  z-index: 2;
 
   overflow: hidden;
   pointer-events: none;

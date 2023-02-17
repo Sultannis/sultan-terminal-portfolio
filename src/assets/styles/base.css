@@ -12,7 +12,7 @@
 
 
 #app {
-  background: radial-gradient(circle, #210c1e 0%, rgb(0, 0, 0) 77%);
+  background: var(--color-background-dark);
   
   min-height: 100vh;
   min-width: 100vw;

@@ -2,6 +2,7 @@
 import { onMounted, ref } from "vue";
 import { PowerGlitch } from "powerglitch";
 import { powerGlitchOptions, usePageGlitches } from "@/composables/useGlitches";
+import AppIntroView from "@/views/AppIntroView/AppIntroView.vue";
 
 onMounted(() => {
   if (!glitch.value) return;
@@ -17,9 +18,12 @@ const glitch = ref(null);
 </script>
 
 <template>
-  <div ref="glitch" class="home">
-    <RouterView />
-  </div>
+  <Transition appear>
+    <AppIntroView />
+    <!-- <div ref="glitch" class="home">
+      <RouterView />
+    </div> -->
+  </Transition>
 </template>
 
 <style scoped>
@@ -30,10 +34,9 @@ const glitch = ref(null);
   max-width: 100vw;
   padding: 50px;
 
-  background: radial-gradient(circle, #210c1e 0%, rgb(0, 0, 0) 77%);
+  background: var(--gradient-background);
   overflow: hidden;
 
-  z-index: 2;
   position: relative;
 }
 
@@ -46,5 +49,15 @@ const glitch = ref(null);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 2s ease-in;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
