@@ -8,12 +8,16 @@ const keyPressSound = new Howl({
 });
 
 const startStaticNoise = () => {
+  let started = false;
   const staticNoise = new Howl({
     src: [staticNoiseRecording],
     loop: true,
     volume: 0.8,
-    onplay() {
-      staticNoise.fade(0, 1, 1000);
+    onplay(soundId) {
+      if (!started) {
+        staticNoise.fade(0, 1, 1000, soundId);
+      }
+      started = true;
     },
   });
 
