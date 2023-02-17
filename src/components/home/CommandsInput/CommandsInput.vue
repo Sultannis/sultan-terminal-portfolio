@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { Commands } from "@/constants/commands";
+import { COMMANDS } from "@/constants/commands";
 import { ref, computed, type Ref, watch } from "vue";
 
 const props = defineProps({
@@ -44,7 +44,7 @@ const handleCommandInput = () => {
 };
 
 const checkCommandPresence = (commandIdentifier: string) => {
-  return !!Commands.find(
+  return !!COMMANDS.find(
     (command) => command.commandIdentifier === commandIdentifier
   );
 };

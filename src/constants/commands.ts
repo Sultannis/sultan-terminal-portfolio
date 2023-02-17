@@ -1,4 +1,4 @@
-export const Commands = [
+export const COMMANDS = [
   {
     commandIdentifier: "about",
     title: "About",

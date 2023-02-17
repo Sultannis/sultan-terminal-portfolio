@@ -9,7 +9,7 @@ const router = createRouter({
       name: "home",
       component: HomeView,
     },
-    { path: "/:pathMatch(.*)*", name: "NotFound", redirect: "/" },
+    { path: "/:pathMatch(.*)*", name: "NotFound", redirect: { name: "home" } },
   ],
 });
 
