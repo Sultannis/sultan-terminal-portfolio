@@ -15,9 +15,8 @@ onUnmounted(() => {
 const startClicked = ref(false);
 
 const handleStart = () => {
-  startClicked.value = true;
-
   playKeyPressSound();
+  startClicked.value = true;
 
   setTimeout(() => {
     emit("start");

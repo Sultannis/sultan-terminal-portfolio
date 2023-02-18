@@ -4,6 +4,7 @@ import { PowerGlitch } from "powerglitch";
 import { powerGlitchOptions, usePageGlitches } from "@/composables/useGlitches";
 import { startStaticNoise } from "@/composables/useSound";
 import PageMasks from "@/components/common/PageMasks.vue";
+import HomeGreeting from "@/components/home/HomeGreeting/HomeGreeting.vue";
 
 onMounted(() => {
   if (!glitch.value) return;
@@ -18,13 +19,17 @@ onMounted(() => {
 });
 
 const glitch = ref(null);
+
+const handleGreetingFinish = () => {
+  console.log("greeting finish");
+};
 </script>
 
 <template>
-  <div class="home" @click="$emit('start')">
+  <div class="home">
     <PageMasks />
     <div ref="glitch" class="home__content">
-      This is dummy text to fill up the space
+      <HomeGreeting @finish="handleGreetingFinish" />
     </div>
   </div>
 </template>
@@ -46,11 +51,5 @@ const glitch = ref(null);
 .home__heading {
   font-size: 20px;
   font-weight: 700;
-}
-
-.home__row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
 }
 </style>

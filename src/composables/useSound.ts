@@ -1,7 +1,7 @@
 import { Howl } from "howler";
 import staticNoiseRecording from "@/assets/audio/static-noise.ogg";
 import glitchSoundsRecording from "@/assets/audio/glitch-sounds.mp3";
-import keyPressSoundRecording from "@/assets/audio/key-press-sound.mp3";
+import keyPressSoundRecording from "@/assets/audio/key-press-sound.m4a?url";
 import keyboardTypingSounds from "@/assets/audio/keyboard-typing-sounds.m4a?url";
 
 const startStaticNoise = () => {
