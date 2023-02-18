@@ -40,7 +40,7 @@ body {
   font-weight: normal;
   color: var(--color-main-red);
   line-height: 1.6;
-  text-shadow: 10px 0px 0px rgba(0,0,0,1);
+  text-shadow: var(--main-shadow);
   text-transform: uppercase;
 }
 
@@ -53,16 +53,18 @@ body {
   animation-name: text-blink, text-long-blink;
   animation-duration: 0.04s, 1s;
   animation-timing-function: steps(5), step-start;
-  animation-iteration-count: infinite;
+  animation-iteration-count: infinite, infinite;
 }
 
 @keyframes text-long-blink {
   from,
   to {
-    opacity: 1;
+    background: #ffffff00;
+    box-shadow: none;
   }
   50% {
-    opacity: 0;
+    background: var(--color-main-red);
+    box-shadow: var(--main-shadow);
   }
 }
 

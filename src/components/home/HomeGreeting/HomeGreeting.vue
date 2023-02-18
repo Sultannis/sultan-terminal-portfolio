@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import GlitchedWriter from "vue-glitched-writer";
+import { useTypingSound } from "@/composables/useSound";
 
 const emit = defineEmits(["finish"]);
 
@@ -11,10 +12,22 @@ onMounted(() => {
 });
 
 const phrases = [
-  "Hi",
+  "Hi!",
   "Welcome to my portfolio",
   "Type in commands to get more information",
+  "",
 ];
+
+const renderGlitchWriter = ref(false);
+
+let previousStartFired = ref(false);
+
+const {
+  startTypingSound,
+  stopTypingSound,
+  startDeletingSound,
+  stopDeletingSound,
+} = useTypingSound();
 
 const handleGreetingFinish = () => {
   setTimeout(() => {
@@ -22,14 +35,20 @@ const handleGreetingFinish = () => {
   }, 1000);
 };
 
-const renderGlitchWriter = ref(false);
-
 const handleStart = () => {
-  console.log("start");
+  if (previousStartFired.value) {
+    stopDeletingSound();
+    startTypingSound();
+
+    previousStartFired.value = false;
+  } else {
+    startDeletingSound();
+    previousStartFired.value = true;
+  }
 };
 
 const handleFinish = () => {
-  console.log("finish");
+  stopTypingSound();
 };
 </script>
 
@@ -40,7 +59,7 @@ const handleFinish = () => {
         v-if="renderGlitchWriter"
         :text="phrases"
         :options="{
-          interval: [25, 30],
+          interval: [25, 60],
           delay: [0, 0],
           steps: 0,
           changeChance: 0.5,
@@ -51,13 +70,16 @@ const handleFinish = () => {
           glyphsFromText: false,
           mode: 'erase',
         }"
+        :queue="{
+          interval: 1200,
+        }"
         :finish="handleGreetingFinish"
         @start="handleStart"
         @finish="handleFinish"
         appear
         class="greeting__output text-blink"
       />
-      <div class="greeting__caret text-long-blink"></div>
+      <div class="greeting__caret text-blink" />
     </div>
   </div>
 </template>

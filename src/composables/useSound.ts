@@ -57,6 +57,7 @@ const useTypingSound = () => {
   const keyboardDeletingSounds = new Howl({
     src: [keyboardDeletingSoundsRecording],
     loop: true,
+    volume: 1,
   });
 
   let soundId: number = 0;
