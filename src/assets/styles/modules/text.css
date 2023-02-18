@@ -44,7 +44,7 @@ body {
   text-transform: uppercase;
 }
 
-main {
+.text-blink {
   animation: text-blink 0.01s steps(2) infinite;
 }
 

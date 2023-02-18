@@ -2,7 +2,8 @@ import { Howl } from "howler";
 import staticNoiseRecording from "@/assets/audio/static-noise.ogg";
 import glitchSoundsRecording from "@/assets/audio/glitch-sounds.mp3";
 import keyPressSoundRecording from "@/assets/audio/key-press-sound.m4a?url";
-import keyboardTypingSounds from "@/assets/audio/keyboard-typing-sounds.m4a?url";
+import typingSoundsRecording from "@/assets/audio/keyboard-typing-sounds.m4a?url";
+import keyboardDeletingSoundsRecording from "@/assets/audio/keyboard-deleting-sounds.m4a?url";
 
 const startStaticNoise = () => {
   let started = false;
@@ -48,8 +49,13 @@ const useGlitchSound = () => {
 };
 
 const useTypingSound = () => {
-  const typingSound = new Howl({
-    src: [keyboardTypingSounds],
+  const typingSounds = new Howl({
+    src: [typingSoundsRecording],
+    loop: true,
+  });
+
+  const keyboardDeletingSounds = new Howl({
+    src: [keyboardDeletingSoundsRecording],
     loop: true,
   });
 
@@ -57,17 +63,30 @@ const useTypingSound = () => {
 
   const startTypingSound = () => {
     if (!soundId) {
-      soundId = typingSound.play();
+      soundId = typingSounds.play();
     } else {
-      typingSound.play(soundId);
+      typingSounds.play(soundId);
     }
   };
 
   const stopTypingSound = () => {
-    typingSound.pause(soundId);
+    typingSounds.pause(soundId);
   };
 
-  return { startTypingSound, stopTypingSound };
+  const startDeletingSound = () => {
+    keyboardDeletingSounds.play();
+  };
+
+  const stopDeletingSound = () => {
+    keyboardDeletingSounds.stop();
+  };
+
+  return {
+    startTypingSound,
+    stopTypingSound,
+    startDeletingSound,
+    stopDeletingSound,
+  };
 };
 
 const playKeyPressSound = () => {
