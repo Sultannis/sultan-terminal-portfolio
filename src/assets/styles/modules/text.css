@@ -40,13 +40,32 @@ body {
   font-weight: normal;
   color: var(--color-main-red);
   line-height: 1.6;
-  text-shadow: 8px 0px 0px rgba(0,0,0,1);
+  text-shadow: 10px 0px 0px rgba(0,0,0,1);
   text-transform: uppercase;
 }
 
 .text-blink {
-  animation: text-blink 0.01s steps(2) infinite;
+  animation: text-blink 0.04s steps(2) infinite;
 }
+
+
+.text-long-blink {
+  animation-name: text-blink, text-long-blink;
+  animation-duration: 0.04s, 1s;
+  animation-timing-function: steps(5), step-start;
+  animation-iteration-count: infinite;
+}
+
+@keyframes text-long-blink {
+  from,
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 
 @keyframes text-blink {
   from,

@@ -57,7 +57,7 @@ const handleFinish = () => {
         appear
         class="greeting__output text-blink"
       />
-      <div class="greeting__caret text-blink"></div>
+      <div class="greeting__caret text-long-blink"></div>
     </div>
   </div>
 </template>
@@ -80,9 +80,10 @@ const handleFinish = () => {
 .greeting__caret {
   height: 24px;
   width: 18px;
-  margin-left: 5px;
+  margin-left: 10px;
 
   background: var(--color-main-red);
+  box-shadow: 10px 0px 0px rgba(0, 0, 0, 1);
 }
 
 .greeting__output {
