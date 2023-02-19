@@ -1,23 +1,40 @@
 <script setup lang="ts">
 import TerminalIntro from "@/components/Terminal/TerminalIntro/TerminalIntro.vue";
 import CommandsInput from "@/components/home/CommandsInput/CommandsInput.vue";
-import { ref } from "vue";
+import CommandItem from "@/components/Terminal/CommandItem/CommandItem.vue";
+import { ref, reactive } from "vue";
+import type { Command } from "@/interfaces/command.interface";
 
 let inputRendered = ref(false);
+const commandsOutputList: Command[] = reactive([]);
 
 const renderInput = () => {
   inputRendered.value = true;
 };
 
 const handleCommandSubmit = (value: string) => {
-  console.log(value);
+  if (value === "GET COMMANDS") {
+    commandsOutputList.push({
+      key: "commands",
+      title: "Available commands",
+      list: [
+        "get general",
+        "get work experience",
+        "get contacts",
+        "dowload cv",
+        "get commands",
+      ],
+    });
+  }
 };
 </script>
 
 <template>
   <div class="terminal">
     <TerminalIntro @finish="renderInput" />
+    <CommandItem v-for="command in commandsOutputList" :command="command" />
     <CommandsInput v-if="inputRendered" @submit="handleCommandSubmit" />
+
     <!-- <div class="terminal__row">
       <div class="terminal__image-wrapper">
         <div class="terminal__image-mask"></div>

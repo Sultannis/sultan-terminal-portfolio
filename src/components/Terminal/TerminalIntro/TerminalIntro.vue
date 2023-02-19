@@ -43,3 +43,9 @@ const handleFinish = () => {
     />
   </div>
 </template>
+
+<style scoped>
+.intro {
+  font-size: 20px;
+}
+</style>

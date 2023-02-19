@@ -1,25 +1,3 @@
-<template>
-  <div class="wrapper text-blink">
-    <input
-      :value="inputValue"
-      class="wrapper__input"
-      ref="input"
-      autofocus
-      @input="handleCommandInput"
-      @keyup="handleArrowKeyPress"
-      @keyup.enter="handleSubmit"
-      @focus="() => (inputIsFocused = true)"
-      @focusout="() => (inputIsFocused = false)"
-      @click="setCarotPosition"
-    />
-    <div
-      v-if="inputIsFocused"
-      class="text-long-blink wrapper__caret"
-      :style="{ left: inputCaretLeftOffset + 'px' }"
-    />
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref } from "vue";
 
@@ -65,6 +43,28 @@ const handleSubmit = (event: Event) => {
   setCarotPosition(event);
 };
 </script>
+
+<template>
+  <div class="wrapper text-blink">
+    <input
+      :value="inputValue"
+      class="wrapper__input"
+      ref="input"
+      autofocus
+      @input="handleCommandInput"
+      @keyup="handleArrowKeyPress"
+      @keyup.enter="handleSubmit"
+      @focus="() => (inputIsFocused = true)"
+      @focusout="() => (inputIsFocused = false)"
+      @click="setCarotPosition"
+    />
+    <div
+      v-if="inputIsFocused"
+      class="text-long-blink wrapper__caret"
+      :style="{ left: inputCaretLeftOffset + 'px' }"
+    />
+  </div>
+</template>
 
 <style scoped>
 .wrapper {

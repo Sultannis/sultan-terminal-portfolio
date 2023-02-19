@@ -21,7 +21,7 @@ const phrases = [
   "Hi!",
   "Welcome to my portfolio",
   "Type in commands to get more information",
-  "Press space to skip this preview",
+  "Space key will skip this preview",
   "",
 ];
 const renderGlitchWriter = ref(false);
@@ -29,7 +29,7 @@ let previousStartFired = ref(false);
 let finishCount = 0;
 
 const caretClasses = reactive({
-  "text-long-blink": false,
+  greeting__caret_hidden: false,
 });
 
 const {
@@ -71,7 +71,7 @@ const handleFinish = () => {
 
 const handleFinalFinish = () => {
   setTimeout(() => {
-    caretClasses["text-long-blink"] = true;
+    caretClasses["greeting__caret_hidden"] = true;
   }, 300);
 
   setTimeout(() => {
@@ -133,5 +133,9 @@ const handleFinalFinish = () => {
 
   background: var(--color-main-red);
   box-shadow: 10px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.greeting__caret_hidden {
+  display: none;
 }
 </style>
