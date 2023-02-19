@@ -3,5 +3,5 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #001e48;
+  background: var(--color-main-red);
 }

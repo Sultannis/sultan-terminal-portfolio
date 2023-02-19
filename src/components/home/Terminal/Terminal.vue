@@ -2,15 +2,21 @@
 
 <template>
   <div class="terminal">
-    <div class="termial__row">
-      <img src="@/assets/images/portrait.jpg" alt="" class="terminal__image" />
-      <div class="terminal__content"></div>
+    <div class="terminal__row">
+      <div class="terminal__image-wrapper">
+        <div class="terminal__image-mask"></div>
+        <img
+          src="@/assets/images/portrait-v3.jpg"
+          alt=""
+          class="terminal__image"
+        />
+      </div>
     </div>
     <div class="terminal__row">
       <div class="terminal__image-wrapper">
         <div class="terminal__image-mask"></div>
         <img
-          src="@/assets/images/portrait-v2.jpg"
+          src="@/assets/images/portrait-v3.jpg"
           alt=""
           class="terminal__image"
         />
@@ -21,11 +27,8 @@
 
 <style scoped>
 .terminal {
-  height: 100%;
+  margin: 30px 0;
   width: 100%;
-  padding: 30px;
-
-  overflow-y: auto;
 }
 
 .terminal__row {
@@ -34,7 +37,7 @@
 }
 
 .terminal__image-wrapper {
-  width: 30%;
+  width: 35%;
   position: relative;
 }
 
@@ -42,10 +45,11 @@
   width: 100%;
 
   border: 5px solid var(--color-main-red);
+  box-shadow: var(--main-shadow);
 }
 
 .terminal__image-mask {
-  height: 100%;
+  height: calc(100% - 10px);
   width: calc(100% - 10px);
   position: absolute;
   top: 0;

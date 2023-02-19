@@ -44,10 +44,11 @@ const handleGreetingFinish = () => {
   min-width: 100vw;
   max-height: 100vh;
   max-width: 100vw;
-  padding: 50px;
+  padding: 0 70px;
 
   background: var(--gradient-background);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   position: relative;
 }
