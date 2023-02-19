@@ -1,14 +1,20 @@
 <script setup lang="ts">
-import { ref, onMounted, reactive } from "vue";
+import { ref, onMounted, reactive, onUnmounted } from "vue";
 import { useTypingSound } from "@/composables/useSound";
 import GlitchedWriter from "vue-glitched-writer";
 
 const emit = defineEmits(["finish"]);
 
 onMounted(() => {
+  window.addEventListener("keyup", spaceClickHandler);
+
   setTimeout(() => {
     renderGlitchWriter.value = true;
   }, 1000);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("keyup", spaceClickHandler);
 });
 
 const phrases = [
@@ -31,6 +37,15 @@ const {
   startDeletingSound,
   stopDeletingSound,
 } = useTypingSound();
+
+const spaceClickHandler = (event: KeyboardEvent) => {
+  if (event.key === " ") {
+    emit("finish");
+
+    stopTypingSound();
+    stopDeletingSound();
+  }
+};
 
 const handleStart = () => {
   if (previousStartFired.value) {

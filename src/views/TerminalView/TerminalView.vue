@@ -1,11 +1,20 @@
 <script setup lang="ts">
 import TerminalIntro from "@/components/Terminal/TerminalIntro/TerminalIntro.vue";
+import CommandsInput from "@/components/home/CommandsInput/CommandsInput.vue";
+import { ref } from "vue";
+
+let inputRendered = ref(false);
+
+const renderInput = () => {
+  inputRendered.value = true;
+};
 </script>
 
 <template>
   <div class="terminal">
-    <TerminalIntro />
-    <div class="terminal__row">
+    <TerminalIntro @finish="renderInput" />
+    <CommandsInput v-if="inputRendered" />
+    <!-- <div class="terminal__row">
       <div class="terminal__image-wrapper">
         <div class="terminal__image-mask"></div>
         <img
@@ -14,17 +23,7 @@ import TerminalIntro from "@/components/Terminal/TerminalIntro/TerminalIntro.vue
           class="terminal__image"
         />
       </div>
-    </div>
-    <div class="terminal__row">
-      <div class="terminal__image-wrapper">
-        <div class="terminal__image-mask"></div>
-        <img
-          src="@/assets/images/portrait-v3.jpg"
-          alt=""
-          class="terminal__image"
-        />
-      </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

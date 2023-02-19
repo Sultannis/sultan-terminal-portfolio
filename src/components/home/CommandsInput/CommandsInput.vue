@@ -1,86 +1,98 @@
 <template>
-  <div class="wrapper">
-    <span class="wrapper__span">></span>
+  <div class="wrapper text-blink">
     <input
-      :class="dynamicClasses"
-      @keyup.enter="submitCommand"
-      @input="handleCommandInput"
-      v-model="commandValue"
+      :value="inputValue"
       class="wrapper__input"
-      role="textbox"
       ref="input"
-      onblur=""
       autofocus
+      @input="handleCommandInput"
+      @keyup="handleArrowKeyPress"
+      @focus="() => (inputIsFocused = true)"
+      @focusout="() => (inputIsFocused = false)"
+      @click="setCarotPosition"
+    />
+    <div
+      v-if="inputIsFocused"
+      class="text-long-blink wrapper__caret"
+      :style="{ left: inputCaretLeftOffset + 'px' }"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { COMMANDS } from "@/constants/commands";
-import { ref, computed, type Ref, watch } from "vue";
+import { ref } from "vue";
 
-const props = defineProps({
-  focusTrigger: { type: Number, required: false, default: 0 },
-});
+let inputValue = ref("");
+const input = ref<HTMLInputElement | null>(null);
+const inputIsFocused = ref(true);
+const inputCaretLeftOffset = ref(61);
 
-const commandFound: Ref<boolean> = ref(false);
+const setCarotPosition = (event: Event) => {
+  const element = event.target as HTMLInputElement;
 
-const emit = defineEmits(["command-submit", "command-entered"]);
-
-const dynamicClasses = computed(() => ({
-  wrapper__input_found: commandFound.value,
-}));
-
-const input = ref<null | { focus: () => null }>(null);
-let commandValue = ref("");
-
-const submitCommand = () => {
-  emit("command-submit", commandValue.value.trim());
-  commandValue.value = "";
-};
-
-const handleCommandInput = () => {
-  commandFound.value = checkCommandPresence(commandValue.value.trim());
-};
-
-const checkCommandPresence = (commandIdentifier: string) => {
-  return !!COMMANDS.find(
-    (command) => command.commandIdentifier === commandIdentifier
-  );
-};
-
-watch(
-  () => props.focusTrigger,
-  () => {
-    input.value?.focus();
+  if (element.selectionStart) {
+    inputCaretLeftOffset.value = 49 + 16 * element.selectionStart;
+  } else {
+    inputCaretLeftOffset.value = 49 + 16;
   }
-);
+};
+
+const handleArrowKeyPress = (event: KeyboardEvent) => {
+  if (event.key.startsWith("Arrow")) {
+    setCarotPosition(event);
+  }
+};
+
+const handleCommandInput = (event: Event) => {
+  const element = event.target as HTMLInputElement;
+  setCarotPosition(event);
+
+  inputValue.value = element.value.toUpperCase();
+};
 </script>
 
 <style scoped>
 .wrapper {
-  display: flex;
-  align-items: center;
-  margin-top: 30px;
+  width: 100%;
+  position: relative;
 }
-
-.wrapper__span {
-  margin-right: 10px;
-}
-
 .wrapper__input {
   width: 100%;
+  margin-left: 50px;
+
   background-color: transparent;
+
   border: none;
-  color: var(--color-main-red);
-  font-size: 16px;
-}
-
-.wrapper__input_found {
-  color: var(--color-main-red-highlighted-yellow);
-}
-
-.wrapper__input:focus {
   outline: none;
+  font-size: 24px;
+  text-shadow: var(--main-shadow);
+
+  color: var(--color-main-red);
+  caret-color: transparent;
+  z-index: 3;
+}
+
+.wrapper::before {
+  content: ":> ";
+
+  color: var(--color-main-red);
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  font-size: 24px;
+}
+
+.wrapper__caret {
+  height: 24px;
+  width: 16px;
+
+  position: absolute;
+  top: 7px;
+  z-index: 2;
+
+  background: var(--color-main-red);
+  box-shadow: none;
 }
 </style>
