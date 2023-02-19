@@ -1,7 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import TerminalIntro from "@/components/Terminal/TerminalIntro/TerminalIntro.vue";
+</script>
 
 <template>
   <div class="terminal">
+    <TerminalIntro />
     <div class="terminal__row">
       <div class="terminal__image-wrapper">
         <div class="terminal__image-mask"></div>
@@ -49,10 +52,10 @@
 }
 
 .terminal__image-mask {
-  height: calc(100% - 10px);
+  height: calc(97%);
   width: calc(100% - 10px);
   position: absolute;
-  top: 0;
+  top: 5px;
   left: 5px;
   z-index: 2;
 

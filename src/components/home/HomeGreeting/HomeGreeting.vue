@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, reactive } from "vue";
-import GlitchedWriter from "vue-glitched-writer";
 import { useTypingSound } from "@/composables/useSound";
+import GlitchedWriter from "vue-glitched-writer";
 
 const emit = defineEmits(["finish"]);
 
@@ -60,7 +60,7 @@ const handleFinalFinish = () => {
 
   setTimeout(() => {
     emit("finish");
-  }, 3000);
+  }, 1000);
 };
 </script>
 

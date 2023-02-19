@@ -51,7 +51,7 @@ const enterClickHandler = (event: KeyboardEvent) => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .intro {
   min-height: 100vh;
   min-width: 100vw;
