@@ -8,12 +8,16 @@ let inputRendered = ref(false);
 const renderInput = () => {
   inputRendered.value = true;
 };
+
+const handleCommandSubmit = (value: string) => {
+  console.log(value);
+};
 </script>
 
 <template>
   <div class="terminal">
     <TerminalIntro @finish="renderInput" />
-    <CommandsInput v-if="inputRendered" />
+    <CommandsInput v-if="inputRendered" @submit="handleCommandSubmit" />
     <!-- <div class="terminal__row">
       <div class="terminal__image-wrapper">
         <div class="terminal__image-mask"></div>

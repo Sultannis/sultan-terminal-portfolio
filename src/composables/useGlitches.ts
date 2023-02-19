@@ -44,7 +44,7 @@ const usePageGlitches = (
     }, glitchSpan);
   };
 
-  setTimeout(functionToCall, 8000);
+  setTimeout(functionToCall, 14000);
 };
 
 export { usePageGlitches, powerGlitchOptions };

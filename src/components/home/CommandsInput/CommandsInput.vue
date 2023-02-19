@@ -7,6 +7,7 @@
       autofocus
       @input="handleCommandInput"
       @keyup="handleArrowKeyPress"
+      @keyup.enter="handleSubmit"
       @focus="() => (inputIsFocused = true)"
       @focusout="() => (inputIsFocused = false)"
       @click="setCarotPosition"
@@ -22,10 +23,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-let inputValue = ref("");
+const emit = defineEmits(["submit"]);
+
 const input = ref<HTMLInputElement | null>(null);
 const inputIsFocused = ref(true);
 const inputCaretLeftOffset = ref(61);
+const inputValue = ref("");
 
 const setCarotPosition = (event: Event) => {
   const element = event.target as HTMLInputElement;
@@ -49,10 +52,23 @@ const handleCommandInput = (event: Event) => {
 
   inputValue.value = element.value.toUpperCase();
 };
+
+const handleSubmit = (event: Event) => {
+  emit("submit", inputValue.value);
+  inputValue.value = "";
+
+  if (event.target) {
+    const element = event.target as HTMLInputElement;
+    element.value = "";
+  }
+
+  setCarotPosition(event);
+};
 </script>
 
 <style scoped>
 .wrapper {
+  margin-top: 30px;
   width: 100%;
   position: relative;
 }
