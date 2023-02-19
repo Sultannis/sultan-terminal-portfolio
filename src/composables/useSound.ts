@@ -52,12 +52,13 @@ const useTypingSound = () => {
   const typingSounds = new Howl({
     src: [typingSoundsRecording],
     loop: true,
+    volume: 1,
   });
 
   const keyboardDeletingSounds = new Howl({
     src: [keyboardDeletingSoundsRecording],
     loop: true,
-    volume: 1,
+    volume: 0.7,
   });
 
   let soundId: number = 0;

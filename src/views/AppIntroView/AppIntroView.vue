@@ -47,7 +47,7 @@ const enterClickHandler = (event: KeyboardEvent) => {
         />
       </div>
     </div>
-    <button class="intro__button" @click="handleStart">Start</button>
+    <button class="intro__button" @click="handleStart">Enter</button>
   </div>
 </template>
 
@@ -90,12 +90,12 @@ const enterClickHandler = (event: KeyboardEvent) => {
 .intro__image-inner-wrapper::after {
   content: "";
   width: 4px;
-  height: 4px;
+  height: 3px;
 
   background: green;
 
   position: absolute;
-  bottom: 41%;
+  bottom: 42%;
   right: 25%;
 
   animation: light-blink 2s infinite step-end;

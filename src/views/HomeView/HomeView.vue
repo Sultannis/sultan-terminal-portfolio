@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref, shallowRef, type ShallowRef } from "vue";
 import { PowerGlitch } from "powerglitch";
 import { powerGlitchOptions, usePageGlitches } from "@/composables/useGlitches";
 import { startStaticNoise } from "@/composables/useSound";
 import PageMasks from "@/components/common/PageMasks.vue";
 import HomeGreeting from "@/components/home/HomeGreeting/HomeGreeting.vue";
+import Terminal from "@/components/home/Terminal/Terminal.vue";
 
 onMounted(() => {
   if (!glitch.value) return;
@@ -20,8 +21,11 @@ onMounted(() => {
 
 const glitch = ref(null);
 
+const activeComponent: ShallowRef<typeof HomeGreeting | typeof Terminal> =
+  shallowRef(HomeGreeting);
+
 const handleGreetingFinish = () => {
-  console.log("greeting finish");
+  activeComponent.value = Terminal;
 };
 </script>
 
@@ -29,7 +33,7 @@ const handleGreetingFinish = () => {
   <div class="home">
     <PageMasks />
     <div ref="glitch" class="home__content">
-      <HomeGreeting @finish="handleGreetingFinish" />
+      <component :is="activeComponent" @finish="handleGreetingFinish" />
     </div>
   </div>
 </template>

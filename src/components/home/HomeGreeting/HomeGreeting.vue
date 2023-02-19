@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, reactive } from "vue";
 import GlitchedWriter from "vue-glitched-writer";
 import { useTypingSound } from "@/composables/useSound";
 
@@ -17,10 +17,13 @@ const phrases = [
   "Type in commands to get more information",
   "",
 ];
-
 const renderGlitchWriter = ref(false);
-
 let previousStartFired = ref(false);
+let finishCount = 0;
+
+const caretClasses = reactive({
+  "text-long-blink": false,
+});
 
 const {
   startTypingSound,
@@ -28,12 +31,6 @@ const {
   startDeletingSound,
   stopDeletingSound,
 } = useTypingSound();
-
-const handleGreetingFinish = () => {
-  setTimeout(() => {
-    emit("finish");
-  }, 1000);
-};
 
 const handleStart = () => {
   if (previousStartFired.value) {
@@ -48,7 +45,22 @@ const handleStart = () => {
 };
 
 const handleFinish = () => {
+  if (finishCount >= 3) handleFinalFinish();
+  else {
+    finishCount++;
+  }
+
   stopTypingSound();
+};
+
+const handleFinalFinish = () => {
+  setTimeout(() => {
+    caretClasses["text-long-blink"] = true;
+  }, 300);
+
+  setTimeout(() => {
+    emit("finish");
+  }, 3000);
 };
 </script>
 
@@ -59,7 +71,7 @@ const handleFinish = () => {
         v-if="renderGlitchWriter"
         :text="phrases"
         :options="{
-          interval: [25, 60],
+          interval: [25, 40],
           delay: [0, 0],
           steps: 0,
           changeChance: 0.5,
@@ -73,13 +85,12 @@ const handleFinish = () => {
         :queue="{
           interval: 1200,
         }"
-        :finish="handleGreetingFinish"
         @start="handleStart"
         @finish="handleFinish"
-        appear
         class="greeting__output text-blink"
+        appear
       />
-      <div class="greeting__caret text-blink" />
+      <div :class="[caretClasses, 'greeting__caret', 'text-blink']" />
     </div>
   </div>
 </template>
@@ -106,9 +117,5 @@ const handleFinish = () => {
 
   background: var(--color-main-red);
   box-shadow: 10px 0px 0px rgba(0, 0, 0, 1);
-}
-
-.greeting__output {
-  font-size: 24px;
 }
 </style>
