@@ -21,7 +21,6 @@ const phrases = [
   "Hi!",
   "Welcome to my portfolio",
   "Type in commands to get more information",
-  "Space key will skip this preview",
   "",
 ];
 const renderGlitchWriter = ref(false);
@@ -61,7 +60,7 @@ const handleStart = () => {
 };
 
 const handleFinish = () => {
-  if (finishCount >= 4) handleFinalFinish();
+  if (finishCount >= 3) handleFinalFinish();
   else {
     finishCount++;
   }

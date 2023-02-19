@@ -4,6 +4,7 @@ import CommandsInput from "@/components/home/CommandsInput/CommandsInput.vue";
 import CommandItem from "@/components/Terminal/CommandItem/CommandItem.vue";
 import { ref, reactive } from "vue";
 import type { Command } from "@/interfaces/command.interface";
+import CommandsList from "@/components/Command/CommandList/CommandsList.vue";
 
 let inputRendered = ref(false);
 const commandsOutputList: Command[] = reactive([]);
@@ -32,7 +33,7 @@ const handleCommandSubmit = (value: string) => {
 <template>
   <div class="terminal">
     <TerminalIntro @finish="renderInput" />
-    <CommandItem v-for="command in commandsOutputList" :command="command" />
+    <CommandsList v-for="command in commandsOutputList" :command="command" />
     <CommandsInput v-if="inputRendered" @submit="handleCommandSubmit" />
 
     <!-- <div class="terminal__row">

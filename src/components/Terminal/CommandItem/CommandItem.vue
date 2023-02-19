@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Command } from "@/interfaces/command.interface";
+import { GlitchedWriter} from "vue-glitched-writer"
 
 const props = defineProps<{
   command: Command;

@@ -5,16 +5,16 @@ const emit = defineEmits(["submit"]);
 
 const input = ref<HTMLInputElement | null>(null);
 const inputIsFocused = ref(true);
-const inputCaretLeftOffset = ref(61);
+const inputCaretLeftOffset = ref(81);
 const inputValue = ref("");
 
 const setCarotPosition = (event: Event) => {
   const element = event.target as HTMLInputElement;
 
   if (element.selectionStart) {
-    inputCaretLeftOffset.value = 49 + 16 * element.selectionStart;
+    inputCaretLeftOffset.value = 81 + 16 * element.selectionStart;
   } else {
-    inputCaretLeftOffset.value = 49 + 16;
+    inputCaretLeftOffset.value = 81 + 16;
   }
 };
 
@@ -74,7 +74,7 @@ const handleSubmit = (event: Event) => {
 }
 .wrapper__input {
   width: 100%;
-  margin-left: 50px;
+  margin-left: 82px;
 
   background-color: transparent;
 
@@ -89,7 +89,7 @@ const handleSubmit = (event: Event) => {
 }
 
 .wrapper::before {
-  content: ":> ";
+  content: "C:/> ";
 
   color: var(--color-main-red);
 
