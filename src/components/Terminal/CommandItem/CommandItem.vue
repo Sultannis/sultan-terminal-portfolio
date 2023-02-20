@@ -1,34 +1,25 @@
 <script setup lang="ts">
+import { getCommandComponentToDisplay } from "@/helpers/get-command-component-to-display";
 import type { Command } from "@/interfaces/command.interface";
-import { GlitchedWriter} from "vue-glitched-writer"
 
-const props = defineProps<{
+const { commandKey, command } = defineProps<{
+  commandKey: "GET COMMANDS" | "GET GENERAL INFORMATION";
   command: Command;
 }>();
 
-const { title, list } = props.command;
+const componentToDisplay = getCommandComponentToDisplay(commandKey);
 </script>
 
 <template>
   <div class="command">
-    <div class="command__title">
-      {{ title }}
-    </div>
-    <ul class="command__list">
-      <li v-for="position in list">{{ position }}</li>
-    </ul>
+    <component :is="componentToDisplay" :command="command" />
   </div>
 </template>
 
 <style>
 .command {
+  width: 100%;
   margin-top: 20px;
-  display: flex;
-  flex-direction: column;
   color: var(--color-text-highlighted-purple);
-}
-
-.command__list {
-  margin-left: 25px;
 }
 </style>
