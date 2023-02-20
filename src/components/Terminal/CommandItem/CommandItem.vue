@@ -20,6 +20,6 @@ const componentToDisplay = getCommandComponentToDisplay(commandKey);
 .command {
   width: 100%;
   margin-top: 20px;
-  color: var(--color-text-highlighted-purple);
+  color: var(--color-main-red);
 }
 </style>

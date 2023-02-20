@@ -41,7 +41,7 @@ const enterClickHandler = (event: KeyboardEvent) => {
         class="intro__image-inner-wrapper"
       >
         <img
-          src="@/assets/images/pixelated-red-computer.svg"
+          src="@/assets/icons/pixelated-red-computer.svg"
           alt="pixelated-computer"
           class="intro__image"
         />

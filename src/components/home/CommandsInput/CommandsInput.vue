@@ -14,7 +14,7 @@ const setCarotPosition = (event: Event) => {
   if (element.selectionStart) {
     inputCaretLeftOffset.value = 81 + 16 * element.selectionStart;
   } else {
-    inputCaretLeftOffset.value = 81 + 16;
+    inputCaretLeftOffset.value = 81;
   }
 };
 
@@ -59,7 +59,6 @@ const handleSubmit = (event: Event) => {
       @click="setCarotPosition"
     />
     <div
-      v-if="inputIsFocused"
       class="text-long-blink wrapper__caret"
       :style="{ left: inputCaretLeftOffset + 'px' }"
     />
@@ -109,7 +108,7 @@ const handleSubmit = (event: Event) => {
   top: 7px;
   z-index: 2;
 
-  background: var(--color-main-red);
+  background: var(--color-main-red-transparent);
   box-shadow: none;
 }
 </style>

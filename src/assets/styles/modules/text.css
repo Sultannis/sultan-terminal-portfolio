@@ -55,7 +55,6 @@ body {
     box-shadow: none;
   }
   50% {
-    background: var(--color-main-red);
-    box-shadow: var(--main-shadow);
+    background: var(--color-main-red-transparent);
   }
 }

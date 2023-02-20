@@ -5,7 +5,7 @@ import { useComputerAutomaticTypingSound } from "@/composables/useSound";
 const emit = defineEmits(["finish"]);
 
 const message =
-  "SMZ industries internal remote terminal connection obtained <br> From: <span style='color: #f3d96b'>Turkey</span> Local Time: <span style='color: #f3d96b'>06:37</span>";
+  "SMZ industries internal policy <br> Remote terminal connection obtained from: <span style='color: #f3d96b'>Turkey</span> at local Time: <span style='color: #f3d96b'>06:37</span>";
 const { startTypingSound, stopTypingSound } = useComputerAutomaticTypingSound();
 
 const handleStart = () => {
@@ -38,7 +38,6 @@ const handleFinish = () => {
       }"
       @start="handleStart"
       @finish="handleFinish"
-      class="S"
       appear
     />
   </div>
@@ -47,5 +46,6 @@ const handleFinish = () => {
 <style scoped>
 .intro {
   font-size: 20px;
+  color: var(--color-text-highlighted-purple);
 }
 </style>

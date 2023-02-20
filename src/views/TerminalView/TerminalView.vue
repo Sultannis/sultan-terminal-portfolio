@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import TerminalIntro from "@/components/Terminal/TerminalIntro/TerminalIntro.vue";
-import CommandsInput from "@/components/home/CommandsInput/CommandsInput.vue";
 import { ref, reactive } from "vue";
 import type { Command } from "@/interfaces/command.interface";
-import CommandsList from "@/components/Command/CommandList/CommandsList.vue";
-import Portrait from "@/assets/images/portrait-v3.jpg";
+import TerminalIntro from "@/components/Terminal/TerminalIntro/TerminalIntro.vue";
+import CommandsInput from "@/components/home/CommandsInput/CommandsInput.vue";
+import CommandItem from "@/components/Terminal/CommandItem/CommandItem.vue";
 
 let inputRendered = ref(false);
 const commandsOutputList: Command[] = reactive([]);
@@ -30,15 +29,14 @@ const handleCommandSubmit = (value: string) => {
   if (value === "GET GENERAL INFORMATION") {
     commandsOutputList.push({
       key: "GET GENERAL INFORMATION",
-      title: "Watched suspect No. G19A",
-      imageSrc: Portrait,
+      title: "Replicant Number <span style='color: #1b00b2'>B-263-54<span/>",
       paragraphs: [
-        "Public Name: Sultan M.Z",
-        "Occupation: Full stack developer",
-        "‣ JavaScript  ‣ TypeScript  ‣ Node Js  ‣ Vue Js 2/3  ‣ Vuex  ‣ Express Js  ‣ Nest Js  ‣ TypeORM  ‣ Socket IO  ‣ PostgreSQL  ‣ MySQL  ‣ Docker  ‣ HTML  ‣ CSS  ‣ Git",
-        "Status: Open for work",
-        "Special abilities: ‣ accelerated learning  ‣ bugs resistance  ‣ test writing",
-        "Last identified location: 40.985856, 29.024999",
+        "<span style='color: #1acc6b'>Human name: </span>Sultan Mustafin",
+        "<span style='color: #1acc6b'>Occupation: </span>Full stack developer",
+        "<span style='color: #1acc6b'>Stack: </span> <br>‣ JavaScript  ‣ TypeScript  ‣ Node Js  ‣ Vue Js 2/3  ‣ Vuex  ‣ Express Js  ‣ Nest Js  ‣ TypeORM  ‣ Socket IO  ‣ PostgreSQL  ‣ MySQL  ‣ Docker  ‣ HTML  ‣ CSS  ‣ Git",
+        "<span style='color: #1acc6b'>Status: </span/>Open for work",
+        "<span style='color: #1acc6b'>Special abilities: </span> <br>‣ accelerated learning  ‣ bugs resistance  ‣ test writing",
+        "<span style='color: #1acc6b'>Last identified location: </span>40.985856, 29.024999",
       ],
     });
   }
@@ -48,7 +46,11 @@ const handleCommandSubmit = (value: string) => {
 <template>
   <div class="terminal">
     <TerminalIntro @finish="renderInput" />
-    <CommandsList v-for="command in commandsOutputList" :command="command" />
+    <CommandItem
+      v-for="command in commandsOutputList"
+      :command="command"
+      :command-key="command.key"
+    />
     <CommandsInput v-if="inputRendered" @submit="handleCommandSubmit" />
   </div>
 </template>

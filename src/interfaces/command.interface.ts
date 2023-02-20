@@ -1,6 +1,6 @@
 export interface Command {
   title?: string;
-  key?: string;
+  key: "GET COMMANDS" | "GET GENERAL INFORMATION";
   type?: string;
   lines?: string[];
   projects?: Array<{
