@@ -41,6 +41,7 @@ const handleSubmit = (event: Event) => {
   }
 
   setCarotPosition(event);
+  input.value?.focus();
 };
 </script>
 
@@ -58,10 +59,7 @@ const handleSubmit = (event: Event) => {
       @focusout="() => (inputIsFocused = false)"
       @click="setCarotPosition"
     />
-    <div
-      class="text-long-blink wrapper__caret"
-      :style="{ left: inputCaretLeftOffset + 'px' }"
-    />
+    <div class="text-long-blink wrapper__caret" :style="{ left: inputCaretLeftOffset + 'px' }" />
   </div>
 </template>
 

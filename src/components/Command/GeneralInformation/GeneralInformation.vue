@@ -53,6 +53,7 @@ for (let i = 0; i < paragraphs.length; i++) {
     <div class="general__row">
       <div class="general__image-wrapper">
         <div class="general__image-mask"></div>
+        <div class="general__image-animation"></div>
         <img :src="Portrait" alt="" class="general__image" />
       </div>
       <div class="general__content">
@@ -131,6 +132,10 @@ for (let i = 0; i < paragraphs.length; i++) {
     hsla(0, 0%, 0%, 0.644) 5px,
     hsla(0, 0%, 0%, 0.644) 7px
   );
+}
+
+.general__image-animation {
+  
 }
 
 .general__content {

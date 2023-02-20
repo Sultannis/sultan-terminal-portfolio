@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { ref, reactive, nextTick } from "vue";
 import type { Command } from "@/interfaces/command.interface";
 import TerminalIntro from "@/components/Terminal/TerminalIntro/TerminalIntro.vue";
 import CommandsInput from "@/components/home/CommandsInput/CommandsInput.vue";
 import CommandItem from "@/components/Terminal/CommandItem/CommandItem.vue";
+import { scrollToBottom } from "@/helpers/scroll-to-bottom";
 
 let inputRendered = ref(false);
 const commandsOutputList: Command[] = reactive([]);
@@ -20,7 +21,7 @@ const handleCommandSubmit = (value: string) => {
       list: [
         "get general information",
         "get work experience",
-        "get contacts",
+        "get contact information",
         "dowload cv",
         "get commands",
       ],
@@ -40,6 +41,8 @@ const handleCommandSubmit = (value: string) => {
       ],
     });
   }
+
+  setTimeout(scrollToBottom, 100);
 };
 </script>
 
