@@ -29,7 +29,7 @@ for (let i = 0; i < list.length; i++) {
 </script>
 
 <template>
-  <div class="command text-blink">
+  <div class="command">
     <GlitchedWriter
       :text="title"
       @start="startTypingSound"

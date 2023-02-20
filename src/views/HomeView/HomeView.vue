@@ -7,7 +7,14 @@ import PageMasks from "@/components/common/PageMasks.vue";
 import HomeGreeting from "@/components/home/HomeGreeting/HomeGreeting.vue";
 import TerminalView from "@/views/TerminalView/TerminalView.vue";
 
-onMounted(() => {
+const glitch = ref(null);
+
+const activeComponent: ShallowRef<typeof HomeGreeting | typeof TerminalView> =
+  shallowRef(HomeGreeting);
+
+const handleGreetingFinish = () => {
+  activeComponent.value = TerminalView;
+
   if (!glitch.value) return;
 
   const { startGlitch, stopGlitch } = PowerGlitch.glitch(
@@ -17,15 +24,6 @@ onMounted(() => {
 
   usePageGlitches(startGlitch, stopGlitch);
   startStaticNoise();
-});
-
-const glitch = ref(null);
-
-const activeComponent: ShallowRef<typeof HomeGreeting | typeof TerminalView> =
-  shallowRef(HomeGreeting);
-
-const handleGreetingFinish = () => {
-  activeComponent.value = TerminalView;
 };
 </script>
 

@@ -10,7 +10,7 @@ const { title, list } = props.command;
 </script>
 
 <template>
-  <div class="command text-blink">
+  <div class="command">
     <div class="command__title">
       {{ title }}
     </div>

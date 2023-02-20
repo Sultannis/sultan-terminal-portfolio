@@ -38,7 +38,7 @@ const handleFinish = () => {
       }"
       @start="handleStart"
       @finish="handleFinish"
-      class="text-blink"
+      class="S"
       appear
     />
   </div>

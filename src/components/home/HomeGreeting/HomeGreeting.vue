@@ -102,17 +102,17 @@ const handleFinalFinish = () => {
         }"
         @start="handleStart"
         @finish="handleFinish"
-        class="greeting__output text-blink"
+        class="greeting__output "
         appear
       />
-      <div :class="[caretClasses, 'greeting__caret', 'text-blink']" />
+      <div :class="[caretClasses, 'greeting__caret', ]" />
     </div>
   </div>
 </template>
 
 <style scoped>
 .greeting {
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
 
   display: flex;

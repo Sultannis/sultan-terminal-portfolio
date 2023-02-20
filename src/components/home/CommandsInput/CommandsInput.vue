@@ -45,7 +45,7 @@ const handleSubmit = (event: Event) => {
 </script>
 
 <template>
-  <div class="wrapper text-blink">
+  <div class="wrapper">
     <input
       :value="inputValue"
       class="wrapper__input"
@@ -72,6 +72,7 @@ const handleSubmit = (event: Event) => {
   width: 100%;
   position: relative;
 }
+
 .wrapper__input {
   width: 100%;
   margin-left: 82px;
