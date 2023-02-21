@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { glitchedWriterOptionsFast } from "@/constants/glitched-writer-options";
+import GlitchedWriter from "vue-glitched-writer";
+
+const { hint } = defineProps<{ hint: string }>();
+</script>
+
 <template>
   <div class="hint">
     <img
@@ -7,7 +14,12 @@
       width="125"
       height="125"
     />
-    <slot />
+    <GlitchedWriter
+      :text="hint"
+      :options="glitchedWriterOptionsFast"
+      @finish="$emit('finish')"
+      appear
+    />
   </div>
 </template>
 

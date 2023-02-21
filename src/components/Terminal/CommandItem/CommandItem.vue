@@ -19,7 +19,7 @@ const componentToDisplay = getCommandComponentToDisplay(commandKey);
 <style>
 .command {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 30px;
   color: var(--color-main-red);
 }
 </style>

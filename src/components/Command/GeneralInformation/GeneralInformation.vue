@@ -4,6 +4,7 @@ import Portrait from "@/assets/images/portrait.jpg?url";
 import { useComputerAutomaticTypingSound } from "@/composables/useSound";
 import { reactive } from "vue";
 import GlitchedWriter from "vue-glitched-writer";
+import { glitchedWriterOptionsFast } from "@/constants/glitched-writer-options";
 
 const { command } = defineProps<{ command: Command }>();
 
@@ -32,21 +33,9 @@ for (let i = 0; i < paragraphs.length; i++) {
   <div class="general">
     <GlitchedWriter
       :text="title"
-      appear
-      :options="{
-        html: true,
-        interval: [0, 10],
-        delay: [0, 0],
-        steps: 0,
-        changeChance: 0.5,
-        maxGhosts: 0,
-        oneAtATime: 1,
-        glyphs: '',
-        fillSpace: false,
-        glyphsFromText: false,
-        mode: 'erase',
-      }"
+      :options="glitchedWriterOptionsFast"
       class="general__title"
+      appear
       @finish="startNext"
       @start="startTypingSound"
     />
@@ -61,22 +50,10 @@ for (let i = 0; i < paragraphs.length; i++) {
           <GlitchedWriter
             v-if="listItemsVisibility[index]"
             :text="paragraph"
+            :options="glitchedWriterOptionsFast"
             @finish="startNext"
-            :options="{
-              html: true,
-              interval: [0, 10],
-              delay: [0, 0],
-              steps: 0,
-              changeChance: 0.5,
-              maxGhosts: 0,
-              oneAtATime: 1,
-              glyphs: '',
-              fillSpace: false,
-              glyphsFromText: false,
-              mode: 'erase',
-            }"
-            class="general__paragraph"
             appear
+            class="general__paragraph"
           />
         </template>
         <div class="general__vertical-border" :style="{ top: 0, left: 0 }" />
@@ -135,7 +112,6 @@ for (let i = 0; i < paragraphs.length; i++) {
 }
 
 .general__image-animation {
-  
 }
 
 .general__content {

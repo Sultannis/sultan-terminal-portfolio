@@ -2,6 +2,7 @@
 import { ref, onMounted, reactive, onUnmounted } from "vue";
 import { useTypingSound } from "@/composables/useSound";
 import GlitchedWriter from "vue-glitched-writer";
+import { glitchedWriterOptionsSlow } from "@/constants/glitched-writer-options"
 
 const emit = defineEmits(["finish"]);
 
@@ -85,18 +86,7 @@ const handleFinalFinish = () => {
       <GlitchedWriter
         v-if="renderGlitchWriter"
         :text="phrases"
-        :options="{
-          interval: [25, 40],
-          delay: [0, 0],
-          steps: 0,
-          changeChance: 0.5,
-          maxGhosts: 0,
-          oneAtATime: 1,
-          glyphs: '',
-          fillSpace: false,
-          glyphsFromText: false,
-          mode: 'erase',
-        }"
+        :options="glitchedWriterOptionsSlow"
         :queue="{
           interval: 1200,
         }"

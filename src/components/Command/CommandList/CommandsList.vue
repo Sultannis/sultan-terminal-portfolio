@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useComputerAutomaticTypingSound } from "@/composables/useSound";
+import { glitchedWriterOptionsFast } from "@/constants/glitched-writer-options";
 import type { Command } from "@/interfaces/command.interface";
 import { reactive } from "vue";
 import GlitchedWriter from "vue-glitched-writer";
@@ -26,62 +27,43 @@ let currentVisibleItemIndex = 0;
 for (let i = 0; i < list.length; i++) {
   listItemsVisibility.push(false);
 }
+
+const getPositionLi = (positon: string) => {
+  return `<li>${positon}</li>`;
+};
 </script>
 
 <template>
-  <div class="command">
+  <div class="commands-list">
     <GlitchedWriter
       :text="title"
       @start="startTypingSound"
       @finish="startNext"
-      :options="{
-        interval: [0, 10],
-        delay: [0, 0],
-        steps: 0,
-        changeChance: 0.5,
-        maxGhosts: 0,
-        oneAtATime: 1,
-        glyphs: '',
-        fillSpace: false,
-        glyphsFromText: false,
-        mode: 'erase',
-      }"
+      :options="glitchedWriterOptionsFast"
       appear
     />
-    <ul class="command__list">
-      <li v-for="(position, index) in list">
+    <ul :style="{ height: list.length * 38.4 + 'px' }" class="commands-list__content">
+      <template v-for="(positon, index) in list">
         <GlitchedWriter
           v-if="listItemsVisibility[index]"
-          :text="position"
+          :text="getPositionLi(positon)"
           @finish="startNext"
-          :options="{
-            interval: [0, 10],
-            delay: [0, 0],
-            steps: 0,
-            changeChance: 0.5,
-            maxGhosts: 0,
-            oneAtATime: 1,
-            glyphs: '',
-            fillSpace: false,
-            glyphsFromText: false,
-            mode: 'erase',
-          }"
+          :options="glitchedWriterOptionsFast"
           appear
         />
-      </li>
+      </template>
     </ul>
   </div>
 </template>
 
 <style>
-.command {
-  margin-top: 20px;
+.commands-list {
   display: flex;
   flex-direction: column;
   color: var(--color-text-highlighted-purple);
 }
 
-.command__list {
+.commands-list__content {
   margin-left: 25px;
 }
 </style>

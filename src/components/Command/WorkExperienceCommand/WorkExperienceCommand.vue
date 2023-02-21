@@ -1,7 +1,5 @@
 <template>
-    <div class="work">
-      .workItem =
-    </div>
+    <div class="work">  </div>
 </template>
   
 <script setup lang='ts'>

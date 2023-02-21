@@ -1,13 +1,19 @@
 <script setup lang="ts">
-import { ref, reactive, nextTick } from "vue";
+import { ref, reactive } from "vue";
 import type { Command } from "@/interfaces/command.interface";
+import { scrollToBottom } from "@/helpers/scroll-to-bottom";
 import TerminalIntro from "@/components/Terminal/TerminalIntro/TerminalIntro.vue";
 import CommandsInput from "@/components/home/CommandsInput/CommandsInput.vue";
 import CommandItem from "@/components/Terminal/CommandItem/CommandItem.vue";
-import { scrollToBottom } from "@/helpers/scroll-to-bottom";
+import Hint from "@/components/home/Hint/Hint.vue";
 
-let inputRendered = ref(false);
+const inputRendered = ref(false);
+const hintRendered = ref(false);
 const commandsOutputList: Command[] = reactive([]);
+
+const renderHint = () => {
+  hintRendered.value = true;
+};
 
 const renderInput = () => {
   inputRendered.value = true;
@@ -48,7 +54,12 @@ const handleCommandSubmit = (value: string) => {
 
 <template>
   <div class="terminal">
-    <TerminalIntro @finish="renderInput" />
+    <TerminalIntro @finish="renderHint" />
+    <Hint
+      v-if="hintRendered"
+      hint="type in 'get commands' to get list of all available commands"
+      @finish="renderInput"
+    />
     <CommandItem
       v-for="command in commandsOutputList"
       :command="command"
