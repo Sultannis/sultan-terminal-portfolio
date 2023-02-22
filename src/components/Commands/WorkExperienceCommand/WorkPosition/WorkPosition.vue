@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { GLITCHED_WRITER_OPTIONS_FAST } from "@/constants/glitched-writer-options";
+import { GLITCHED_WRITER_OPTIONS_EXTRA_FAST } from "@/constants/glitched-writer-options";
 import type { WorkPosition } from "@/interfaces/work-position.interface";
 import { useElementsConsecutiveRender } from "@/composables/useElementsConsecutiveRender";
 import GlitchedWriter from "vue-glitched-writer";
@@ -14,7 +14,7 @@ const emit = defineEmits(["finish"]);
 
 const formattedCompanyName = computed(() => {
   if (companyUrl) {
-    return `<a target="_blank" style="color: #1b00b2" href="${companyUrl}">${companyName}</a>`;
+    return `<a target="_blank" style="color: #1acc6b" href="${companyUrl}">${companyName}</a>`;
   }
   return companyName;
 });
@@ -56,7 +56,7 @@ const handleRenderFinish = () => {
     <div class="position__row">
       <GlitchedWriter
         :text="formattedCompanyName"
-        :options="GLITCHED_WRITER_OPTIONS_FAST"
+        :options="GLITCHED_WRITER_OPTIONS_EXTRA_FAST"
         @finish="renderDateRange"
         class="position__company-name"
         appear
@@ -64,7 +64,7 @@ const handleRenderFinish = () => {
       <GlitchedWriter
         v-if="dateRangeIsRendered"
         :text="dateRange"
-        :options="GLITCHED_WRITER_OPTIONS_FAST"
+        :options="GLITCHED_WRITER_OPTIONS_EXTRA_FAST"
         @finish="renderNextAchievement"
         class="position__date-range"
         appear
@@ -78,7 +78,7 @@ const handleRenderFinish = () => {
             <GlitchedWriter
               v-if="renderedAchievements[index]"
               :text="getAchievementLi(achievement)"
-              :options="GLITCHED_WRITER_OPTIONS_FAST"
+              :options="GLITCHED_WRITER_OPTIONS_EXTRA_FAST"
               @finish="renderNextAchievement"
               appear
             />
@@ -90,7 +90,7 @@ const handleRenderFinish = () => {
         <GlitchedWriter
           v-if="stackIsRendered"
           :text="formattedStack"
-          :options="GLITCHED_WRITER_OPTIONS_FAST"
+          :options="GLITCHED_WRITER_OPTIONS_EXTRA_FAST"
           @finish="handleRenderFinish"
           class="position__stack-content"
           appear
@@ -127,7 +127,7 @@ const handleRenderFinish = () => {
 
 .position__company-name {
   margin-right: 20px;
-  color: var(--color-text-highlighted-blue);
+  color: var(--color-text-highlighted-green);
 }
 
 .position__date-range {
@@ -135,7 +135,7 @@ const handleRenderFinish = () => {
 }
 
 .position__title {
-  color: var(--color-text-highlighted-green);
+  color: var(--color-text-highlighted-blue);
 }
 
 .position__vertical-border {

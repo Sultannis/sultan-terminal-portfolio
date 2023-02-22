@@ -5,12 +5,11 @@ export const useElementsConsecutiveRender = (numberOfElement: number) => {
   let currentIndexToRender = 0;
 
   const renderNextElement = (): boolean => {
-    renderedElements[currentIndexToRender] = true;
-
-    currentIndexToRender++;
     if (currentIndexToRender >= numberOfElement) {
       return true;
     }
+    renderedElements[currentIndexToRender] = true;
+    currentIndexToRender++;
     return false;
   };
 

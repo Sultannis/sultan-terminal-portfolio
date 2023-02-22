@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { getCommandDataByKey } from "@/helpers/get-command-data-by-key";
-import { GLITCHED_WRITER_OPTIONS_FAST } from "@/constants/glitched-writer-options";
+import { GLITCHED_WRITER_OPTIONS_EXTRA_FAST } from "@/constants/glitched-writer-options";
 import type { WorkExperienceCommand } from "@/interfaces/commands.interfaces";
 import { useElementsConsecutiveRender } from "@/composables/useElementsConsecutiveRender";
 import { useComputerAutomaticTypingSound } from "@/composables/useSound";
@@ -15,10 +15,15 @@ const { renderedElements: renderedPositions, renderNextElement } = useElementsCo
 );
 
 const renderNextPosition = () => {
-  const done = renderNextElement();
-  if (done) {
-    stopTypingSound();
-  }
+  stopTypingSound();
+  setTimeout(() => {
+    const done = renderNextElement();
+    if (done) {
+      stopTypingSound();
+    } else {
+      startTypingSound();
+    }
+  }, 300);
 };
 </script>
 
@@ -26,7 +31,7 @@ const renderNextPosition = () => {
   <div class="work">
     <GlitchedWriter
       :text="title"
-      :options="GLITCHED_WRITER_OPTIONS_FAST"
+      :options="GLITCHED_WRITER_OPTIONS_EXTRA_FAST"
       @start="startTypingSound"
       @finish="renderNextPosition"
       appear
@@ -36,7 +41,6 @@ const renderNextPosition = () => {
       <WorkPositionItem
         v-if="renderedPositions[index]"
         :position="position"
-        :options="GLITCHED_WRITER_OPTIONS_FAST"
         @finish="renderNextPosition"
         appear
       />

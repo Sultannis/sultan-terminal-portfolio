@@ -35,6 +35,7 @@ const getCommandLi = (command: string) => {
       :options="GLITCHED_WRITER_OPTIONS_FAST"
       @start="startTypingSound"
       @finish="renderNextCommand"
+      class="commands-list__title"
       appear
     />
     <ul :style="{ height: commandListContentHeight }" class="commands-list__content">
@@ -55,6 +56,9 @@ const getCommandLi = (command: string) => {
 .commands-list {
   display: flex;
   flex-direction: column;
+}
+
+.commands-list__title {
   color: var(--color-text-highlighted-purple);
 }
 </style>

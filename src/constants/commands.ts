@@ -101,9 +101,9 @@ export const COMMANDS = {
     commands: [
       "GET GENERAL INFORMATION",
       "GET WORK EXPERIENCE",
-      "GET CONTACT INFORMATION",
-      "DOWNLOAD CV",
+      "GET CONTACT DETAILS",
       "GET COMMANDS",
+      "DOWNLOAD CV",
     ],
   },
 };
