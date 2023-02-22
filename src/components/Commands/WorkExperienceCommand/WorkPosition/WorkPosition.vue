@@ -1,52 +1,50 @@
 <script setup lang="ts">
-import { useComputerAutomaticTypingSound } from "@/composables/useSound";
+import { computed, ref } from "vue";
+import { GLITCHED_WRITER_OPTIONS_FAST } from "@/constants/glitched-writer-options";
 import type { WorkPosition } from "@/interfaces/work-position.interface";
-import { computed, reactive, ref } from "vue";
+import { useElementsConsecutiveRender } from "@/composables/useElementsConsecutiveRender";
 import GlitchedWriter from "vue-glitched-writer";
 
 const { position } = defineProps<{
   position: WorkPosition;
 }>();
-const { companyName, companyUrl, dateRange, achievements, technologies } = position;
+const { companyName, companyUrl, dateRange, achievements, stack } = position;
 
 const emit = defineEmits(["finish"]);
 
-const technologiesString = computed(() => "‣ " + technologies.join("‣ "));
+const formattedCompanyName = computed(() => {
+  if (companyUrl) {
+    return `<a href="${companyUrl}">${companyName}</a>`;
+  }
+  return companyName;
+});
+const formattedStack = computed(() => "‣ " + stack.join("‣ "));
+
+const dateRangeIsRendered = ref(false);
+const stackIsRendered = ref(false);
+
+const { renderedElements: renderedAchievements, renderNextElement } = useElementsConsecutiveRender(
+  achievements.length
+);
+
+const renderDateRange = () => {
+  dateRangeIsRendered.value = true;
+};
+const renderNextAchievement = () => {
+  const done = renderNextElement();
+  if (done) {
+    renderStack();
+  }
+};
+const renderStack = () => {
+  stackIsRendered.value = true;
+};
 
 const getAchievementLi = (achievement: string) => {
   return `<li>${achievement}</li>`;
 };
 
-const rangeIsRendered = ref(false);
-const technologiesAreRendered = ref(false);
-
-const startRange = () => {
-  rangeIsRendered.value = true;
-};
-
-const startTechnologies = () => {
-  technologiesAreRendered.value = true;
-};
-
-const { startTypingSound, stopTypingSound } = useComputerAutomaticTypingSound();
-const startNext = () => {
-  if (currentVisibleItemIndex < listItemsVisibility.length) {
-    listItemsVisibility[currentVisibleItemIndex] = true;
-    currentVisibleItemIndex++;
-  } else {
-    startTechnologies();
-  }
-};
-
-const listItemsVisibility: boolean[] = reactive([]);
-let currentVisibleItemIndex = 0;
-
-for (let i = 0; i < achievements.length; i++) {
-  listItemsVisibility.push(false);
-}
-
-const handleItemFinish = () => {
-  stopTypingSound();
+const handleRenderFinish = () => {
   emit("finish");
 };
 </script>
@@ -55,63 +53,39 @@ const handleItemFinish = () => {
   <div class="position">
     <div class="position__row">
       <GlitchedWriter
-        :text="title"
-        :options="{
-          html: true,
-          interval: [0, 10],
-          delay: [0, 0],
-          steps: 0,
-          changeChance: 0.5,
-          maxGhosts: 0,
-          oneAtATime: 1,
-          glyphs: '',
-          fillSpace: false,
-          glyphsFromText: false,
-          mode: 'erase',
-        }"
+        :text="formattedCompanyName"
+        :options="GLITCHED_WRITER_OPTIONS_FAST"
+        @finish="renderDateRange"
         class="position__company"
-        @finish="startRange"
         appear
       />
       <GlitchedWriter
-        v-if="rangeIsRendered"
-        :text="range"
-        :options="{
-          html: true,
-          interval: [0, 10],
-          delay: [0, 0],
-          steps: 0,
-          changeChance: 0.5,
-          maxGhosts: 0,
-          oneAtATime: 1,
-          glyphs: '',
-          fillSpace: false,
-          glyphsFromText: false,
-          mode: 'erase',
-        }"
+        v-if="dateRangeIsRendered"
+        :text="dateRange"
+        :options="GLITCHED_WRITER_OPTIONS_FAST"
+        @finish="renderNextAchievement"
         class="position__range"
-        @finish="startNext"
         appear
       />
     </div>
-    <div class="position__achievements">
-      Achievements
-      <ul>
-        <template v-for="(achievement, index) in achievements">
-          <GlitchedWriter
-            v-if="listItemsVisibility[index]"
-            :text="getAchievementLi(achievement)"
-            appear
-            @finish="startNext"
-          />
-        </template>
-      </ul>
-    </div>
+    Achievements
+    <ul class="position__achievements">
+      <template v-for="(achievement, index) in achievements">
+        <GlitchedWriter
+          v-if="renderedAchievements[index]"
+          :text="getAchievementLi(achievement)"
+          :options="GLITCHED_WRITER_OPTIONS_FAST"
+          @finish="renderStack"
+          appear
+        />
+      </template>
+    </ul>
     <GlitchedWriter
-      v-if="technologiesAreRendered"
-      :text="technologiesString"
+      v-if="stackIsRendered"
+      :text="formattedStack"
+      :options="GLITCHED_WRITER_OPTIONS_FAST"
+      @finish="handleRenderFinish"
       class="position__technologies"
-      @finish="handleItemFinish"
       appear
     />
   </div>

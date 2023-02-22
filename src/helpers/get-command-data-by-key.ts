@@ -1,6 +1,5 @@
 import { COMMANDS } from "@/constants/commands";
 import type {
-  Command,
   CommandsListCommand,
   GeneralInformationCommand,
   WorkExperienceCommand,

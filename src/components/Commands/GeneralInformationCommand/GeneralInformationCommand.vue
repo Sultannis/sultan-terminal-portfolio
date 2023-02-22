@@ -1,59 +1,53 @@
 <script setup lang="ts">
-import type { Command } from "@/interfaces/commands.interfaces";
-import Portrait from "@/assets/images/portrait.jpg?url";
+import type { GeneralInformationCommand } from "@/interfaces/commands.interfaces";
+import { GLITCHED_WRITER_OPTIONS_FAST } from "@/constants/glitched-writer-options";
+import { getCommandDataByKey } from "@/helpers/get-command-data-by-key";
 import { useComputerAutomaticTypingSound } from "@/composables/useSound";
-import { reactive } from "vue";
+import { useElementsConsecutiveRender } from "@/composables/useElementsConsecutiveRender";
+import Portrait from "@/assets/images/portrait.jpg?url";
 import GlitchedWriter from "vue-glitched-writer";
-import { glitchedWriterOptionsFast } from "@/constants/glitched-writer-options";
 
-const { command } = defineProps<{ command: Command }>();
-
-const { title, paragraphs } = command;
+const { title, paragraphs } = getCommandDataByKey(
+  "GET GENERAL INFORMATION"
+) as GeneralInformationCommand;
 
 const { startTypingSound, stopTypingSound } = useComputerAutomaticTypingSound();
+const { renderedElements: renderedParagraphs, renderNextElement } = useElementsConsecutiveRender(
+  paragraphs.length
+);
 
-const startNext = () => {
-  if (currentVisibleItemIndex < listItemsVisibility.length) {
-    listItemsVisibility[currentVisibleItemIndex] = true;
-    currentVisibleItemIndex++;
-  } else {
+const renderNextParagraph = () => {
+  const done = renderNextElement();
+  if (done) {
     stopTypingSound();
   }
 };
-
-const listItemsVisibility: boolean[] = reactive([]);
-let currentVisibleItemIndex = 0;
-
-for (let i = 0; i < paragraphs.length; i++) {
-  listItemsVisibility.push(false);
-}
 </script>
 
 <template>
   <div class="general">
     <GlitchedWriter
       :text="title"
-      :options="glitchedWriterOptionsFast"
+      :options="GLITCHED_WRITER_OPTIONS_FAST"
+      @finish="renderNextParagraph"
+      @start="startTypingSound"
       class="general__title"
       appear
-      @finish="startNext"
-      @start="startTypingSound"
     />
     <div class="general__row">
       <div class="general__image-wrapper">
-        <div class="general__image-mask"></div>
-        <div class="general__image-animation"></div>
+        <div class="general__image-mask" />
         <img :src="Portrait" alt="" class="general__image" />
       </div>
       <div class="general__content">
         <template v-for="(paragraph, index) in paragraphs">
           <GlitchedWriter
-            v-if="listItemsVisibility[index]"
+            v-if="renderedParagraphs[index]"
             :text="paragraph"
-            :options="glitchedWriterOptionsFast"
-            @finish="startNext"
-            appear
+            :options="GLITCHED_WRITER_OPTIONS_FAST"
+            @finish="renderNextParagraph"
             class="general__paragraph"
+            appear
           />
         </template>
         <div class="general__vertical-border" :style="{ top: 0, left: 0 }" />
@@ -71,9 +65,6 @@ for (let i = 0; i < paragraphs.length; i++) {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-}
-
-.general__title {
 }
 
 .general__row {
@@ -109,9 +100,6 @@ for (let i = 0; i < paragraphs.length; i++) {
     hsla(0, 0%, 0%, 0.644) 5px,
     hsla(0, 0%, 0%, 0.644) 7px
   );
-}
-
-.general__image-animation {
 }
 
 .general__content {

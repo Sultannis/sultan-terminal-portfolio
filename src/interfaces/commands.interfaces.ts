@@ -11,7 +11,7 @@ export interface WorkExperienceCommand extends Command {
 
 export interface CommandsListCommand extends Command {
   title: string;
-  list: string[];
+  commands: string[];
 }
 
 export interface GeneralInformationCommand extends Command {

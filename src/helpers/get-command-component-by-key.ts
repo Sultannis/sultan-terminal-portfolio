@@ -1,22 +1,24 @@
 import { shallowRef, type ShallowRef } from "vue";
 import type { CommandKeys } from "@/types/command-keys-type";
-import CommandsList from "@/components/Command/CommandList/CommandsList.vue";
-import GeneralInformation from "@/components/Command/GeneralInformation/GeneralInformation.vue";
-import WorkExperienceCommand from "@/components/Command/WorkExperienceCommand/WorkExperienceCommand.vue";
+import ListOfCommandsCommand from "@/components/Commands/ListOfCommandsCommand/ListOfCommandsCommand.vue";
+import GeneralInformationCommand from "@/components/Commands/GeneralInformationCommand/GeneralInformationCommand.vue";
+import WorkExperienceCommand from "@/components/Commands/WorkExperienceCommand/WorkExperienceCommand.vue";
 
 const commandComponents = {
-  "GET COMMANDS": CommandsList,
-  "GET GENERAL INFORMATION": GeneralInformation,
+  "GET COMMANDS": ListOfCommandsCommand,
+  "GET GENERAL INFORMATION": GeneralInformationCommand,
   "GET WORK EXPERIENCE": WorkExperienceCommand,
 };
 
 export const getCommandComponentByKey = (
   key: string
-): ShallowRef<typeof CommandsList | typeof GeneralInformation | typeof WorkExperienceCommand> => {
+): ShallowRef<
+  typeof ListOfCommandsCommand | typeof GeneralInformationCommand | typeof WorkExperienceCommand
+> => {
   const component = commandComponents[key as CommandKeys];
   if (component) {
     return shallowRef(component);
   }
 
-  return shallowRef(CommandsList);
+  return shallowRef(ListOfCommandsCommand);
 };

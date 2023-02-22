@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import WorkPositionItem from "./WorkPosition/WorkPosition.vue";
-import GlitchedWriter from "vue-glitched-writer";
 import { getCommandDataByKey } from "@/helpers/get-command-data-by-key";
-import { glitchedWriterOptionsFast } from "@/constants/glitched-writer-options";
+import { GLITCHED_WRITER_OPTIONS_FAST } from "@/constants/glitched-writer-options";
 import type { WorkExperienceCommand } from "@/interfaces/commands.interfaces";
 import { useElementsConsecutiveRender } from "@/composables/useElementsConsecutiveRender";
 import { useComputerAutomaticTypingSound } from "@/composables/useSound";
+import GlitchedWriter from "vue-glitched-writer";
+import WorkPositionItem from "./WorkPosition/WorkPosition.vue";
 
 const { title, positions } = getCommandDataByKey("GET WORK EXPERIENCE") as WorkExperienceCommand;
 
@@ -24,7 +24,7 @@ const renderNextPosition = () => {
   <div class="work">
     <GlitchedWriter
       :text="title"
-      :options="glitchedWriterOptionsFast"
+      :options="GLITCHED_WRITER_OPTIONS_FAST"
       @start="startTypingSound"
       @finish="renderNextPosition"
       appear
@@ -34,7 +34,7 @@ const renderNextPosition = () => {
       <WorkPositionItem
         v-if="renderedElements[index]"
         :position="position"
-        :options="glitchedWriterOptionsFast"
+        :options="GLITCHED_WRITER_OPTIONS_FAST"
         @finish="renderNextPosition"
         appear
       />

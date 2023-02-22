@@ -98,7 +98,7 @@ export const COMMANDS = {
   },
   "GET COMMANDS": {
     title: "Available commands",
-    list: [
+    commands: [
       "GET GENERAL INFORMATION",
       "GET WORK EXPERIENCE",
       "GET CONTACT INFORMATION",
