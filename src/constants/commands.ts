@@ -1,6 +1,5 @@
-const COMMANDS = {
+export const COMMANDS = {
   "GET COMMANDS": {
-    key: "GET COMMANDS",
     title: "Available commands",
     list: [
       "get general information",
@@ -11,7 +10,6 @@ const COMMANDS = {
     ],
   },
   "GET GENERAL INFORMATION": {
-    key: "GET GENERAL INFORMATION",
     title: "Replicant Number <span style='color: #1b00b2'>B-263-54<span/>",
     paragraphs: [
       "<span style='color: #1acc6b'>Human name: </span>Sultan Mustafin",
@@ -22,6 +20,90 @@ const COMMANDS = {
       "<span style='color: #1acc6b'>Last identified location: </span>40.985856, 29.024999",
     ],
   },
+  "GET WORK EXPERIENCE": {
+    title: "Work Experience",
+    positions: [
+      {
+        companyName: "Bultech",
+        companyUrl: "https://prosklad.kz",
+        dateRange: "dec. 2021 - dec.2022",
+        achievements: [
+          "Created and launched intercorporate employees revenue tracking system and a CRM platform for business management",
+          "Administrated a team consisting of 2 Fullstack developers and reviewed loads of code",
+          "Lead transition of code base to TypeScript, developed new landing page which increased conversion by 63% on one of internal projects",
+        ],
+        technologies: [
+          "Vue Js 3",
+          "Node Js",
+          "Express Js",
+          "Nest Js",
+          "PostgreSQL",
+          "TypeScript",
+          "Jest",
+          "Docker",
+          "Socket IO",
+          "TypeORM",
+          "Git",
+          "HTML",
+          "CSS",
+        ],
+      },
+      {
+        companyName: "Sali Market",
+        dateRange: "jan. 2021 - dec. 2021",
+        achievements: [
+          "Created and designed online plumbing equipment store, which allowed business owners to distribute product between multiple cities",
+          "Developed database architecture and created RESTful API",
+          "Set up development environment and created SPA with more than 25 dynamic pages",
+          "Set up SSR to several static pages to enhance SEO optimization",
+        ],
+        technologies: [
+          "Vue Js",
+          "Vuex",
+          "Node Js",
+          "Express Js",
+          "Nest Js",
+          "MySql",
+          "TypeScript",
+          "Jest",
+          "Objection",
+          "Git",
+          "HTML",
+          "CSS",
+        ],
+      },
+      {
+        companyName: "UnApp Space",
+        companyUrl: "https://unapp.space",
+        dateRange: "feb. 2020 - jan. 2021",
+        achievements: [
+          "Developed online university admission educational platform",
+          "Set up S3 static file storage, created SPA with more than 10 dynamic pages",
+          "Implemented online payment system which increased sales conversion by 18%",
+        ],
+        technologies: [
+          "Vue Js",
+          "Vuex",
+          "Node Js",
+          "Express Js",
+          "Nest Js",
+          "MySql",
+          "TypeScript",
+          "TypeORM",
+          "Git",
+          "HTML",
+          "CSS",
+        ],
+      },
+      {
+        companyName: "Linco",
+        dateRange: "sept. 2019 - feb. 2020",
+        achievements: [
+          "Created platform for private educational institutions that allows to track student’s grades and progress",
+          "Developed adaptive SPA and integrated RESTful API endpoints",
+        ],
+        technologies: ["Vue Js", "Vuex", "MySql", "JavaScript", "Git", "HTML", "CSS"],
+      },
+    ],
+  },
 };
-
-export const getCommandByKey = () => {};
