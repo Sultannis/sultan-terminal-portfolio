@@ -40,7 +40,7 @@ const startStaticNoise = () => {
   const staticNoise = new Howl({
     src: [staticNoiseRecording],
     loop: true,
-    volume: 0.8,
+    volume: 0.5,
     onplay(soundId) {
       if (!started) {
         staticNoise.fade(0, 1, 2000, soundId);

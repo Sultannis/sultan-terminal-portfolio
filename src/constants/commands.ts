@@ -1,135 +1,27 @@
-export const COMMANDS = [
-  {
-    commandIdentifier: "about",
-    title: "About",
-    type: "Available records",
-    lines: [
-      "- Sultan Mustafin Zhenisovich",
-      "- Date of birth: 18/11/2002",
-      "- Place of birth: Taraz, South Kazakhstan",
-      "- StartUp enthusiast",
-      "- Web developer",
-    ],
-    projects: [],
-    lists: [],
-    imageName: "glitched-about.gif",
-    links: [],
-    hints: ["Type ‘work’ to open the work experience"],
-    error: "",
-  },
-  {
-    commandIdentifier: "work",
-    title: "Experience as a web developer",
-    type: "web-developer",
-    lines: [
-      "- Working as a commercial web developer since January of 2019",
-      "- Specialize on creating web platforms that allow close interaction with end user. Actively involved and interested in developing independent projects and startups. Lately been working in EdTech and E-commerce spheres.",
-    ],
-    projects: [],
-    lists: [
-      {
-        title: "- Skills",
-        items: [
-          "JavaScript",
-          "TypeScript",
-          "Vue js",
-          "Nuxt js",
-          "Node js",
-          "Nest js",
-          "Express js  ",
-          "HTML",
-          "CSS",
-        ],
-      },
-    ],
-    imageName: "",
-    links: [],
-    hints: ["Type ‘projects’ to see the list of projects"],
-    error: "",
-  },
-  {
-    commandIdentifier: "commands",
+const COMMANDS = {
+  "GET COMMANDS": {
+    key: "GET COMMANDS",
     title: "Available commands",
-    type: "available-commands",
-    lines: [],
-    projects: [],
-    lists: [
-      {
-        title: "",
-        items: ["about", "work", "commands", "projects", "contacts", "clear"],
-      },
+    list: [
+      "get general information",
+      "get work experience",
+      "get contact information",
+      "dowload cv",
+      "get commands",
     ],
-    imageName: "",
-    links: [],
-    hints: [],
-    error: "",
   },
-  {
-    commandIdentifier: "projects",
-    title: "Projects",
-    type: "projects",
-    lines: [],
-    projects: [
-      {
-        linkTitle: "UnApp Space",
-        link: "https://unapp.space",
-        description:
-          "Educational platform for university admission process preparation.",
-        content:
-          "Created frontend application using Vue Js and RESTful API using Nest Js. Was one of co-founders of the startup and was actively involved in management and bussines decisions of the team. Implemented the online payment system",
-      },
-      {
-        linkTitle: "Sali Market",
-        link: "",
-        description: "Online shop for plumber equipment sale.",
-        content:
-          "Created online platform for selling plumbing equipment. Developed responsive frontend application using Nuxt Js framework. Created user interface design and designed MySql database architecture. Created RESTful API using Nest js framework and Knex js ORM. Configured SSR data fetch. Used TypeScript to integrate typing for every layer of application.",
-      },
+  "GET GENERAL INFORMATION": {
+    key: "GET GENERAL INFORMATION",
+    title: "Replicant Number <span style='color: #1b00b2'>B-263-54<span/>",
+    paragraphs: [
+      "<span style='color: #1acc6b'>Human name: </span>Sultan Mustafin",
+      "<span style='color: #1acc6b'>Occupation: </span>Full stack developer",
+      "<span style='color: #1acc6b'>Stack: </span> <br>‣ JavaScript  ‣ TypeScript  ‣ Node Js  ‣ Vue Js 2/3  ‣ Vuex  ‣ Express Js  ‣ Nest Js  ‣ TypeORM  ‣ Socket IO  ‣ PostgreSQL  ‣ MySQL  ‣ Docker  ‣ HTML  ‣ CSS  ‣ Git",
+      "<span style='color: #1acc6b'>Status: </span/>Open for work",
+      "<span style='color: #1acc6b'>Special abilities: </span> <br>‣ accelerated learning  ‣ bugs resistance  ‣ test writing",
+      "<span style='color: #1acc6b'>Last identified location: </span>40.985856, 29.024999",
     ],
-    lists: [],
-    imageName: "",
-    links: [],
-    hints: [],
-    error: "",
   },
-  {
-    commandIdentifier: "contacts",
-    title: "Contact me",
-    type: "contact",
-    projects: [],
-    lines: [],
-    lists: [],
-    imageName: "",
-    links: [
-      {
-        title: "Instagram",
-        linkTitle: "https://www.instagram.com/itsjustsulya",
-        link: "https://www.instagram.com/itsjustsulya",
-      },
-      {
-        title: "LinkedIn",
-        linkTitle: "https://www.linkedin.com/in/sultan-mustafin-44382b1a6",
-        link: "https://www.linkedin.com/in/sultan-mustafin-44382b1a6",
-      },
-      {
-        title: "Telegram",
-        linkTitle: "https://t.me/Sultan_Mus",
-        link: "https://t.me/Sultan_Mus",
-      },
-    ],
-    hints: [],
-    error: "",
-  },
-  {
-    commandIdentifier: "clear",
-    title: "",
-    type: "clear",
-    lines: [],
-    projects: [],
-    lists: [],
-    imageName: "",
-    links: [],
-    hints: [],
-    error: "",
-  },
-];
+};
+
+export const getCommandByKey = () => {};

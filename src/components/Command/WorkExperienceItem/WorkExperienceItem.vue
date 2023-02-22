@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { useComputerAutomaticTypingSound } from "@/composables/useSound";
+import { computed, reactive, ref } from "vue";
 import GlitchedWriter from "vue-glitched-writer";
 
 const { companyItem } = defineProps<{
   companyItem: { title: string; range: string; achievements: string[]; technologies: string[] };
 }>();
+
+const emit = defineEmits(["finish"]);
 
 const { title, range, achievements, technologies } = companyItem;
 
@@ -12,6 +15,39 @@ const technologiesString = computed(() => "‣ " + technologies.join("‣ "));
 
 const getAchievementLi = (achievement: string) => {
   return `<li>${achievement}</li>`;
+};
+
+const rangeIsRendered = ref(false);
+const technologiesAreRendered = ref(false);
+
+const startRange = () => {
+  rangeIsRendered.value = true;
+};
+
+const startTechnologies = () => {
+  technologiesAreRendered.value = true;
+};
+
+const { startTypingSound, stopTypingSound } = useComputerAutomaticTypingSound();
+const startNext = () => {
+  if (currentVisibleItemIndex < listItemsVisibility.length) {
+    listItemsVisibility[currentVisibleItemIndex] = true;
+    currentVisibleItemIndex++;
+  } else {
+    startTechnologies();
+  }
+};
+
+const listItemsVisibility: boolean[] = reactive([]);
+let currentVisibleItemIndex = 0;
+
+for (let i = 0; i < achievements.length; i++) {
+  listItemsVisibility.push(false);
+}
+
+const handleItemFinish = () => {
+  stopTypingSound();
+  emit("finish");
 };
 </script>
 
@@ -34,10 +70,11 @@ const getAchievementLi = (achievement: string) => {
           mode: 'erase',
         }"
         class="item__company"
-        @finish="start"
+        @finish="startRange"
         appear
       />
       <GlitchedWriter
+        v-if="rangeIsRendered"
         :text="range"
         :options="{
           html: true,
@@ -52,7 +89,7 @@ const getAchievementLi = (achievement: string) => {
           glyphsFromText: false,
           mode: 'erase',
         }"
-        class="item__company"
+        class="item__range"
         @finish="startNext"
         appear
       />
@@ -61,12 +98,28 @@ const getAchievementLi = (achievement: string) => {
       Achievements
       <ul>
         <template v-for="(achievement, index) in achievements">
-          <GlitchedWriter :text="getAchievementLi(achievement)" appear />
+          <GlitchedWriter
+            v-if="listItemsVisibility[index]"
+            :text="getAchievementLi(achievement)"
+            appear
+            @finish="startNext"
+          />
         </template>
       </ul>
     </div>
-    <GlitchedWriter :text="technologiesString" class="item__technologies" appear />
+    <GlitchedWriter
+      v-if="technologiesAreRendered"
+      :text="technologiesString"
+      class="item__technologies"
+      @finish="handleItemFinish"
+      appear
+    />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.item {
+  display: flex;
+  flex-direction: column;
+}
+</style>
