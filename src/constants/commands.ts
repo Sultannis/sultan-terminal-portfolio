@@ -1,14 +1,4 @@
 export const COMMANDS = {
-  "GET COMMANDS": {
-    title: "Available commands",
-    list: [
-      "get general information",
-      "get work experience",
-      "get contact information",
-      "dowload cv",
-      "get commands",
-    ],
-  },
   "GET GENERAL INFORMATION": {
     title: "Replicant Number <span style='color: #1b00b2'>B-263-54<span/>",
     paragraphs: [
@@ -104,6 +94,16 @@ export const COMMANDS = {
         ],
         technologies: ["Vue Js", "Vuex", "MySql", "JavaScript", "Git", "HTML", "CSS"],
       },
+    ],
+  },
+  "GET COMMANDS": {
+    title: "Available commands",
+    list: [
+      "GET GENERAL INFORMATION",
+      "GET WORK EXPERIENCE",
+      "GET CONTACT INFORMATION",
+      "DOWNLOAD CV",
+      "GET COMMANDS",
     ],
   },
 };

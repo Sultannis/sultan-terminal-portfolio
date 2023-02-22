@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useComputerAutomaticTypingSound } from "@/composables/useSound";
 import { glitchedWriterOptionsFast } from "@/constants/glitched-writer-options";
-import type { Command } from "@/interfaces/command.interface";
+import type { Command } from "@/interfaces/commands.interfaces";
 import { reactive } from "vue";
 import GlitchedWriter from "vue-glitched-writer";
 

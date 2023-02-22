@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import type { Command } from "@/interfaces/command.interface";
+import type { Command } from "@/interfaces/commands.interfaces";
 import { scrollToBottom } from "@/helpers/scroll-to-bottom";
 import TerminalIntro from "@/components/Terminal/TerminalIntro/TerminalIntro.vue";
 import CommandsInput from "@/components/home/CommandsInput/CommandsInput.vue";

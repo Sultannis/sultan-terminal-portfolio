@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Command } from "@/interfaces/command.interface";
+import type { Command } from "@/interfaces/commands.interfaces";
 import CommandItem from "@/components/home/CommandItem/CommandItem.vue";
 
 defineProps<{

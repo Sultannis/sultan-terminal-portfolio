@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { useComputerAutomaticTypingSound } from "@/composables/useSound";
+import type { WorkPosition } from "@/interfaces/work-position.interface";
 import { computed, reactive, ref } from "vue";
 import GlitchedWriter from "vue-glitched-writer";
 
-const { companyItem } = defineProps<{
-  companyItem: { title: string; range: string; achievements: string[]; technologies: string[] };
+const { position } = defineProps<{
+  position: WorkPosition;
 }>();
+const { companyName, companyUrl, dateRange, achievements, technologies } = position;
 
 const emit = defineEmits(["finish"]);
-
-const { title, range, achievements, technologies } = companyItem;
 
 const technologiesString = computed(() => "‣ " + technologies.join("‣ "));
 

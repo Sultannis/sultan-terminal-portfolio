@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { getCommandComponentToDisplay } from "@/helpers/get-command-component-to-display";
-import type { Command } from "@/interfaces/command.interface";
+import type { Command } from "@/interfaces/commands.interfaces";
 
 const { commandKey, command } = defineProps<{
   commandKey: "GET COMMANDS" | "GET GENERAL INFORMATION";

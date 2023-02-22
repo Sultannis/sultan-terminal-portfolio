@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Command } from "@/interfaces/command.interface";
+import type { Command } from "@/interfaces/commands.interfaces";
 import Portrait from "@/assets/images/portrait.jpg?url";
 import { useComputerAutomaticTypingSound } from "@/composables/useSound";
 import { reactive } from "vue";
