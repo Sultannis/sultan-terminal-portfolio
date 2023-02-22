@@ -1,23 +1,27 @@
 <script setup lang="ts">
-import { glitchedWriterOptionsFast } from "@/constants/glitched-writer-options";
+import { GLITCHED_WRITER_OPTIONS_FAST } from "@/constants/glitched-writer-options";
+import { useComputerAutomaticTypingSound } from "@/composables/useSound";
 import GlitchedWriter from "vue-glitched-writer";
 
 const { hint } = defineProps<{ hint: string }>();
+const emit = defineEmits(["finish"]);
+
+const { startTypingSound, stopTypingSound } = useComputerAutomaticTypingSound();
+
+const handleFinish = () => {
+  stopTypingSound();
+  emit("finish");
+};
 </script>
 
 <template>
   <div class="hint">
-    <img
-      alt="Hint icon"
-      class="hint__icon"
-      src="@/assets/icons/hint-icon.svg"
-      width="125"
-      height="125"
-    />
+    <img alt="Hint icon" src="@/assets/icons/hint-icon.svg" class="hint__icon" />
     <GlitchedWriter
       :text="hint"
-      :options="glitchedWriterOptionsFast"
-      @finish="$emit('finish')"
+      :options="GLITCHED_WRITER_OPTIONS_FAST"
+      @start="startTypingSound"
+      @finish="handleFinish"
       appear
     />
   </div>
@@ -35,5 +39,6 @@ const { hint } = defineProps<{ hint: string }>();
   width: 20px;
   height: 20px;
   margin-right: 10px;
+  margin-top: -1px;
 }
 </style>

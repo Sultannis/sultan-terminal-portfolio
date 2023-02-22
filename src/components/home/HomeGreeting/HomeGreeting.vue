@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted, reactive, onUnmounted } from "vue";
+import { GLITCHED_WRITER_OPTIONS_SLOW } from "@/constants/glitched-writer-options";
 import { useTypingSound } from "@/composables/useSound";
 import GlitchedWriter from "vue-glitched-writer";
-import { glitchedWriterOptionsSlow } from "@/constants/glitched-writer-options"
 
 const emit = defineEmits(["finish"]);
 
@@ -18,12 +18,7 @@ onUnmounted(() => {
   window.removeEventListener("keyup", spaceClickHandler);
 });
 
-const phrases = [
-  "Hi!",
-  "Welcome to my portfolio",
-  "Type in commands to get more information",
-  "",
-];
+const phrases = ["Hi!", "Welcome to my portfolio", "Type in commands to get more information", ""];
 const renderGlitchWriter = ref(false);
 let previousStartFired = ref(false);
 let finishCount = 0;
@@ -32,12 +27,8 @@ const caretClasses = reactive({
   greeting__caret_hidden: false,
 });
 
-const {
-  startTypingSound,
-  stopTypingSound,
-  startDeletingSound,
-  stopDeletingSound,
-} = useTypingSound();
+const { startTypingSound, stopTypingSound, startDeletingSound, stopDeletingSound } =
+  useTypingSound();
 
 const spaceClickHandler = (event: KeyboardEvent) => {
   if (event.key === " ") {
@@ -86,16 +77,16 @@ const handleFinalFinish = () => {
       <GlitchedWriter
         v-if="renderGlitchWriter"
         :text="phrases"
-        :options="glitchedWriterOptionsSlow"
+        :options="GLITCHED_WRITER_OPTIONS_SLOW"
         :queue="{
           interval: 1200,
         }"
         @start="handleStart"
         @finish="handleFinish"
-        class="greeting__output "
+        class="greeting__output"
         appear
       />
-      <div :class="[caretClasses, 'greeting__caret', ]" />
+      <div :class="[caretClasses, 'greeting__caret']" />
     </div>
   </div>
 </template>

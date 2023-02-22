@@ -5,7 +5,7 @@ import { playKeyPressSound } from "@/composables/useSound";
 const emit = defineEmits(["start"]);
 
 onMounted(() => {
-  window.addEventListener("keyup", enterClickHandler);
+  window.addEventListener("keyup", enterClickHandler, { once: true });
 });
 
 onUnmounted(() => {
@@ -32,10 +32,7 @@ const enterClickHandler = (event: KeyboardEvent) => {
 
 <template>
   <div class="intro">
-    <div
-      :class="{ 'intro__image-wrapper_active': startClicked }"
-      class="intro__image-wrapper"
-    >
+    <div :class="{ 'intro__image-wrapper_active': startClicked }" class="intro__image-wrapper">
       <div
         :class="{ 'intro__image-inner-wrapper_active': startClicked }"
         class="intro__image-inner-wrapper"

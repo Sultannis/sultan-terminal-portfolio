@@ -72,7 +72,7 @@ const handleSubmit = (event: Event) => {
 
 .wrapper__input {
   width: 100%;
-  margin-left: 82px;
+  padding-left: 82px;
 
   background-color: transparent;
 

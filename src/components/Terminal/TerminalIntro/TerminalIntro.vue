@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import GlitchedWriter from "vue-glitched-writer";
+import { GLITCHED_WRITER_OPTIONS_SLOW } from "@/constants/glitched-writer-options";
 import { useComputerAutomaticTypingSound } from "@/composables/useSound";
-import { glitchedWriterOptionsSlow } from "@/constants/glitched-writer-options";
 
 const emit = defineEmits(["finish"]);
 
@@ -24,7 +24,7 @@ const handleFinish = () => {
   <div class="intro">
     <GlitchedWriter
       :text="message"
-      :options="glitchedWriterOptionsSlow"
+      :options="GLITCHED_WRITER_OPTIONS_SLOW"
       @start="handleStart"
       @finish="handleFinish"
       appear

@@ -57,8 +57,4 @@ const getCommandLi = (command: string) => {
   flex-direction: column;
   color: var(--color-text-highlighted-purple);
 }
-
-.commands-list__content {
-  margin-left: 25px;
-}
 </style>

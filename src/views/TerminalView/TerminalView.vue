@@ -12,7 +12,9 @@ const inputRendered = ref(false);
 const hintRendered = ref(false);
 
 const renderHint = () => {
-  hintRendered.value = true;
+  setTimeout(() => {
+    hintRendered.value = true;
+  }, 500);
 };
 const renderInput = () => {
   inputRendered.value = true;

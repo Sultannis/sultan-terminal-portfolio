@@ -22,7 +22,7 @@ export const COMMANDS = {
           "Administrated a team consisting of 2 Fullstack developers and reviewed loads of code",
           "Lead transition of code base to TypeScript, developed new landing page which increased conversion by 63% on one of internal projects",
         ],
-        technologies: [
+        stack: [
           "Vue Js 3",
           "Node Js",
           "Express Js",
@@ -47,7 +47,7 @@ export const COMMANDS = {
           "Set up development environment and created SPA with more than 25 dynamic pages",
           "Set up SSR to several static pages to enhance SEO optimization",
         ],
-        technologies: [
+        stack: [
           "Vue Js",
           "Vuex",
           "Node Js",
@@ -71,7 +71,7 @@ export const COMMANDS = {
           "Set up S3 static file storage, created SPA with more than 10 dynamic pages",
           "Implemented online payment system which increased sales conversion by 18%",
         ],
-        technologies: [
+        stack: [
           "Vue Js",
           "Vuex",
           "Node Js",
@@ -92,7 +92,7 @@ export const COMMANDS = {
           "Created platform for private educational institutions that allows to track student’s grades and progress",
           "Developed adaptive SPA and integrated RESTful API endpoints",
         ],
-        technologies: ["Vue Js", "Vuex", "MySql", "JavaScript", "Git", "HTML", "CSS"],
+        stack: ["Vue Js", "Vuex", "MySql", "JavaScript", "Git", "HTML", "CSS"],
       },
     ],
   },

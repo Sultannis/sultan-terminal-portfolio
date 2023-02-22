@@ -50,10 +50,12 @@ const renderNextParagraph = () => {
             appear
           />
         </template>
-        <div class="general__vertical-border" :style="{ top: 0, left: 0 }" />
-        <div class="general__vertical-border" :style="{ bottom: 0, left: 0 }" />
-        <div class="general__vertical-border" :style="{ top: 0, right: 0 }" />
-        <div class="general__vertical-border" :style="{ bottom: 0, right: 0 }" />
+        <div class="general__borders">
+          <div class="general__vertical-border" :style="{ top: 0, left: 0 }" />
+          <div class="general__vertical-border" :style="{ bottom: 0, left: 0 }" />
+          <div class="general__vertical-border" :style="{ top: 0, right: 0 }" />
+          <div class="general__vertical-border" :style="{ bottom: 0, right: 0 }" />
+        </div>
       </div>
     </div>
   </div>

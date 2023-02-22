@@ -10,7 +10,9 @@ import WorkPositionItem from "./WorkPosition/WorkPosition.vue";
 const { title, positions } = getCommandDataByKey("GET WORK EXPERIENCE") as WorkExperienceCommand;
 
 const { startTypingSound, stopTypingSound } = useComputerAutomaticTypingSound();
-const { renderedElements, renderNextElement } = useElementsConsecutiveRender(positions.length);
+const { renderedElements: renderedPositions, renderNextElement } = useElementsConsecutiveRender(
+  positions.length
+);
 
 const renderNextPosition = () => {
   const done = renderNextElement();
@@ -32,7 +34,7 @@ const renderNextPosition = () => {
     />
     <template v-for="(position, index) in positions">
       <WorkPositionItem
-        v-if="renderedElements[index]"
+        v-if="renderedPositions[index]"
         :position="position"
         :options="GLITCHED_WRITER_OPTIONS_FAST"
         @finish="renderNextPosition"
@@ -48,8 +50,7 @@ const renderNextPosition = () => {
   flex-direction: column;
 }
 
-.work__positions {
-  display: flex;
-  flex-direction: column;
+.work__title {
+  color: var(--color-text-highlighted-purple);
 }
 </style>

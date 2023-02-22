@@ -10,6 +10,9 @@
   padding: 0;
 }
 
+ul {
+  margin-left: 25px
+}
 
 #app {
   background: var(--color-background-dark);

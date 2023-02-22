@@ -8,7 +8,7 @@ export const useElementsConsecutiveRender = (numberOfElement: number) => {
     renderedElements[currentIndexToRender] = true;
 
     currentIndexToRender++;
-    if (currentIndexToRender === numberOfElement) {
+    if (currentIndexToRender >= numberOfElement) {
       return true;
     }
     return false;
