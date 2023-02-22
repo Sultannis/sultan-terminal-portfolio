@@ -11,9 +11,9 @@ const commandComponents = {
 };
 
 export const getCommandComponentByKey = (
-  key: CommandKeys
+  key: string
 ): ShallowRef<typeof CommandsList | typeof GeneralInformation | typeof WorkExperienceCommand> => {
-  const component = commandComponents[key];
+  const component = commandComponents[key as CommandKeys];
   if (component) {
     return shallowRef(component);
   }

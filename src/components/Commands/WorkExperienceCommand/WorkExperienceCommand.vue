@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import WorkPositionItem from "../WorkPositionItem/WorkPositionItem.vue";
+import WorkPositionItem from "./WorkPosition/WorkPosition.vue";
 import GlitchedWriter from "vue-glitched-writer";
 import { getCommandDataByKey } from "@/helpers/get-command-data-by-key";
 import { glitchedWriterOptionsFast } from "@/constants/glitched-writer-options";

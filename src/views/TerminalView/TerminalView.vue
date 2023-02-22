@@ -2,10 +2,9 @@
 import { ref, reactive } from "vue";
 import { scrollToBottomOfThePage } from "@/helpers/scroll-to-bottom-of-the-page";
 import TerminalIntro from "@/components/Terminal/TerminalIntro/TerminalIntro.vue";
-import CommandsInput from "@/components/home/CommandsInput/CommandsInput.vue";
-import CommandItem from "@/components/Terminal/CommandItem/CommandItem.vue";
-import Hint from "@/components/home/Hint/Hint.vue";
-import { wait } from "glitched-writer";
+import DynamicCommand from "@/components/Terminal/DynamicCommand/DynamicCommand.vue";
+import Hint from "@/components/Terminal/Hint/Hint.vue";
+import CommandsInput from "@/components/Terminal/CommandsInput/CommandsInput.vue";
 
 const enteredCommandKeys: string[] = reactive([]);
 
@@ -15,7 +14,6 @@ const hintRendered = ref(false);
 const renderHint = () => {
   hintRendered.value = true;
 };
-
 const renderInput = () => {
   inputRendered.value = true;
 };
@@ -23,9 +21,7 @@ const renderInput = () => {
 const handleCommandSubmition = async (command: string) => {
   enteredCommandKeys.push(command);
 
-  await wait(100);
-
-  scrollToBottomOfThePage();
+  setTimeout(scrollToBottomOfThePage, 100);
 };
 </script>
 
@@ -37,7 +33,7 @@ const handleCommandSubmition = async (command: string) => {
       hint="type in 'get commands' to get list of all available commands"
       @finish="renderInput"
     />
-    <CommandItem v-for="command in enteredCommandKeys" :command-key="command" />
+    <DynamicCommand v-for="commandKey in enteredCommandKeys" :command-key="commandKey" />
     <CommandsInput v-if="inputRendered" @submit="handleCommandSubmition" />
   </div>
 </template>
