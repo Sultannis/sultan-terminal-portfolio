@@ -6,6 +6,6 @@ const commandComponents = {
   "GET GENERAL INFORMATION": GeneralInformation,
 };
 
-export const getCommandComponentToDisplay = (key: 'GET COMMANDS' | 'GET GENERAL INFORMATION') => {
-  return commandComponents[key]
-}
+export const getCommandComponentToDisplay = (key: "GET COMMANDS" | "GET GENERAL INFORMATION") => {
+  return commandComponents[key];
+};

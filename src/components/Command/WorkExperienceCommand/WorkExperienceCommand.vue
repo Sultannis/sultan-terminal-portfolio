@@ -1,15 +1,17 @@
-<script setup lang='ts'>
-  import WorkExperienceItem from '../WorkExperienceItem/WorkExperienceItem.vue';
-  const workExperienceCommand = 
-  
-</script>
-  
-<template>
-    <div class="work">
+<script setup lang="ts">
+import WorkPositionItem from "../WorkPositionItem/WorkPositionItem.vue";
+import { getCommandDataByKey } from "@/helpers/get-command-data-by-key.ts";
 
-    </div>
+const { commandKey } = defineProps<{ commandKey: string }>();
+
+const commandData = getCommandDataByKey(commandKey);
+</script>
+
+<template>
+  <div class="work">
+    <div class="work__title"></div>
+    <div class="work__positions"></div>
+  </div>
 </template>
-  
-<style>
-  
-</style>
+
+<style></style>

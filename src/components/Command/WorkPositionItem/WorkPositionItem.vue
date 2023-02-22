@@ -52,8 +52,8 @@ const handleItemFinish = () => {
 </script>
 
 <template>
-  <div class="item">
-    <div class="item__row">
+  <div class="position">
+    <div class="position__row">
       <GlitchedWriter
         :text="title"
         :options="{
@@ -69,7 +69,7 @@ const handleItemFinish = () => {
           glyphsFromText: false,
           mode: 'erase',
         }"
-        class="item__company"
+        class="position__company"
         @finish="startRange"
         appear
       />
@@ -89,12 +89,12 @@ const handleItemFinish = () => {
           glyphsFromText: false,
           mode: 'erase',
         }"
-        class="item__range"
+        class="position__range"
         @finish="startNext"
         appear
       />
     </div>
-    <div class="item__achievements">
+    <div class="position__achievements">
       Achievements
       <ul>
         <template v-for="(achievement, index) in achievements">
@@ -110,7 +110,7 @@ const handleItemFinish = () => {
     <GlitchedWriter
       v-if="technologiesAreRendered"
       :text="technologiesString"
-      class="item__technologies"
+      class="position__technologies"
       @finish="handleItemFinish"
       appear
     />
@@ -118,7 +118,7 @@ const handleItemFinish = () => {
 </template>
 
 <style scoped>
-.item {
+.position {
   display: flex;
   flex-direction: column;
 }
