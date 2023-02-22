@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import { getCommandComponentToDisplay } from "@/helpers/get-command-component-to-display";
-import type { Command } from "@/interfaces/commands.interfaces";
+import { getCommandComponentByKey } from "@/helpers/get-command-component-by-key";
+import type { CommandKeys } from "@/types/command-keys-type";
 
-const { commandKey, command } = defineProps<{
-  commandKey: "GET COMMANDS" | "GET GENERAL INFORMATION";
-  command: Command;
+const { commandKey } = defineProps<{
+  commandKey: CommandKeys;
 }>();
 
-const componentToDisplay = getCommandComponentToDisplay(commandKey);
+const componentToDisplay = getCommandComponentByKey(commandKey);
 </script>
 
 <template>
   <div class="command">
-    <component :is="componentToDisplay" :command="command" />
+    <component :is="componentToDisplay" />
   </div>
 </template>
 

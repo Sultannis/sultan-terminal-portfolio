@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import type { Command } from "@/interfaces/commands.interfaces";
-import { scrollToBottom } from "@/helpers/scroll-to-bottom";
+import { scrollToBottomOfThePage } from "@/helpers/scroll-to-bottom-of-the-page";
 import TerminalIntro from "@/components/Terminal/TerminalIntro/TerminalIntro.vue";
 import CommandsInput from "@/components/home/CommandsInput/CommandsInput.vue";
 import CommandItem from "@/components/Terminal/CommandItem/CommandItem.vue";
 import Hint from "@/components/home/Hint/Hint.vue";
+import { wait } from "glitched-writer";
+
+const enteredCommandKeys: string[] = reactive([]);
 
 const inputRendered = ref(false);
 const hintRendered = ref(false);
-const commandsOutputList: Command[] = reactive([]);
 
 const renderHint = () => {
   hintRendered.value = true;
@@ -19,15 +20,12 @@ const renderInput = () => {
   inputRendered.value = true;
 };
 
-const handleCommandSubmit = (value: string) => {
-  if (value === "GET COMMANDS") {
-    commandsOutputList.push();
-  }
-  if (value === "GET GENERAL INFORMATION") {
-    commandsOutputList.push();
-  }
+const handleCommandSubmition = async (command: string) => {
+  enteredCommandKeys.push(command);
 
-  setTimeout(scrollToBottom, 100);
+  await wait(100);
+
+  scrollToBottomOfThePage();
 };
 </script>
 
@@ -39,12 +37,8 @@ const handleCommandSubmit = (value: string) => {
       hint="type in 'get commands' to get list of all available commands"
       @finish="renderInput"
     />
-    <CommandItem
-      v-for="command in commandsOutputList"
-      :command="command"
-      :command-key="command.key"
-    />
-    <CommandsInput v-if="inputRendered" @submit="handleCommandSubmit" />
+    <CommandItem v-for="command in enteredCommandKeys" :command-key="command" />
+    <CommandsInput v-if="inputRendered" @submit="handleCommandSubmition" />
   </div>
 </template>
 
