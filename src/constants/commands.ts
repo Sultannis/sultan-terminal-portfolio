@@ -1,3 +1,8 @@
+import gmailIcon from "@/assets/icons/social-networks/gmail.svg";
+import instagramIcon from "@/assets/icons/social-networks/instagram.svg";
+import linkedinIcon from "@/assets/icons/social-networks/linkedin.svg";
+import telegramIcon from "@/assets/icons/social-networks/telegram.svg";
+
 export const COMMANDS = {
   "GET GENERAL INFORMATION": {
     title: "Replicant Number <span style='color: #1b00b2'>B-263-54<span/>",
@@ -98,26 +103,26 @@ export const COMMANDS = {
   },
   "GET CONTACT DETAILS": {
     title: "Replicant data exchange APIs",
-    links: [
+    contacts: [
       {
-        iconSrc: "",
+        iconSrc: telegramIcon,
         title: "telegram",
         url: "https://telegram.me/Sultan_Mus",
       },
       {
-        iconSrc: "",
+        iconSrc: instagramIcon,
         title: "intagram",
         url: "https://www.instagram.com/its.sultanmustafin",
       },
       {
-        iconSrc: "",
+        iconSrc: linkedinIcon,
         title: "linkedin",
         url: "https://www.linkedin.com/in/sultan-mustafin",
       },
       {
-        iconSrc: "",
+        iconSrc: gmailIcon,
         title: "sultan.fb29@gmail.com",
-        url: "sultan.fb29@gmail.com",
+        url: "https://www.sultan.fb29@gmail.com",
       },
     ],
   },
@@ -129,6 +134,7 @@ export const COMMANDS = {
       "GET CONTACT DETAILS",
       "GET COMMANDS",
       "DOWNLOAD CV",
+      "CLEAR",
     ],
   },
 };

@@ -18,3 +18,12 @@ export interface GeneralInformationCommand extends Command {
   title: string;
   paragraphs: string[];
 }
+
+export interface ContactDetailsCommand extends Command {
+  title: string;
+  contacts: {
+    iconSrc: string;
+    title: string;
+    url: string;
+  }[];
+}
