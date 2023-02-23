@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
 import { scrollToBottomOfThePage } from "@/helpers/scroll-to-bottom-of-the-page";
+import { downloadCv } from "@/helpers/download-cv";
 import TerminalIntro from "@/components/Terminal/TerminalIntro/TerminalIntro.vue";
 import DynamicCommand from "@/components/Terminal/DynamicCommand/DynamicCommand.vue";
 import Hint from "@/components/Terminal/Hint/Hint.vue";
@@ -21,12 +22,13 @@ const renderInput = () => {
 };
 
 const handleCommandSubmition = async (command: string) => {
-  enteredCommandKeys.push(command);
-
   if (command === "CLEAR") {
     enteredCommandKeys.length = 0;
+  } else if (command === "DOWNLOAD CV") {
+    downloadCv();
   } else if (command !== "GET WORK EXPERIENCE") {
     setTimeout(scrollToBottomOfThePage, 20);
+    enteredCommandKeys.push(command);
   }
 };
 </script>
