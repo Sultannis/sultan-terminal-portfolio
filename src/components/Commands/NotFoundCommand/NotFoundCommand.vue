@@ -6,11 +6,11 @@ const { commandKey } = defineProps<{ commandKey: string }>();
 
 <template>
   <div class="not-found">Term "{{ commandKey }}" was not recognized as a command</div>
-  <Hint hint="Type in 'get commands' to get list of all available commands" />
+  <Hint hint="Type in 'get commands' to see list of all available commands" />
 </template>
 
 <style scoped>
 .not-found {
-  color: var(--color-red-error);
+  color: var(--color-neon-yellow);
 }
 </style>

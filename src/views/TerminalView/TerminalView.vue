@@ -38,7 +38,7 @@ const handleCommandSubmition = async (command: string) => {
     <TerminalIntro @finish="renderHint" />
     <Hint
       v-if="hintRendered"
-      hint="Type in 'get commands' to get list of all available commands"
+      hint="Type in 'get commands' to see  list of all available commands"
       @finish="renderInput"
     />
     <DynamicCommand v-for="commandKey in enteredCommandKeys" :command-key="commandKey" />
