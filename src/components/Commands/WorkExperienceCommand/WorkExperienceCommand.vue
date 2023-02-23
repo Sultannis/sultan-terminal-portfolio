@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { onMounted, ref } from "vue";
 import { getCommandDataByKey } from "@/helpers/get-command-data-by-key";
 import type { WorkExperienceCommand } from "@/interfaces/commands.interfaces";
 import WorkPositionItem from "./WorkPosition/WorkPosition.vue";
 import { scrollToStartOfElement } from "@/helpers/scoll-to-start-of-element";
-import { onMounted, ref } from "vue";
 
 onMounted(() => {
   scrollToStartOfElement(workElement.value as unknown as HTMLElement);

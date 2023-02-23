@@ -23,7 +23,9 @@ const renderInput = () => {
 const handleCommandSubmition = async (command: string) => {
   enteredCommandKeys.push(command);
 
-  if (command !== "GET WORK EXPERIENCE") {
+  if (command === "CLEAR") {
+    enteredCommandKeys.length = 0;
+  } else if (command !== "GET WORK EXPERIENCE") {
     setTimeout(scrollToBottomOfThePage, 20);
   }
 };

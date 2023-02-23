@@ -1,50 +1,10 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
-import { GLITCHED_WRITER_OPTIONS_EXTRA_FAST } from "@/constants/glitched-writer-options";
 import type { WorkPosition } from "@/interfaces/work-position.interface";
-import { useElementsConsecutiveRender } from "@/composables/useElementsConsecutiveRender";
-import GlitchedWriter from "vue-glitched-writer";
 
 const { position } = defineProps<{
   position: WorkPosition;
 }>();
 const { companyName, companyUrl, dateRange, achievements, stack } = position;
-
-const emit = defineEmits(["finish"]);
-
-const formattedCompanyName = computed(() => {
-  if (companyUrl) {
-    return `<a target="_blank" style="color: #1acc6b" href="${companyUrl}">${companyName}</a>`;
-  }
-  return companyName;
-});
-const formattedStack = computed(() => {
-  return stack.map((stackItem) => `<div style="margin-right: 5px">‣ ${stackItem}</div>`).join("");
-});
-
-const dateRangeIsRendered = ref(false);
-const stackIsRendered = ref(false);
-
-const { renderedElements: renderedAchievements, renderNextElement } = useElementsConsecutiveRender(
-  achievements.length
-);
-
-const renderDateRange = () => {
-  dateRangeIsRendered.value = true;
-};
-const renderNextAchievement = () => {
-  const done = renderNextElement();
-  if (done) {
-    renderStack();
-  }
-};
-const renderStack = () => {
-  stackIsRendered.value = true;
-};
-
-const handleRenderFinish = () => {
-  emit("finish");
-};
 </script>
 
 <template>
@@ -104,6 +64,10 @@ const handleRenderFinish = () => {
 
 .position__company-name {
   margin-right: 20px;
+  color: var(--color-text-highlighted-green);
+}
+
+.position__company-name > a {
   color: var(--color-text-highlighted-green);
 }
 
