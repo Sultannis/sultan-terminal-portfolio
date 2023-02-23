@@ -32,6 +32,10 @@ const getLinkHref = (url: string) => {
   flex-direction: column;
 }
 
+.contacts__title {
+  color: var(--color-text-highlighted-purple);
+}
+
 .contacts__item {
   margin-top: 10px;
   display: flex;

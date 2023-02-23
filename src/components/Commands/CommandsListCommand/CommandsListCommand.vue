@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onUnmounted } from "vue";
 import { GLITCHED_WRITER_OPTIONS_FAST } from "@/constants/glitched-writer-options";
 import { getCommandDataByKey } from "@/helpers/get-command-data-by-key";
 import type { CommandsListCommand } from "@/interfaces/commands.interfaces";
@@ -26,6 +26,8 @@ const renderNextCommand = () => {
 const getCommandLi = (command: string) => {
   return `<li>${command}</li>`;
 };
+
+onUnmounted(stopTypingSound);
 </script>
 
 <template>
