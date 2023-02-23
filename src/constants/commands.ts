@@ -5,7 +5,7 @@ import telegramIcon from "@/assets/icons/social-networks/telegram.svg";
 
 export const COMMANDS = {
   "GET GENERAL INFORMATION": {
-    title: "Replicant Number <span style='color: #1b00b2'>B-263-54<span/>",
+    title: "Replicant Number <span style='color: #1b00b2'>KD6-3.7<span/>",
     paragraphs: [
       "<span style='color: #1acc6b'>Human name: </span>Sultan Mustafin",
       "<span style='color: #1acc6b'>Occupation: </span>Full stack developer",
@@ -102,7 +102,7 @@ export const COMMANDS = {
     ],
   },
   "GET CONTACT DETAILS": {
-    title: "Replicant data exchange APIs",
+    title: "Replicant's data exchange APIs",
     contacts: [
       {
         iconSrc: telegramIcon,

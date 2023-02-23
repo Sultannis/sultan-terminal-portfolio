@@ -5,16 +5,16 @@ const emit = defineEmits(["submit"]);
 
 const input = ref<HTMLInputElement | null>(null);
 const inputIsFocused = ref(true);
-const inputCaretLeftOffset = ref(81);
+const inputCaretLeftOffset = ref(162);
 const inputValue = ref("");
 
 const setCarotPosition = (event: Event) => {
   const element = event.target as HTMLInputElement;
 
   if (element.selectionStart) {
-    inputCaretLeftOffset.value = 81 + 16 * element.selectionStart;
+    inputCaretLeftOffset.value = 162 + 16 * element.selectionStart;
   } else {
-    inputCaretLeftOffset.value = 81;
+    inputCaretLeftOffset.value = 162;
   }
 };
 
@@ -51,6 +51,9 @@ const focusOnInput = () => {
 
 <template>
   <div class="wrapper">
+    <div class="wrapper__prefix">
+      <span class="wrapper__prefix-green">k<span>@</span>tyrl</span> :/>
+    </div>
     <input
       :value="inputValue"
       class="wrapper__input"
@@ -76,12 +79,15 @@ const focusOnInput = () => {
 .wrapper {
   margin-top: 30px;
   width: 100%;
+
+  display: flex;
+  align-items: center;
   position: relative;
 }
 
 .wrapper__input {
   width: 100%;
-  padding-left: 82px;
+  padding-left: 20px;
 
   background-color: transparent;
 
@@ -95,16 +101,17 @@ const focusOnInput = () => {
   z-index: 3;
 }
 
-.wrapper::before {
-  content: "C:/> ";
+.wrapper__prefix {
+  display: flex;
+  align-items: center;
+}
 
-  color: var(--color-main-red);
+.wrapper__prefix-green {
+  color: var(--color-text-highlighted-light-blue);
+}
 
-  position: absolute;
-  left: 0;
-  top: 0;
-
-  font-size: 24px;
+.wrapper__prefix > span > span {
+  font-family: "Origami";
 }
 
 .wrapper__caret {

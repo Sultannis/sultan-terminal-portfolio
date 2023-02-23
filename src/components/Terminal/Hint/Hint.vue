@@ -32,7 +32,7 @@ const handleFinish = () => {
   display: flex;
   align-items: center;
   margin-top: 30px;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .hint__icon {

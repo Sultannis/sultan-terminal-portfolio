@@ -20,6 +20,8 @@ onUnmounted(() => {
 
 const phrases = ["Hi!", "Welcome to my portfolio", "Type in commands to get more information", ""];
 const renderGlitchWriter = ref(false);
+const displayQuote = ref(false);
+
 let previousStartFired = ref(false);
 let finishCount = 0;
 
@@ -32,10 +34,14 @@ const { startTypingSound, stopTypingSound, startDeletingSound, stopDeletingSound
 
 const spaceClickHandler = (event: KeyboardEvent) => {
   if (event.key === " ") {
-    emit("finish");
-
     stopTypingSound();
     stopDeletingSound();
+
+    displayQuote.value = true;
+    setTimeout(() => {
+      displayQuote.value = false;
+      emit("finish");
+    }, 1);
   }
 };
 
@@ -66,7 +72,11 @@ const handleFinalFinish = () => {
   }, 300);
 
   setTimeout(() => {
-    emit("finish");
+    displayQuote.value = true;
+    setTimeout(() => {
+      displayQuote.value = false;
+      emit("finish");
+    }, 1);
   }, 1000);
 };
 </script>
@@ -75,7 +85,7 @@ const handleFinalFinish = () => {
   <div class="greeting">
     <div class="greeting__row">
       <GlitchedWriter
-        v-if="renderGlitchWriter"
+        v-if="renderGlitchWriter && !displayQuote"
         :text="phrases"
         :options="GLITCHED_WRITER_OPTIONS_SLOW"
         :queue="{
@@ -86,6 +96,7 @@ const handleFinalFinish = () => {
         class="greeting__output"
         appear
       />
+      <template v-if="displayQuote"> By all means, do not use a hammer </template>
       <div :class="[caretClasses, 'greeting__caret']" />
     </div>
   </div>

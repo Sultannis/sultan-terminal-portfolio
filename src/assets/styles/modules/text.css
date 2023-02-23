@@ -29,6 +29,11 @@
   font-weight: 700;
 }
 
+@font-face {
+  font-family: 'Origami';
+  src: url('../../fonts/origami/origami.ttf');
+}
+
 
 input {
   font-family: "Pixeloid", sans-serif;

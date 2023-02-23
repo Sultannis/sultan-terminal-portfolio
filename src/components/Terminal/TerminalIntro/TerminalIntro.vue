@@ -6,7 +6,7 @@ import { useComputerAutomaticTypingSound } from "@/composables/useSound";
 const emit = defineEmits(["finish"]);
 
 const message =
-  "SMZ industries internal policy <br> Remote terminal connection obtained from: <span style='color: #f3d96b'>Turkey</span> at local Time: <span style='color: #f3d96b'>06:37</span>";
+  "Sultan industries internal network <br> Remote terminal connection obtained from: <span style='color: #f3d96b'>Turkey</span> at local Time: <span style='color: #f3d96b'>06:37</span>";
 const { startTypingSound, stopTypingSound } = useComputerAutomaticTypingSound();
 
 const handleStart = () => {
