@@ -42,7 +42,11 @@ const handleCommandSubmition = async (command: string) => {
       @finish="renderInput"
     />
     <DynamicCommand v-for="commandKey in enteredCommandKeys" :command-key="commandKey" />
-    <CommandsInput v-if="inputRendered" @submit="handleCommandSubmition" />
+    <CommandsInput
+      v-if="inputRendered"
+      :entered-command-keys="enteredCommandKeys"
+      @submit="handleCommandSubmition"
+    />
   </div>
 </template>
 

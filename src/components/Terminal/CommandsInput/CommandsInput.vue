@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+const { enteredCommandKeys } = defineProps<{ enteredCommandKeys: string[] }>();
 const emit = defineEmits(["submit"]);
 
 const input = ref<HTMLInputElement | null>(null);
 const inputIsFocused = ref(true);
 const inputCaretLeftOffset = ref(176);
 const inputValue = ref("");
+const currentSelectedCommandIndex = ref(1);
 
 const setCarotPosition = (event: Event) => {
   const element = event.target as HTMLInputElement;
@@ -19,14 +21,28 @@ const setCarotPosition = (event: Event) => {
 };
 
 const handleArrowKeyPress = (event: KeyboardEvent) => {
-  if (event.key.startsWith("Arrow")) {
+  if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
     setCarotPosition(event);
+  } else if (event.key === "ArrowUp") {
+    if (currentSelectedCommandIndex.value > 0) {
+      currentSelectedCommandIndex.value--;
+      inputValue.value = enteredCommandKeys[currentSelectedCommandIndex.value];
+    }
+  } else if (event.key === "ArrowDown") {
+    if (currentSelectedCommandIndex.value < enteredCommandKeys.length - 1) {
+      currentSelectedCommandIndex.value++;
+      inputValue.value = enteredCommandKeys[currentSelectedCommandIndex.value];
+    }
   }
 };
 
 const handleCommandInput = (event: Event) => {
   const element = event.target as HTMLInputElement;
   setCarotPosition(event);
+
+  if (currentSelectedCommandIndex.value <= enteredCommandKeys.length - 1) {
+    currentSelectedCommandIndex.value = enteredCommandKeys.length;
+  }
 
   inputValue.value = element.value.toUpperCase();
 };
@@ -42,6 +58,8 @@ const handleSubmit = (event: Event) => {
 
   setCarotPosition(event);
   focusOnInput();
+
+  currentSelectedCommandIndex.value = enteredCommandKeys.length;
 };
 
 const focusOnInput = () => {
