@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import { playKeyPressSound } from "@/composables/useSound";
+import { findUserCountry } from "@/helpers/get-user-coutry";
 
 const emit = defineEmits(["start"]);
 
 onMounted(() => {
   window.addEventListener("keyup", enterClickHandler, { once: true });
+  findUserCountry();
 });
 
 onUnmounted(() => {
