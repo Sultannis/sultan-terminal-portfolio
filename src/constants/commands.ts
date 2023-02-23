@@ -96,6 +96,31 @@ export const COMMANDS = {
       },
     ],
   },
+  "GET CONTACT DETAILS": {
+    title: "Replicant data exchange APIs",
+    links: [
+      {
+        iconSrc: "",
+        title: "telegram",
+        url: "https://telegram.me/Sultan_Mus",
+      },
+      {
+        iconSrc: "",
+        title: "intagram",
+        url: "https://www.instagram.com/its.sultanmustafin",
+      },
+      {
+        iconSrc: "",
+        title: "linkedin",
+        url: "https://www.linkedin.com/in/sultan-mustafin",
+      },
+      {
+        iconSrc: "",
+        title: "sultan.fb29@gmail.com",
+        url: "sultan.fb29@gmail.com",
+      },
+    ],
+  },
   "GET COMMANDS": {
     title: "Available commands",
     commands: [
