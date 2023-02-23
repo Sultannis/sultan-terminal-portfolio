@@ -5,16 +5,16 @@ const emit = defineEmits(["submit"]);
 
 const input = ref<HTMLInputElement | null>(null);
 const inputIsFocused = ref(true);
-const inputCaretLeftOffset = ref(186);
+const inputCaretLeftOffset = ref(176);
 const inputValue = ref("");
 
 const setCarotPosition = (event: Event) => {
   const element = event.target as HTMLInputElement;
 
   if (element.selectionStart) {
-    inputCaretLeftOffset.value = 186 + 16 * element.selectionStart;
+    inputCaretLeftOffset.value = 176 + 16 * element.selectionStart;
   } else {
-    inputCaretLeftOffset.value = 186;
+    inputCaretLeftOffset.value = 176;
   }
 };
 
@@ -85,7 +85,8 @@ const focusOnInput = () => {
 
 .commands-input__input {
   width: 100%;
-  padding-left: 20px;
+  padding-left: 10px;
+  margin-bottom: -3px;
 
   background-color: transparent;
 
