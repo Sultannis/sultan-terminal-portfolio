@@ -10,7 +10,7 @@ const componentToDisplay = getCommandComponentByKey(commandKey);
 
 <template>
   <div class="command">
-    <component :is="componentToDisplay" />
+    <component :is="componentToDisplay" :command-key="commandKey" />
   </div>
 </template>
 

@@ -23,13 +23,13 @@ const renderInput = () => {
 
 const handleCommandSubmition = async (command: string) => {
   if (command === "CLEAR") {
-    enteredCommandKeys.length = 0;
+    return (enteredCommandKeys.length = 0);
   } else if (command === "DOWNLOAD CV") {
-    downloadCv();
+    return downloadCv();
   } else if (command !== "GET WORK EXPERIENCE") {
     setTimeout(scrollToBottomOfThePage, 20);
-    enteredCommandKeys.push(command);
   }
+  enteredCommandKeys.push(command);
 };
 </script>
 

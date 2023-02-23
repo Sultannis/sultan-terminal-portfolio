@@ -41,6 +41,10 @@ const handleSubmit = (event: Event) => {
   }
 
   setCarotPosition(event);
+  focusOnInput();
+};
+
+const focusOnInput = () => {
   input.value?.focus();
 };
 </script>
@@ -56,10 +60,15 @@ const handleSubmit = (event: Event) => {
       @keyup="handleArrowKeyPress"
       @keyup.enter="handleSubmit"
       @focus="() => (inputIsFocused = true)"
-      @focusout="() => (inputIsFocused = false)"
+      @focusout="focusOnInput"
+      @blur="focusOnInput"
       @click="setCarotPosition"
     />
-    <div class="text-long-blink wrapper__caret" :style="{ left: inputCaretLeftOffset + 'px' }" />
+    <div
+      v-if="inputIsFocused"
+      class="text-long-blink wrapper__caret"
+      :style="{ left: inputCaretLeftOffset + 'px' }"
+    />
   </div>
 </template>
 
