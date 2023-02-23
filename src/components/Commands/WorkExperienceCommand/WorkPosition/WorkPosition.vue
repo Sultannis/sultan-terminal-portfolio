@@ -42,10 +42,6 @@ const renderStack = () => {
   stackIsRendered.value = true;
 };
 
-const getAchievementLi = (achievement: string) => {
-  return `<li>${achievement}</li>`;
-};
-
 const handleRenderFinish = () => {
   emit("finish");
 };
@@ -54,47 +50,28 @@ const handleRenderFinish = () => {
 <template>
   <div class="position">
     <div class="position__row">
-      <GlitchedWriter
-        :text="formattedCompanyName"
-        :options="GLITCHED_WRITER_OPTIONS_EXTRA_FAST"
-        @finish="renderDateRange"
-        class="position__company-name"
-        appear
-      />
-      <GlitchedWriter
-        v-if="dateRangeIsRendered"
-        :text="dateRange"
-        :options="GLITCHED_WRITER_OPTIONS_EXTRA_FAST"
-        @finish="renderNextAchievement"
-        class="position__date-range"
-        appear
-      />
+      <div class="position__company-name">
+        <a v-if="companyUrl" target="_blank" :href="companyUrl">{{ companyName }}</a>
+        <span v-else>{{ companyName }}</span>
+      </div>
+      <div class="position__date-range">
+        {{ dateRange }}
+      </div>
     </div>
     <div class="position__row">
       <div class="position__achievements">
         <div class="position__title">Achievements</div>
-        <ul class="position__achievements-list">
-          <template v-for="(achievement, index) in achievements">
-            <GlitchedWriter
-              v-if="renderedAchievements[index]"
-              :text="getAchievementLi(achievement)"
-              :options="GLITCHED_WRITER_OPTIONS_EXTRA_FAST"
-              @finish="renderNextAchievement"
-              appear
-            />
-          </template>
+        <ul ref="positionAchievements" class="position__achievements-list">
+          <li v-for="achievement in achievements">
+            {{ achievement }}
+          </li>
         </ul>
       </div>
       <div class="position__stack">
         <div class="position__title">Stack</div>
-        <GlitchedWriter
-          v-if="stackIsRendered"
-          :text="formattedStack"
-          :options="GLITCHED_WRITER_OPTIONS_EXTRA_FAST"
-          @finish="handleRenderFinish"
-          class="position__stack-content"
-          appear
-        />
+        <div class="position__stack-content">
+          <div v-for="stackItem in stack" class="position__stack-item">‣ {{ stackItem }}</div>
+        </div>
       </div>
     </div>
     <div class="position__borders">
@@ -172,5 +149,9 @@ const handleRenderFinish = () => {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+}
+
+.position__stack-item {
+  margin-right: 10px;
 }
 </style>

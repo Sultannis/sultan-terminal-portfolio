@@ -23,7 +23,9 @@ const renderInput = () => {
 const handleCommandSubmition = async (command: string) => {
   enteredCommandKeys.push(command);
 
-  setTimeout(scrollToBottomOfThePage, 100);
+  if (command !== "GET WORK EXPERIENCE") {
+    setTimeout(scrollToBottomOfThePage, 20);
+  }
 };
 </script>
 
