@@ -50,13 +50,11 @@ const focusOnInput = () => {
 </script>
 
 <template>
-  <div class="wrapper">
-    <div class="wrapper__prefix">
-      <span class="wrapper__prefix-green">k<span>@</span>tyrl</span> :/>
-    </div>
+  <div class="commands-input">
+    <div class="commands-input__prefix">k<span>@</span>tyrell<span>:</span>$</div>
     <input
       :value="inputValue"
-      class="wrapper__input"
+      class="commands-input__input"
       ref="input"
       autofocus
       @input="handleCommandInput"
@@ -69,14 +67,14 @@ const focusOnInput = () => {
     />
     <div
       v-if="inputIsFocused"
-      class="text-long-blink wrapper__caret"
+      class="text-long-blink commands-input__caret"
       :style="{ left: inputCaretLeftOffset + 'px' }"
     />
   </div>
 </template>
 
 <style scoped>
-.wrapper {
+.commands-input {
   margin-top: 30px;
   width: 100%;
 
@@ -85,7 +83,7 @@ const focusOnInput = () => {
   position: relative;
 }
 
-.wrapper__input {
+.commands-input__input {
   width: 100%;
   padding-left: 20px;
 
@@ -96,25 +94,26 @@ const focusOnInput = () => {
   font-size: 24px;
   text-shadow: var(--main-shadow);
 
-  color: var(--color-main-red);
+  color: white;
   caret-color: transparent;
   z-index: 3;
 }
 
-.wrapper__prefix {
-  display: flex;
-  align-items: center;
+.commands-input__prefix {
+  text-align: center;
+  white-space: nowrap;
 }
 
-.wrapper__prefix-green {
-  color: var(--color-text-highlighted-light-blue);
-}
-
-.wrapper__prefix > span > span {
+.commands-input__prefix > span {
+  font-size: 24px;
   font-family: "Origami";
 }
 
-.wrapper__caret {
+.commands-input__prefix > span:last-child {
+  margin: 0 5px;
+}
+
+.commands-input__caret {
   height: 24px;
   width: 16px;
 
