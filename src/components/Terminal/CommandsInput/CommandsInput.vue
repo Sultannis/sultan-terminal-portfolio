@@ -1,33 +1,53 @@
 <script setup lang="ts">
 import { COMMANDS } from "@/constants/commands";
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 
 const { enteredCommandKeys } = defineProps<{ enteredCommandKeys: string[] }>();
 const emit = defineEmits(["submit"]);
 
 const input = ref<HTMLInputElement | null>(null);
 const inputIsFocused = ref(true);
-const inputCaretLeftOffset = ref(151);
+const inputCaretLeftOffset = ref(0);
 const inputValue = ref("");
 const currentSelectedCommandIndex = ref(1);
+const windowWidth = window.innerWidth;
+const baseOffset = ref(0);
+const singleCharacterOffset = ref(0);
 
 const commandMatches = computed(() => {
   return inputValue.value in COMMANDS;
 });
 
-const setCarotPosition = (event: Event) => {
+onMounted(() => {
+  if (windowWidth > 1024) {
+    baseOffset.value = 151;
+    inputCaretLeftOffset.value = baseOffset.value;
+    singleCharacterOffset.value = 13.333;
+  } else if (windowWidth > 768) {
+    singleCharacterOffset.value = 10.67;
+    baseOffset.value = 125;
+    inputCaretLeftOffset.value = baseOffset.value;
+  } else {
+    singleCharacterOffset.value = 8.66;
+    baseOffset.value = 105.6;
+    inputCaretLeftOffset.value = baseOffset.value;
+  }
+});
+
+const setCaretPosition = (event: Event) => {
   const element = event.target as HTMLInputElement;
 
   if (element.selectionStart) {
-    inputCaretLeftOffset.value = 151 + 13.333 * element.selectionStart;
+    inputCaretLeftOffset.value =
+      baseOffset.value + singleCharacterOffset.value * element.selectionStart;
   } else {
-    inputCaretLeftOffset.value = 151;
+    inputCaretLeftOffset.value = baseOffset.value;
   }
 };
 
 const handleArrowKeyPress = (event: KeyboardEvent) => {
   if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
-    setCarotPosition(event);
+    setCaretPosition(event);
   } else if (event.key === "ArrowUp") {
     if (currentSelectedCommandIndex.value > 0) {
       currentSelectedCommandIndex.value--;
@@ -43,7 +63,7 @@ const handleArrowKeyPress = (event: KeyboardEvent) => {
 
 const handleCommandInput = (event: Event) => {
   const element = event.target as HTMLInputElement;
-  setCarotPosition(event);
+  setCaretPosition(event);
 
   if (currentSelectedCommandIndex.value <= enteredCommandKeys.length - 1) {
     currentSelectedCommandIndex.value = enteredCommandKeys.length;
@@ -61,7 +81,7 @@ const handleSubmit = (event: Event) => {
     element.value = "";
   }
 
-  setCarotPosition(event);
+  setCaretPosition(event);
   focusOnInput();
 
   currentSelectedCommandIndex.value = enteredCommandKeys.length;
@@ -87,7 +107,7 @@ const focusOnInput = () => {
       @focus="() => (inputIsFocused = true)"
       @focusout="focusOnInput"
       @blur="focusOnInput"
-      @click="setCarotPosition"
+      @click="setCaretPosition"
     />
     <div
       v-if="inputIsFocused"
@@ -154,8 +174,36 @@ const focusOnInput = () => {
 }
 
 @media screen and (max-width: 1024px) {
+  .commands-input {
+    margin-top: 15px;
+  }
+
   .commands-input__input {
     font-size: 16px;
+  }
+
+  .commands-input__caret {
+    height: 16px;
+    width: 10px;
+
+    top: 7px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .commands-input {
+    margin-top: 10px;
+  }
+
+  .commands-input__input {
+    font-size: 13px;
+  }
+
+  .commands-input__caret {
+    height: 13px;
+    width: 8px;
+
+    top: 5px;
   }
 }
 </style>

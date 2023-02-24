@@ -142,7 +142,7 @@ const check = () => {
   box-shadow: 10px 0px 0px rgba(0, 0, 0, 1);
 
   position: absolute;
-  top: 0px;
+  top: 4px;
   left: 6px;
 }
 
