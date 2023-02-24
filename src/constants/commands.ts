@@ -2,6 +2,7 @@ import gmailIcon from "@/assets/icons/social-networks/gmail.svg";
 import instagramIcon from "@/assets/icons/social-networks/instagram.svg";
 import linkedinIcon from "@/assets/icons/social-networks/linkedin.svg";
 import telegramIcon from "@/assets/icons/social-networks/telegram.svg";
+import githubIcon from "@/assets/icons/social-networks/github.svg";
 
 export const COMMANDS = {
   "GET GENERAL INFORMATION": {
@@ -105,19 +106,24 @@ export const COMMANDS = {
     title: "Replicant's data exchange APIs",
     contacts: [
       {
+        iconSrc: linkedinIcon,
+        title: "linkedin",
+        url: "https://www.linkedin.com/in/sultan-mustafin",
+      },
+      {
         iconSrc: telegramIcon,
         title: "telegram",
         url: "https://telegram.me/Sultan_Mus",
       },
       {
+        iconSrc: githubIcon,
+        title: "github",
+        url: "https://github.com/Sultannis",
+      },
+      {
         iconSrc: instagramIcon,
         title: "intagram",
         url: "https://www.instagram.com/its.sultanmustafin",
-      },
-      {
-        iconSrc: linkedinIcon,
-        title: "linkedin",
-        url: "https://www.linkedin.com/in/sultan-mustafin",
       },
       {
         iconSrc: gmailIcon,
