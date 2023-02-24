@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { onMounted, ref, shallowRef, type ShallowRef } from "vue";
+import { ref, shallowRef, type ShallowRef } from "vue";
 import { PowerGlitch } from "powerglitch";
 import { powerGlitchOptions, usePageGlitches } from "@/composables/useGlitches";
 import { startStaticNoise } from "@/composables/useSound";
 import PageMasks from "@/components/Common/PageMasks/PageMasks.vue";
-import HomeGreeting from "@/components/home/HomeGreeting/HomeGreeting.vue";
 import TerminalView from "@/views/TerminalView/TerminalView.vue";
+import HomeGreeting from "@/components/Home/HomeGreeting/HomeGreeting.vue";
 
 const glitch = ref(null);
 
@@ -17,10 +17,7 @@ const handleGreetingFinish = () => {
 
   if (!glitch.value) return;
 
-  const { startGlitch, stopGlitch } = PowerGlitch.glitch(
-    glitch.value,
-    powerGlitchOptions
-  );
+  const { startGlitch, stopGlitch } = PowerGlitch.glitch(glitch.value, powerGlitchOptions);
 
   usePageGlitches(startGlitch, stopGlitch);
   startStaticNoise();

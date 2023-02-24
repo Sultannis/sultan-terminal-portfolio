@@ -39,9 +39,8 @@ const spaceClickHandler = (event: KeyboardEvent) => {
 
     displayQuote.value = true;
     setTimeout(() => {
-      displayQuote.value = false;
       emit("finish");
-    }, 1);
+    }, 200);
   }
 };
 
@@ -74,9 +73,8 @@ const handleFinalFinish = () => {
   setTimeout(() => {
     displayQuote.value = true;
     setTimeout(() => {
-      displayQuote.value = false;
       emit("finish");
-    }, 1);
+    }, 200);
   }, 1000);
 };
 </script>
@@ -97,7 +95,7 @@ const handleFinalFinish = () => {
         appear
       />
       <Transition>
-        <template v-if="displayQuote"> By all means, do not use a hammer </template>
+        <div v-if="displayQuote">By all means, do not use a hammer</div>
       </Transition>
       <div :class="[caretClasses, 'greeting__caret']" />
     </div>
@@ -134,7 +132,7 @@ const handleFinalFinish = () => {
 
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 2s ease;
+  transition: opacity 5s ease-out;
 }
 
 .v-enter-from,
