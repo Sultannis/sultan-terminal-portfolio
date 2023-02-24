@@ -135,6 +135,7 @@ export const COMMANDS = {
       "GET COMMANDS",
       "DOWNLOAD CV",
       "CLEAR",
+      "MUSIC",
     ],
   },
 };

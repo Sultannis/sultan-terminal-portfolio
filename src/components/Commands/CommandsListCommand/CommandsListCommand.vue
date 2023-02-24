@@ -6,6 +6,7 @@ import type { CommandsListCommand } from "@/interfaces/commands.interfaces";
 import { useElementsConsecutiveRender } from "@/composables/useElementsConsecutiveRender";
 import { useComputerAutomaticTypingSound } from "@/composables/useSound";
 import GlitchedWriter from "vue-glitched-writer";
+import { songIsPlaying } from "@/composables/useSong";
 
 const { title, commands } = getCommandDataByKey("GET COMMANDS") as CommandsListCommand;
 
@@ -24,6 +25,13 @@ const renderNextCommand = () => {
 };
 
 const getCommandLi = (command: string) => {
+  if (command.includes("MUSIC")) {
+    if (songIsPlaying.value) {
+      return `<li>STOP MUSIC</li>`;
+    } else {
+      return `<li>PLAY SOME MUSIC</li>`;
+    }
+  }
   return `<li>${command}</li>`;
 };
 

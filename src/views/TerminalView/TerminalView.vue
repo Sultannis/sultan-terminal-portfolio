@@ -6,6 +6,7 @@ import TerminalIntro from "@/components/Terminal/TerminalIntro/TerminalIntro.vue
 import DynamicCommand from "@/components/Terminal/DynamicCommand/DynamicCommand.vue";
 import Hint from "@/components/Terminal/Hint/Hint.vue";
 import CommandsInput from "@/components/Terminal/CommandsInput/CommandsInput.vue";
+import { startSong, stopSong } from "@/composables/useSong";
 
 const enteredCommandKeys: string[] = reactive([]);
 
@@ -26,6 +27,10 @@ const handleCommandSubmition = async (command: string) => {
     return (enteredCommandKeys.length = 0);
   } else if (command === "DOWNLOAD CV") {
     return downloadCv();
+  } else if (command === "PLAY SOME MUSIC") {
+    return startSong();
+  } else if (command === "STOP MUSIC") {
+    return stopSong();
   } else if (command !== "GET WORK EXPERIENCE") {
     setTimeout(scrollToBottomOfThePage, 20);
   }
