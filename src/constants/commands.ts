@@ -13,6 +13,7 @@ export const COMMANDS = {
       "<span style='color: #1acc6b'>Stack: </span> <br>‣ JavaScript  ‣ TypeScript  ‣ Node Js  ‣ Vue Js 2/3  ‣ Vuex  ‣ Express Js  ‣ Nest Js  ‣ TypeORM  ‣ Socket IO  ‣ PostgreSQL  ‣ MySQL  ‣ Docker  ‣ HTML  ‣ CSS  ‣ Git",
       "<span style='color: #1acc6b'>Status: </span/>Open for work",
       "<span style='color: #1acc6b'>Special abilities: </span> <br>‣ accelerated learning  ‣ bugs resistance  ‣ test writing",
+      "<span style='color: #1acc6b'>Experience: </span> <br>‣ work at startups  ‣ remote work  ‣ hackathons",
       "<span style='color: #1acc6b'>Last identified location: </span>40.985856, 29.024999",
     ],
   },

@@ -77,10 +77,17 @@ const handleFinalFinish = () => {
     }, 200);
   }, 1000);
 };
+
+const check = () => {
+  renderGlitchWriter.value = false;
+  setTimeout(() => {
+    renderGlitchWriter.value = true;
+  }, 0);
+};
 </script>
 
 <template>
-  <div class="greeting">
+  <div class="greeting" @click="check">
     <div class="greeting__row">
       <GlitchedWriter
         v-if="renderGlitchWriter && !displayQuote"
@@ -94,10 +101,12 @@ const handleFinalFinish = () => {
         class="greeting__output"
         appear
       />
+      <span class="greeting__empty">
+        <div :class="[caretClasses, 'greeting__caret']" />
+      </span>
       <Transition>
         <div v-if="displayQuote">By all means, do not use a hammer</div>
       </Transition>
-      <div :class="[caretClasses, 'greeting__caret']" />
     </div>
   </div>
 </template>
@@ -114,17 +123,27 @@ const handleFinalFinish = () => {
 }
 
 .greeting__row {
-  display: flex;
-  align-items: center;
+  text-align: center;
+}
+
+.greeting__output {
+  text-align: center;
+}
+
+.greeting__empty {
+  height: 24px;
+  position: relative;
 }
 
 .greeting__caret {
   height: 24px;
   width: 18px;
-  margin-left: 10px;
-
   background: var(--color-main-red);
   box-shadow: 10px 0px 0px rgba(0, 0, 0, 1);
+
+  position: absolute;
+  top: 0px;
+  left: 6px;
 }
 
 .greeting__caret_hidden {

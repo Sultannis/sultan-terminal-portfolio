@@ -52,4 +52,16 @@ const handleGreetingFinish = () => {
   font-size: 20px;
   font-weight: 700;
 }
+
+@media screen and (max-width: 1100px) {
+  .home__content {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home__content {
+    padding: 0 15px;
+  }
+}
 </style>
