@@ -1,0 +1,16 @@
+:root {
+  --color-background-dark: #000;
+  --color-background-red: #210c1e;
+  
+  --gradient-background: radial-gradient(circle, var(--color-background-red) 0%, var(--color-background-dark) 77%);
+
+  --color-main-red: #bd0808;
+  --color-main-red-transparent: #bd0820bb;
+  --color-neon-yellow: #cfff04;
+  --color-text-highlighted-blue: #1b00b2;
+  --color-text-highlighted-yellow: #f3d96b;
+  --color-text-highlighted-green: #1acc6b;
+  --color-text-highlighted-purple: #730fa2;
+
+  --main-shadow: 10px 0px 0px rgba(0, 0, 0, 1);
+}

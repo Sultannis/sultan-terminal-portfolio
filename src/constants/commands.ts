@@ -1,135 +1,161 @@
-export const Commands = [
-  {
-    commandIdentifier: "about",
-    title: "About",
-    type: "Available records",
-    lines: [
-      "- Sultan Mustafin Zhenisovich",
-      "- Date of birth: 18/11/2002",
-      "- Place of birth: Taraz, South Kazakhstan",
-      "- StartUp enthusiast",
-      "- Web developer",
+import gmailIcon from "@/assets/icons/social-networks/gmail.svg";
+import instagramIcon from "@/assets/icons/social-networks/instagram.svg";
+import linkedinIcon from "@/assets/icons/social-networks/linkedin.svg";
+import telegramIcon from "@/assets/icons/social-networks/telegram.svg";
+import githubIcon from "@/assets/icons/social-networks/github.svg";
+
+export const COMMANDS = {
+  "GET GENERAL INFORMATION": {
+    title: "Replicant Number <span style='color: #1b00b2'>KD6-3.7<span/>",
+    paragraphs: [
+      "<span style='color: #1acc6b'>Human name: </span>Sultan Mustafin <br>",
+      "<span style='color: #1acc6b'>Status: </span/>Open for work<br>",
+      "<span style='color: #1acc6b'>Special abilities: </span> <br>‣ accelerated learning  ‣ bugs resistance  ‣ test writing<br>",
+      "<span style='color: #1acc6b'>Experience: </span> <br>‣ work at startups  ‣ remote work  ‣ hackathons<br>",
+      "<span style='color: #1acc6b'>Last identified location: </span>40.985856, 29.024999<br>",
+      "<span style='color: #1acc6b'>Occupation: </span>Full stack developer<br>",
+      "<span style='color: #1acc6b'>Stack: </span> <br>‣ JavaScript  ‣ TypeScript  ‣ Node Js  ‣ Vue Js 2/3  ‣ Vuex  ‣ Express Js  ‣ Nest Js  ‣ TypeORM  ‣ Socket IO  ‣ PostgreSQL  ‣ MySQL  ‣ Docker  ‣ HTML  ‣ CSS  ‣ Git<br>",
     ],
-    projects: [],
-    lists: [],
-    imageName: "glitched-about.gif",
-    links: [],
-    hints: ["Type ‘work’ to open the work experience"],
-    error: "",
+    shorterParagraphs: [
+      "<span style='color: #1acc6b'>Human name: </span>Sultan Mustafin <br>",
+      "<span style='color: #1acc6b'>Status: </span/>Open for work<br>",
+      "<span style='color: #1acc6b'>Special abilities: </span>‣ accelerated learning  ‣ bugs resistance  ‣ test writing<br>",
+      "<span style='color: #1acc6b'>Experience: </span>‣ work at startups  ‣ remote work  ‣ hackathons<br>",
+      "<span style='color: #1acc6b'>Last identified location: </span>40.985856, 29.024999<br>",
+      "<span style='color: #1acc6b'>Occupation: </span>Full stack developer<br>",
+      "<span style='color: #1acc6b'>Stack: </span>‣ JavaScript  ‣ TypeScript  ‣ Node Js  ‣ Vue Js 2/3  ‣ Vuex  ‣ Express Js  ‣ Nest Js  ‣ TypeORM  ‣ Socket IO  ‣ PostgreSQL  ‣ MySQL  ‣ Docker  ‣ HTML  ‣ CSS  ‣ Git<br>",
+    ],
   },
-  {
-    commandIdentifier: "work",
-    title: "Experience as a web developer",
-    type: "web-developer",
-    lines: [
-      "- Working as a commercial web developer since January of 2019",
-      "- Specialize on creating web platforms that allow close interaction with end user. Actively involved and interested in developing independent projects and startups. Lately been working in EdTech and E-commerce spheres.",
-    ],
-    projects: [],
-    lists: [
+  "GET WORK EXPERIENCE": {
+    title: "Work Experience",
+    positions: [
       {
-        title: "- Skills",
-        items: [
-          "JavaScript",
+        companyName: "Bultech",
+        companyUrl: "https://prosklad.kz",
+        dateRange: "dec. 2021 - dec.2022",
+        achievements: [
+          "Created and launched intercorporate employees revenue tracking system and a CRM platform for business management",
+          "Administrated a team consisting of 2 Fullstack developers and reviewed loads of code",
+          "Lead transition of code base to TypeScript, developed new landing page which increased conversion by 63% on one of internal projects",
+        ],
+        stack: [
+          "Vue Js 3",
+          "Node Js",
+          "Express Js",
+          "Nest Js",
+          "PostgreSQL",
           "TypeScript",
-          "Vue js",
-          "Nuxt js",
-          "Node js",
-          "Nest js",
-          "Express js  ",
+          "Jest",
+          "Docker",
+          "Socket IO",
+          "TypeORM",
+          "Git",
           "HTML",
           "CSS",
         ],
       },
+      {
+        companyName: "Sali Market",
+        dateRange: "jan. 2021 - dec. 2021",
+        achievements: [
+          "Created and designed online plumbing equipment store, which allowed business owners to distribute product between multiple cities",
+          "Developed database architecture and created RESTful API",
+          "Set up development environment and created SPA with more than 25 dynamic pages",
+          "Set up SSR to several static pages to enhance SEO optimization",
+        ],
+        stack: [
+          "Vue Js",
+          "Vuex",
+          "Node Js",
+          "Express Js",
+          "Nest Js",
+          "MySql",
+          "TypeScript",
+          "Jest",
+          "Objection",
+          "Git",
+          "HTML",
+          "CSS",
+        ],
+      },
+      {
+        companyName: "UnApp Space",
+        companyUrl: "https://unapp.space",
+        dateRange: "feb. 2020 - jan. 2021",
+        achievements: [
+          "Developed online university admission educational platform",
+          "Set up S3 static file storage, created SPA with more than 10 dynamic pages",
+          "Implemented online payment system which increased sales conversion by 18%",
+        ],
+        stack: [
+          "Vue Js",
+          "Vuex",
+          "Node Js",
+          "Express Js",
+          "Nest Js",
+          "MySql",
+          "TypeScript",
+          "TypeORM",
+          "Git",
+          "HTML",
+          "CSS",
+        ],
+      },
+      {
+        companyName: "Linco",
+        dateRange: "sept. 2019 - feb. 2020",
+        achievements: [
+          "Created platform for private educational institutions that allows to track student’s grades and progress",
+          "Developed adaptive SPA and integrated RESTful API endpoints",
+        ],
+        stack: ["Vue Js", "Vuex", "MySql", "JavaScript", "Git", "HTML", "CSS"],
+      },
     ],
-    imageName: "",
-    links: [],
-    hints: ["Type ‘projects’ to see the list of projects"],
-    error: "",
   },
-  {
-    commandIdentifier: "commands",
+  "GET CONTACT DETAILS": {
+    title: "Replicant's data exchange APIs",
+    contacts: [
+      {
+        iconSrc: linkedinIcon,
+        title: "linkedin",
+        url: "https://www.linkedin.com/in/sultan-mustafin",
+      },
+      {
+        iconSrc: telegramIcon,
+        title: "telegram",
+        url: "https://telegram.me/Sultan_Mus",
+      },
+      {
+        iconSrc: githubIcon,
+        title: "github",
+        url: "https://github.com/Sultannis",
+      },
+      {
+        iconSrc: instagramIcon,
+        title: "intagram",
+        url: "https://www.instagram.com/its.sultanmustafin",
+      },
+      {
+        iconSrc: gmailIcon,
+        title: "sultan.fb29@gmail.com",
+        url: "https://www.sultan.fb29@gmail.com",
+      },
+    ],
+  },
+  "GET COMMANDS": {
     title: "Available commands",
-    type: "available-commands",
-    lines: [],
-    projects: [],
-    lists: [
-      {
-        title: "",
-        items: ["about", "work", "commands", "projects", "contacts", "clear"],
-      },
+    commands: [
+      "GET GENERAL INFORMATION",
+      "GET WORK EXPERIENCE",
+      "GET CONTACT DETAILS",
+      "GET COMMANDS",
+      "DOWNLOAD CV",
+      "CLEAR",
+      "MUSIC",
     ],
-    imageName: "",
-    links: [],
-    hints: [],
-    error: "",
   },
-  {
-    commandIdentifier: "projects",
-    title: "Projects",
-    type: "projects",
-    lines: [],
-    projects: [
-      {
-        linkTitle: "UnApp Space",
-        link: "https://unapp.space",
-        description:
-          "Educational platform for university admission process preparation.",
-        content:
-          "Created frontend application using Vue Js and RESTful API using Nest Js. Was one of co-founders of the startup and was actively involved in management and bussines decisions of the team. Implemented the online payment system",
-      },
-      {
-        linkTitle: "Sali Market",
-        link: "",
-        description: "Online shop for plumber equipment sale.",
-        content:
-          "Created online platform for selling plumbing equipment. Developed responsive frontend application using Nuxt Js framework. Created user interface design and designed MySql database architecture. Created RESTful API using Nest js framework and Knex js ORM. Configured SSR data fetch. Used TypeScript to integrate typing for every layer of application.",
-      },
-    ],
-    lists: [],
-    imageName: "",
-    links: [],
-    hints: [],
-    error: "",
-  },
-  {
-    commandIdentifier: "contacts",
-    title: "Contact me",
-    type: "contact",
-    projects: [],
-    lines: [],
-    lists: [],
-    imageName: "",
-    links: [
-      {
-        title: "Instagram",
-        linkTitle: "https://www.instagram.com/itsjustsulya",
-        link: "https://www.instagram.com/itsjustsulya",
-      },
-      {
-        title: "LinkedIn",
-        linkTitle: "https://www.linkedin.com/in/sultan-mustafin-44382b1a6",
-        link: "https://www.linkedin.com/in/sultan-mustafin-44382b1a6",
-      },
-      {
-        title: "Telegram",
-        linkTitle: "https://t.me/Sultan_Mus",
-        link: "https://t.me/Sultan_Mus",
-      },
-    ],
-    hints: [],
-    error: "",
-  },
-  {
-    commandIdentifier: "clear",
-    title: "",
-    type: "clear",
-    lines: [],
-    projects: [],
-    lists: [],
-    imageName: "",
-    links: [],
-    hints: [],
-    error: "",
-  },
-];
+  CLEAR: null,
+  "DOWNLOAD CV": null,
+  "PLAY SOME MUSIC": null,
+  "STOP THE MUSIC": null,
+};

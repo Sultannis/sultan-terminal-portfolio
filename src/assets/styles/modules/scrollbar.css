@@ -1,0 +1,13 @@
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-main-red);
+}
+
+@media screen and (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+}

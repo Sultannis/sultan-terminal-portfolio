@@ -1,0 +1,5 @@
+export type CommandKeys =
+  | "GET GENERAL INFORMATION"
+  | "GET WORK EXPERIENCE"
+  | "GET CONTACT DETAILS"
+  | "GET COMMANDS";
