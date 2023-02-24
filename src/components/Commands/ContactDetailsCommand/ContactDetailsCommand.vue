@@ -50,4 +50,18 @@ const getLinkHref = (url: string) => {
 .contacts__link > a {
   color: var(--color-main-red);
 }
+
+@media screen and (max-width: 1024px) {
+  .contacts__icon {
+    margin-right: 10px;
+    width: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contacts__icon {
+    margin-right: 10px;
+    width: 25px;
+  }
+}
 </style>
