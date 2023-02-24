@@ -77,17 +77,10 @@ const handleFinalFinish = () => {
     }, 200);
   }, 1000);
 };
-
-const check = () => {
-  renderGlitchWriter.value = false;
-  setTimeout(() => {
-    renderGlitchWriter.value = true;
-  }, 0);
-};
 </script>
 
 <template>
-  <div class="greeting" @click="check">
+  <div class="greeting">
     <div class="greeting__row">
       <GlitchedWriter
         v-if="renderGlitchWriter && !displayQuote"

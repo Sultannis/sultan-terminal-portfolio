@@ -17,6 +17,7 @@ export interface CommandsListCommand extends Command {
 export interface GeneralInformationCommand extends Command {
   title: string;
   paragraphs: string[];
+  shorterParagraphs: string[];
 }
 
 export interface ContactDetailsCommand extends Command {
