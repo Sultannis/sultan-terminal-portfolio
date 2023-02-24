@@ -106,6 +106,7 @@ const handleFinalFinish = () => {
 .greeting {
   min-height: 100vh;
   width: 100%;
+  font-size: 24px;
 
   display: flex;
   align-items: center;

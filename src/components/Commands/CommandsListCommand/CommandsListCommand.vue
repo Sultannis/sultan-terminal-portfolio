@@ -10,7 +10,7 @@ import { songIsPlaying } from "@/composables/useSong";
 
 const { title, commands } = getCommandDataByKey("GET COMMANDS") as CommandsListCommand;
 
-const commandListContentHeight = computed(() => commands.length * 38.4 + "px");
+const commandListContentHeight = computed(() => commands.length * 32 + "px");
 
 const { startTypingSound, stopTypingSound } = useComputerAutomaticTypingSound();
 const { renderedElements: renderedCommands, renderNextElement } = useElementsConsecutiveRender(

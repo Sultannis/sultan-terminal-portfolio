@@ -48,6 +48,6 @@ const getLinkHref = (url: string) => {
 }
 
 .contacts__link > a {
-  color: var(--color-text-highlighted-green);
+  color: var(--color-main-red);
 }
 </style>
