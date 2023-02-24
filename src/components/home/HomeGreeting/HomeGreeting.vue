@@ -96,7 +96,9 @@ const handleFinalFinish = () => {
         class="greeting__output"
         appear
       />
-      <template v-if="displayQuote"> By all means, do not use a hammer </template>
+      <Transition>
+        <template v-if="displayQuote"> By all means, do not use a hammer </template>
+      </Transition>
       <div :class="[caretClasses, 'greeting__caret']" />
     </div>
   </div>
@@ -128,5 +130,15 @@ const handleFinalFinish = () => {
 
 .greeting__caret_hidden {
   display: none;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
