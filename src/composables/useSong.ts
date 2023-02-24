@@ -4,7 +4,6 @@ import { ref } from "vue";
 
 const song = new Howl({
   src: [track1],
-  loop: true,
   volume: 0.7,
   onplay() {
     song.fade(0, 1, 2000);

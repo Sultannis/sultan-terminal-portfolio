@@ -9,12 +9,24 @@ const emit = defineEmits(["finish"]);
 
 const time = new Date();
 
+const hourAndMinutes = computed(() => {
+  if (!time) return;
+
+  const hour = time.getHours();
+  const formattedHour = hour < 10 ? "0" + hour : hour;
+
+  const minutes = time.getMinutes();
+  const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+
+  return `${formattedHour}:${formattedMinutes}`;
+});
+
 const introText = computed(() => {
   if (userCountry) {
-    return `SMZ industries internal protocol <br> Remote terminal connection obtained from: <span style='color: #f3d96b'>${userCountry}</span> at local time: <span style='color: #f3d96b'>${time.getHours()}:${time.getMinutes()}</span>`;
+    return `SMZ industries internal protocol <br> Remote terminal connection obtained from: <span style='color: #f3d96b'>${userCountry}</span> at local time: <span style='color: #f3d96b'>${hourAndMinutes.value}</span>`;
   }
 
-  return `'SMZ industries internal protocol <br> remote terminal connection obtained at local time: <span style='color: #f3d96b'>${time.getHours()}:${time.getMinutes()}</span>`;
+  return `'SMZ industries internal protocol <br> remote terminal connection obtained at local time: <span style='color: #f3d96b'>${hourAndMinutes.value}</span>`;
 });
 
 const { startTypingSound, stopTypingSound } = useComputerAutomaticTypingSound();
