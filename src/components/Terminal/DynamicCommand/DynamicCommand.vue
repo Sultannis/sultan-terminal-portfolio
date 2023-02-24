@@ -19,4 +19,10 @@ const componentToDisplay = getCommandComponentByKey(commandKey);
   width: 100%;
   margin-top: 30px;
 }
+
+@media screen and (max-width: 1024px) {
+  .command {
+    margin-top: 15px;
+  }
+}
 </style>

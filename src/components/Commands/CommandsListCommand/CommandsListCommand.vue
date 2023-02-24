@@ -9,8 +9,18 @@ import GlitchedWriter from "vue-glitched-writer";
 import { songIsPlaying } from "@/composables/useSong";
 
 const { title, commands } = getCommandDataByKey("GET COMMANDS") as CommandsListCommand;
+const windowWidth = window.innerWidth;
 
-const commandListContentHeight = computed(() => commands.length * 32 + "px");
+const listItemHeight = computed(() => {
+  if (windowWidth > 1024) {
+    return 32;
+  } else if (windowWidth > 768) {
+    return 25.6 ;
+  } else {
+    return 20.8;
+  }
+});
+const commandListContentHeight = computed(() => commands.length * listItemHeight.value + "px");
 
 const { startTypingSound, stopTypingSound } = useComputerAutomaticTypingSound();
 const { renderedElements: renderedCommands, renderNextElement } = useElementsConsecutiveRender(
