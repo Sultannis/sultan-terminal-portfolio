@@ -148,5 +148,5 @@ export const COMMANDS = {
   CLEAR: null,
   "DOWNLOAD CV": null,
   "PLAY SOME MUSIC": null,
-  "STOP MUSIC": null,
+  "STOP THE MUSIC": null,
 };

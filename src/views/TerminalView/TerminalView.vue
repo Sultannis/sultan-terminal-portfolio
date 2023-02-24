@@ -29,7 +29,7 @@ const handleCommandSubmition = async (command: string) => {
     return downloadCv();
   } else if (command === "PLAY SOME MUSIC") {
     return startSong();
-  } else if (command === "STOP MUSIC") {
+  } else if (command === "STOP THE MUSIC") {
     return stopSong();
   } else if (command !== "GET WORK EXPERIENCE") {
     setTimeout(scrollToBottomOfThePage, 20);

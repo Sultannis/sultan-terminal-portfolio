@@ -15,7 +15,7 @@ const listItemHeight = computed(() => {
   if (windowWidth > 1024) {
     return 32;
   } else if (windowWidth > 768) {
-    return 25.6 ;
+    return 25.6;
   } else {
     return 20.8;
   }
@@ -37,7 +37,7 @@ const renderNextCommand = () => {
 const getCommandLi = (command: string) => {
   if (command.includes("MUSIC")) {
     if (songIsPlaying.value) {
-      return `<li>STOP MUSIC</li>`;
+      return `<li>STOP THE MUSIC</li>`;
     } else {
       return `<li>PLAY SOME MUSIC</li>`;
     }

@@ -9,7 +9,7 @@ const { companyName, companyUrl, dateRange, achievements, stack } = position;
 
 <template>
   <div class="position">
-    <div class="position__row">
+    <div class="position__flex">
       <div class="position__company-name">
         <a v-if="companyUrl" target="_blank" :href="companyUrl">{{ companyName }}</a>
         <span v-else>{{ companyName }}</span>
@@ -18,7 +18,7 @@ const { companyName, companyUrl, dateRange, achievements, stack } = position;
         {{ dateRange }}
       </div>
     </div>
-    <div class="position__row">
+    <div class="position__flex">
       <div class="position__achievements">
         <div class="position__title">Achievements</div>
         <ul ref="positionAchievements" class="position__achievements-list">
@@ -88,11 +88,11 @@ const { companyName, companyUrl, dateRange, achievements, stack } = position;
   box-shadow: var(--main-shadow);
 }
 
-.position__row {
+.position__flex {
   display: flex;
 }
 
-.position__row:first-child {
+.position__flex:first-child {
   margin-bottom: 10px;
 }
 
@@ -116,5 +116,29 @@ const { companyName, companyUrl, dateRange, achievements, stack } = position;
 
 .position__stack-item {
   margin-right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .position {
+    margin-bottom: 10px;
+    padding: 5px 20px;
+  }
+
+  .position__flex {
+    flex-direction: column;
+  }
+
+  .position__achievements {
+    width: 100%;
+  }
+
+  .position__achievements-list {
+    margin-left: 15px;
+  }
+
+  .position__stack {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 </style>
