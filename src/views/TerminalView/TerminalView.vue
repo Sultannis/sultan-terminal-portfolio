@@ -60,4 +60,10 @@ const handleCommandSubmition = async (command: string) => {
   margin: 30px 0;
   width: 100%;
 }
+
+@media screen and (max-width: 1024px) {
+  .terminal {
+    margin: 15px 0;
+  }
+}
 </style>

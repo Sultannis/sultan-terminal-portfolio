@@ -30,7 +30,7 @@ const handleFinish = () => {
 <style scoped>
 .hint {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 30px;
   font-size: 16px;
 }
@@ -39,12 +39,28 @@ const handleFinish = () => {
   width: 20px;
   height: 20px;
   margin-right: 10px;
-  margin-top: -1px;
+  margin-top: 3px;
 }
 
 @media screen and (max-width: 1024px) {
   .hint {
     font-size: 14px;
+  }
+
+  .hint__icon {
+    margin-top: 1px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hint {
+    margin-top: 15px;
+    font-size: 11px;
+  }
+
+  .hint__icon {
+    width: 15px;
+    height: 15px;
   }
 }
 </style>

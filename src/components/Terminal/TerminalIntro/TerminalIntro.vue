@@ -58,4 +58,10 @@ const handleFinish = () => {
 .intro {
   color: var(--color-text-highlighted-purple);
 }
+
+@media screen and (max-width: 1024px) {
+  .intro {
+    font-size: 13px;
+  }
+}
 </style>
