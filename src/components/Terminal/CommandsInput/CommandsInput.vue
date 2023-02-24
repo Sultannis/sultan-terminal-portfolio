@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { COMMANDS } from "@/constants/commands";
+import { ref, computed } from "vue";
 
 const { enteredCommandKeys } = defineProps<{ enteredCommandKeys: string[] }>();
 const emit = defineEmits(["submit"]);
@@ -9,6 +10,10 @@ const inputIsFocused = ref(true);
 const inputCaretLeftOffset = ref(176);
 const inputValue = ref("");
 const currentSelectedCommandIndex = ref(1);
+
+const commandMatches = computed(() => {
+  return inputValue.value in COMMANDS;
+});
 
 const setCarotPosition = (event: Event) => {
   const element = event.target as HTMLInputElement;
@@ -72,6 +77,7 @@ const focusOnInput = () => {
     <div class="commands-input__prefix">k<span>@</span>tyrell<span>:</span>$</div>
     <input
       :value="inputValue"
+      :class="{ 'commands-input__input_yellow': commandMatches }"
       class="commands-input__input"
       ref="input"
       autofocus
@@ -116,6 +122,10 @@ const focusOnInput = () => {
   color: var(--color-main-red);
   caret-color: transparent;
   z-index: 2;
+}
+
+.commands-input__input_yellow {
+  color: var(--color-text-highlighted-yellow);
 }
 
 .commands-input__prefix {

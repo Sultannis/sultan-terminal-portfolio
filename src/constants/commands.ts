@@ -138,4 +138,8 @@ export const COMMANDS = {
       "MUSIC",
     ],
   },
+  CLEAR: null,
+  "DOWNLOAD CV": null,
+  "PLAY SOME MUSIC": null,
+  "STOP MUSIC": null,
 };
