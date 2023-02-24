@@ -41,4 +41,10 @@ const handleFinish = () => {
   margin-right: 10px;
   margin-top: -1px;
 }
+
+@media screen and (max-width: 1024px) {
+  .hint {
+    font-size: 14px;
+  }
+}
 </style>

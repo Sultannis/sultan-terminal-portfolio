@@ -152,4 +152,10 @@ const focusOnInput = () => {
   background: var(--color-main-red-transparent);
   box-shadow: none;
 }
+
+@media screen and (max-width: 1024px) {
+  .commands-input__input {
+    font-size: 16px;
+  }
+}
 </style>

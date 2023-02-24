@@ -50,7 +50,6 @@ const { companyName, companyUrl, dateRange, achievements, stack } = position;
 
   display: flex;
   flex-direction: column;
-  font-size: 20px;
 
   position: relative;
 

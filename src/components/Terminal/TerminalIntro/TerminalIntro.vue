@@ -56,7 +56,6 @@ const handleFinish = () => {
 
 <style scoped>
 .intro {
-  font-size: 20px;
   color: var(--color-text-highlighted-purple);
 }
 </style>
