@@ -2,7 +2,7 @@
 import { getCommandDataByKey } from "@/helpers/get-command-data-by-key";
 import type { ContactDetailsCommand } from "@/interfaces/commands.interfaces";
 
-const { title, contacts } = getCommandDataByKey("GET CONTACT DETAILS") as ContactDetailsCommand;
+const { title, contacts } = getCommandDataByKey("CONTACTS") as ContactDetailsCommand;
 
 const getLinkHref = (url: string) => {
   if (url.endsWith("gmail.com")) {

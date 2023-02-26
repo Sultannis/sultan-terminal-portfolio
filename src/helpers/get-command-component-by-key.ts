@@ -7,10 +7,10 @@ import ContactDetailsCommand from "@/components/Commands/ContactDetailsCommand/C
 import NotFoundCommand from "@/components/Commands/NotFoundCommand/NotFoundCommand.vue";
 
 const commandComponents = {
-  "GET COMMANDS": CommandsListCommand,
-  "GET GENERAL INFORMATION": GeneralInformationCommand,
-  "GET WORK EXPERIENCE": WorkExperienceCommand,
-  "GET CONTACT DETAILS": ContactDetailsCommand,
+  COMMANDS: CommandsListCommand,
+  GENERAL: GeneralInformationCommand,
+  "WORK EXPERIENCE": WorkExperienceCommand,
+  CONTACTS: ContactDetailsCommand,
 };
 
 export const getCommandComponentByKey = (

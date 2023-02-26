@@ -9,7 +9,7 @@ import Portrait from "@/assets/images/portrait.jpg?url";
 import GlitchedWriter from "vue-glitched-writer";
 
 const { title, paragraphs, shorterParagraphs } = getCommandDataByKey(
-  "GET GENERAL INFORMATION"
+  "GENERAL"
 ) as GeneralInformationCommand;
 const windowWidth = window.innerWidth;
 

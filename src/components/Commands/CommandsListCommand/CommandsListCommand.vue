@@ -8,7 +8,7 @@ import { useComputerAutomaticTypingSound } from "@/composables/useSound";
 import GlitchedWriter from "vue-glitched-writer";
 import { songIsPlaying } from "@/composables/useSong";
 
-const { title, commands } = getCommandDataByKey("GET COMMANDS") as CommandsListCommand;
+const { title, commands } = getCommandDataByKey("COMMANDS") as CommandsListCommand;
 const windowWidth = window.innerWidth;
 
 const listItemHeight = computed(() => {

@@ -5,7 +5,7 @@ import telegramIcon from "@/assets/icons/social-networks/telegram.svg";
 import githubIcon from "@/assets/icons/social-networks/github.svg";
 
 export const COMMANDS = {
-  "GET GENERAL INFORMATION": {
+  GENERAL: {
     title: "Replicant Number <span style='color: #1b00b2'>KD6-3.7<span/>",
     paragraphs: [
       "<span style='color: #1acc6b'>Human name: </span>Sultan Mustafin <br>",
@@ -26,7 +26,7 @@ export const COMMANDS = {
       "<span style='color: #1acc6b'>Stack: </span>‣ JavaScript  ‣ TypeScript  ‣ Node Js  ‣ Vue Js 2/3  ‣ Vuex  ‣ Express Js  ‣ Nest Js  ‣ TypeORM  ‣ Socket IO  ‣ PostgreSQL  ‣ MySQL  ‣ Docker  ‣ HTML  ‣ CSS  ‣ Git<br>",
     ],
   },
-  "GET WORK EXPERIENCE": {
+  "WORK EXPERIENCE": {
     title: "Work Experience",
     positions: [
       {
@@ -112,7 +112,7 @@ export const COMMANDS = {
       },
     ],
   },
-  "GET CONTACT DETAILS": {
+  CONTACTS: {
     title: "Replicant's data exchange APIs",
     contacts: [
       {
@@ -142,13 +142,13 @@ export const COMMANDS = {
       },
     ],
   },
-  "GET COMMANDS": {
+  COMMANDS: {
     title: "Available commands",
     commands: [
-      "GET GENERAL INFORMATION",
-      "GET WORK EXPERIENCE",
-      "GET CONTACT DETAILS",
-      "GET COMMANDS",
+      "GENERAL",
+      "WORK EXPERIENCE",
+      "CONTACTS",
+      "COMMANDS",
       "DOWNLOAD CV",
       "CLEAR",
       "MUSIC",
