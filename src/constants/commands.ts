@@ -132,7 +132,7 @@ export const COMMANDS = {
       },
       {
         iconSrc: instagramIcon,
-        title: "intagram",
+        title: "instagram",
         url: "https://www.instagram.com/its.sultanmustafin",
       },
       {
