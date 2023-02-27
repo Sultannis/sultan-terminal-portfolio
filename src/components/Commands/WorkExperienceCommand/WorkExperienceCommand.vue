@@ -9,7 +9,7 @@ onMounted(() => {
   scrollToStartOfElement(workElement.value as unknown as HTMLElement);
 });
 
-const { title, positions } = getCommandDataByKey("GET WORK EXPERIENCE") as WorkExperienceCommand;
+const { title, positions } = getCommandDataByKey("WORK EXPERIENCE") as WorkExperienceCommand;
 
 const workElement = ref(null);
 </script>
