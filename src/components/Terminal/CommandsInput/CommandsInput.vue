@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { COMMAND_KEYS } from "@/constants/command-keys";
 import { COMMANDS } from "@/constants/commands";
 import { ref, computed, onMounted } from "vue";
 
@@ -90,10 +91,19 @@ const handleSubmit = (event: Event) => {
 const focusOnInput = () => {
   input.value?.focus();
 };
+
+const handleTabKeyPress = () => {
+  console.log("check");
+  const foundCommandKey = COMMAND_KEYS.find((key: string) => key.startsWith(inputValue.value));
+
+  if (foundCommandKey) {
+    inputValue.value = foundCommandKey;
+  }
+};
 </script>
 
 <template>
-  <div class="commands-input">
+  <div class="commands-input" @keydown.tab.prevent="handleTabKeyPress">
     <div class="commands-input__prefix">k<span>@</span>tyrell<span>:</span>$</div>
     <input
       :value="inputValue"
