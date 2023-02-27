@@ -6,12 +6,12 @@ import { findUserCountry } from "@/helpers/get-user-coutry";
 const emit = defineEmits(["start"]);
 
 onMounted(() => {
-  window.addEventListener("keyup", enterClickHandler, { once: true });
+  window.addEventListener("keyup", handleStart, { once: true });
   findUserCountry();
 });
 
 onUnmounted(() => {
-  window.removeEventListener("keyup", enterClickHandler);
+  window.removeEventListener("keyup", handleStart);
 });
 
 const startClicked = ref(false);
@@ -24,16 +24,10 @@ const handleStart = () => {
     emit("start");
   }, 1000);
 };
-
-const enterClickHandler = (event: KeyboardEvent) => {
-  if (event.key === "Enter") {
-    handleStart();
-  }
-};
 </script>
 
 <template>
-  <div class="intro">
+  <div class="intro" @click="handleStart">
     <div :class="{ 'intro__image-wrapper_active': startClicked }" class="intro__image-wrapper">
       <div
         :class="{ 'intro__image-inner-wrapper_active': startClicked }"
@@ -46,7 +40,7 @@ const enterClickHandler = (event: KeyboardEvent) => {
         />
       </div>
     </div>
-    <button class="intro__button" @click="handleStart">Enter</button>
+    <button class="intro__button">Enter</button>
   </div>
 </template>
 
