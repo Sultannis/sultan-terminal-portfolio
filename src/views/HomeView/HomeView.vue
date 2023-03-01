@@ -5,7 +5,7 @@ import { powerGlitchOptions, usePageGlitches } from "@/composables/useGlitches";
 import { startStaticNoise } from "@/composables/useSound";
 import PageMasks from "@/components/Common/PageMasks/PageMasks.vue";
 import TerminalView from "@/views/TerminalView/TerminalView.vue";
-import HomeGreeting from "../../components/home/HomeGreeting/HomeGreeting.vue";
+import HomeGreeting from "../../components/Home/HomeGreeting/HomeGreeting.vue";
 
 const glitch = ref(null);
 

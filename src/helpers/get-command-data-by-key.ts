@@ -13,6 +13,7 @@ export const getCommandDataByKey = (
   | WorkExperienceCommand
   | GeneralInformationCommand
   | ContactDetailsCommand
-  | CommandsListCommand => {
+  | CommandsListCommand
+  | null => {
   return COMMANDS[key];
 };
