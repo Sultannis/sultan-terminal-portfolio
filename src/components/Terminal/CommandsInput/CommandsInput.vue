@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { COMMAND_KEYS } from "@/constants/command-keys";
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, nextTick } from "vue";
 
 const { enteredCommandKeys } = defineProps<{ enteredCommandKeys: string[] }>();
 const emit = defineEmits(["submit"]);
@@ -35,36 +35,40 @@ onMounted(() => {
   }
 });
 
-const setCaretPosition = (event: Event) => {
-  const element = event.target as HTMLInputElement;
+const setCaretPosition = () => {
+  nextTick(() => {
+    const element = input.value as HTMLInputElement;
 
-  if (element.selectionStart) {
-    inputCaretLeftOffset.value =
-      baseOffset.value + singleCharacterOffset.value * element.selectionStart;
-  } else {
-    inputCaretLeftOffset.value = baseOffset.value;
-  }
+    if (element.selectionStart) {
+      inputCaretLeftOffset.value =
+        baseOffset.value + singleCharacterOffset.value * element.selectionStart;
+    } else {
+      inputCaretLeftOffset.value = baseOffset.value;
+    }
+  });
 };
 
 const handleArrowKeyPress = (event: KeyboardEvent) => {
   if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
-    setCaretPosition(event);
+    setCaretPosition();
   } else if (event.key === "ArrowUp") {
     if (currentSelectedCommandIndex.value > 0) {
       currentSelectedCommandIndex.value--;
       inputValue.value = enteredCommandKeys[currentSelectedCommandIndex.value];
+      setCaretPosition();
     }
   } else if (event.key === "ArrowDown") {
     if (currentSelectedCommandIndex.value < enteredCommandKeys.length - 1) {
       currentSelectedCommandIndex.value++;
       inputValue.value = enteredCommandKeys[currentSelectedCommandIndex.value];
+      setCaretPosition();
     }
   }
 };
 
 const handleCommandInput = (event: Event) => {
   const element = event.target as HTMLInputElement;
-  setCaretPosition(event);
+  setCaretPosition();
 
   if (currentSelectedCommandIndex.value <= enteredCommandKeys.length - 1) {
     currentSelectedCommandIndex.value = enteredCommandKeys.length;
@@ -82,7 +86,7 @@ const handleSubmit = (event: Event) => {
     element.value = "";
   }
 
-  setCaretPosition(event);
+  setCaretPosition();
   focusOnInput();
 
   currentSelectedCommandIndex.value = enteredCommandKeys.length;
@@ -93,11 +97,11 @@ const focusOnInput = () => {
 };
 
 const handleTabKeyPress = () => {
-  console.log("check");
   const foundCommandKey = COMMAND_KEYS.find((key: string) => key.startsWith(inputValue.value));
 
   if (foundCommandKey) {
     inputValue.value = foundCommandKey;
+    setCaretPosition();
   }
 };
 </script>
