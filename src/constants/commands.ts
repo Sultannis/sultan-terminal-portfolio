@@ -156,6 +156,6 @@ export const COMMANDS = {
   },
   CLEAR: null,
   "DOWNLOAD CV": null,
-  "PLAY SOME MUSIC": null,
-  "STOP THE MUSIC": null,
+  "PLAY MUSIC": null,
+  "STOP MUSIC": null,
 };

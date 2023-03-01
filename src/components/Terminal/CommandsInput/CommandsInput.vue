@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { COMMAND_KEYS } from "@/constants/command-keys";
-import { COMMANDS } from "@/constants/commands";
 import { ref, computed, onMounted } from "vue";
 
 const { enteredCommandKeys } = defineProps<{ enteredCommandKeys: string[] }>();
@@ -16,7 +15,8 @@ const baseOffset = ref(0);
 const singleCharacterOffset = ref(0);
 
 const commandMatches = computed(() => {
-  return inputValue.value in COMMANDS;
+  //@ts-ignore
+  return COMMAND_KEYS.includes(inputValue.value.trim());
 });
 
 onMounted(() => {
@@ -74,7 +74,7 @@ const handleCommandInput = (event: Event) => {
 };
 
 const handleSubmit = (event: Event) => {
-  emit("submit", inputValue.value);
+  emit("submit", inputValue.value.trim());
   inputValue.value = "";
 
   if (event.target) {
