@@ -37,9 +37,9 @@ const renderNextCommand = () => {
 const getCommandLi = (command: string) => {
   if (command.includes("MUSIC")) {
     if (songIsPlaying.value) {
-      return `<li>STOP THE MUSIC</li>`;
+      return `<li>STOP MUSIC</li>`;
     } else {
-      return `<li>PLAY SOME MUSIC</li>`;
+      return `<li>PLAY MUSIC</li>`;
     }
   }
   return `<li>${command}</li>`;

@@ -7,7 +7,7 @@ import GlitchedWriter from "vue-glitched-writer";
 const emit = defineEmits(["finish"]);
 
 onMounted(() => {
-  window.addEventListener("keyup", spaceClickHandler);
+  window.addEventListener("keyup", handleSkip);
 
   setTimeout(() => {
     renderGlitchWriter.value = true;
@@ -15,10 +15,10 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  window.removeEventListener("keyup", spaceClickHandler);
+  window.removeEventListener("keyup", handleSkip);
 });
 
-const phrases = ["Hi!", "Welcome to my portfolio", "Type in commands to get more information", ""];
+const phrases = ["Hi! Welcome to my portfolio", "Type in commands to get more information", ""];
 const renderGlitchWriter = ref(false);
 const displayQuote = ref(false);
 
@@ -32,16 +32,13 @@ const caretClasses = reactive({
 const { startTypingSound, stopTypingSound, startDeletingSound, stopDeletingSound } =
   useTypingSound();
 
-const spaceClickHandler = (event: KeyboardEvent) => {
-  if (event.key === " ") {
-    stopTypingSound();
-    stopDeletingSound();
+const handleSkip = () => {
+  stopDeletingSound();
+  startTypingSound();
 
-    displayQuote.value = true;
-    setTimeout(() => {
-      emit("finish");
-    }, 200);
-  }
+  setTimeout(() => {
+    emit("finish");
+  }, 200);
 };
 
 const handleStart = () => {
@@ -57,7 +54,7 @@ const handleStart = () => {
 };
 
 const handleFinish = () => {
-  if (finishCount >= 3) handleFinalFinish();
+  if (finishCount >= 2) handleFinalFinish();
   else {
     finishCount++;
   }
@@ -80,7 +77,7 @@ const handleFinalFinish = () => {
 </script>
 
 <template>
-  <div class="greeting">
+  <div class="greeting" @click="handleSkip">
     <div class="greeting__row">
       <GlitchedWriter
         v-if="renderGlitchWriter && !displayQuote"
@@ -124,7 +121,9 @@ const handleFinalFinish = () => {
 }
 
 .greeting__empty {
-  height: 24px;
+  height: 29.6px;
+  width: 1px;
+  display: inline-block;
   position: relative;
 }
 
@@ -135,7 +134,7 @@ const handleFinalFinish = () => {
   box-shadow: 10px 0px 0px rgba(0, 0, 0, 1);
 
   position: absolute;
-  top: 4px;
+  top: 8px;
   left: 6px;
 }
 
