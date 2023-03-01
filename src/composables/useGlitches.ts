@@ -5,11 +5,11 @@ const { startGlitchSound, stopGlitchSound } = useGlitchSound();
 
 const powerGlitchOptions: RecursivePartial<PowerGlitchOptions> = {
   playMode: "manual",
-  timing: { duration: 1500, iterations: 1 },
+  timing: { duration: 3500, iterations: 1 },
   shake: {
     velocity: 19,
-    amplitudeX: 0.25,
-    amplitudeY: 0.02,
+    amplitudeX: 0.08,
+    amplitudeY: 0,
   },
   slice: {
     count: 5,

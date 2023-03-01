@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onUnmounted, computed } from "vue";
 import type { GeneralInformationCommand } from "@/interfaces/commands.interfaces";
-import { GLITCHED_WRITER_OPTIONS_FAST } from "@/constants/glitched-writer-options";
+import { GLITCHED_WRITER_OPTIONS_MEDIUM } from "@/constants/glitched-writer-options";
 import { getCommandDataByKey } from "@/helpers/get-command-data-by-key";
 import { useComputerAutomaticTypingSound } from "@/composables/useSound";
 import { useElementsConsecutiveRender } from "@/composables/useElementsConsecutiveRender";
@@ -47,7 +47,7 @@ onUnmounted(stopTypingSound);
   <div class="general">
     <GlitchedWriter
       :text="title"
-      :options="GLITCHED_WRITER_OPTIONS_FAST"
+      :options="GLITCHED_WRITER_OPTIONS_MEDIUM"
       @finish="renderNextParagraph"
       @start="startTypingSound"
       class="general__title"
@@ -56,7 +56,7 @@ onUnmounted(stopTypingSound);
     <div class="general__row">
       <div v-if="!mergeImage" class="general__image-wrapper">
         <div class="general__image-mask" />
-        <img :src="Portrait" alt="" class="general__image" />
+        <img :src="Portrait" alt="" class="general__image" rel="preload" />
       </div>
       <div class="general__content">
         <div v-if="mergeImage" class="general__image-wrapper">
@@ -67,7 +67,7 @@ onUnmounted(stopTypingSound);
           <GlitchedWriter
             v-if="renderedParagraphs[index]"
             :text="paragraph"
-            :options="GLITCHED_WRITER_OPTIONS_FAST"
+            :options="GLITCHED_WRITER_OPTIONS_MEDIUM"
             @finish="renderNextParagraph"
             class="general__paragraph"
             appear
