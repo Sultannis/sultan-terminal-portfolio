@@ -11,6 +11,10 @@ const commandComponents = {
   GENERAL: GeneralInformationCommand,
   "WORK EXPERIENCE": WorkExperienceCommand,
   CONTACTS: ContactDetailsCommand,
+  "DOWNLOAD CV": null,
+  CLEAR: null,
+  "PLAY MUSIC": null,
+  "STOP MUSIC": null,
 };
 
 export const getCommandComponentByKey = (
