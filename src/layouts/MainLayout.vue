@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { shallowRef, type ShallowRef } from "vue";
-import AppIntroView from "@/views/AppIntroView/AppIntroView.vue";
-import HomeView from "@/views/HomeView/HomeView.vue";
+import { defineAsyncComponent, shallowRef, type ShallowRef } from "vue";
 
-const activeComponent: ShallowRef<typeof AppIntroView | typeof HomeView> =
-  shallowRef(AppIntroView);
+const AppIntroView = defineAsyncComponent(() => import("@/views/AppIntroView/AppIntroView.vue"));
+const HomeView = defineAsyncComponent(() => import("@/views/HomeView/HomeView.vue"));
+
+const activeComponent: ShallowRef<typeof AppIntroView | typeof HomeView> = shallowRef(AppIntroView);
 
 const switchToTerminal = () => {
   activeComponent.value = HomeView;
@@ -12,7 +12,7 @@ const switchToTerminal = () => {
 </script>
 
 <template>
-  <Transition name="fade" mode="out-in" appear>
+  <Transition name="fade" mode="out-in">
     <component :is="activeComponent" @start="switchToTerminal"></component>
   </Transition>
 </template>
