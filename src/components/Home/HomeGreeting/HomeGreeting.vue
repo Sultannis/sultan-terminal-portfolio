@@ -16,6 +16,8 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener("keyup", handleSkip);
+  stopDeletingSound();
+  stopTypingSound();
 });
 
 const phrases = ["Hi! Welcome to my portfolio", "Type in commands to get more information", ""];
@@ -33,9 +35,6 @@ const { startTypingSound, stopTypingSound, startDeletingSound, stopDeletingSound
   useTypingSound();
 
 const handleSkip = () => {
-  stopDeletingSound();
-  startTypingSound();
-
   setTimeout(() => {
     emit("finish");
   }, 200);
@@ -54,12 +53,12 @@ const handleStart = () => {
 };
 
 const handleFinish = () => {
+  stopTypingSound();
+
   if (finishCount >= 2) handleFinalFinish();
   else {
     finishCount++;
   }
-
-  stopTypingSound();
 };
 
 const handleFinalFinish = () => {

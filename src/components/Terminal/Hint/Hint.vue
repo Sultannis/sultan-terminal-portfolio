@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onUnmounted } from "vue";
 import { GLITCHED_WRITER_OPTIONS_FAST } from "@/constants/glitched-writer-options";
 import { useComputerAutomaticTypingSound } from "@/composables/useSound";
 import GlitchedWriter from "vue-glitched-writer";
@@ -12,6 +13,10 @@ const handleFinish = () => {
   stopTypingSound();
   emit("finish");
 };
+
+onUnmounted(() => {
+  stopTypingSound();
+});
 </script>
 
 <template>
