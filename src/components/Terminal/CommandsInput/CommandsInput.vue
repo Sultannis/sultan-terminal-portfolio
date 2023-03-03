@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { COMMAND_KEYS } from "@/constants/command-keys";
+import type { CommandKeys } from "@/types/command-keys-type";
 import { ref, computed, onMounted, nextTick } from "vue";
 
 const { enteredCommandKeys } = defineProps<{ enteredCommandKeys: string[] }>();
@@ -15,8 +16,7 @@ const baseOffset = ref(0);
 const singleCharacterOffset = ref(0);
 
 const commandMatches = computed(() => {
-  //@ts-ignore
-  return COMMAND_KEYS.includes(inputValue.value.trim());
+  return COMMAND_KEYS.includes(inputValue.value.trim() as CommandKeys);
 });
 
 onMounted(() => {
