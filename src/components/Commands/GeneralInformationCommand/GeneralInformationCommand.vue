@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onUnmounted, computed } from "vue";
 import type { GeneralInformationCommand } from "@/interfaces/commands.interfaces";
-import { GLITCHED_WRITER_OPTIONS_MEDIUM } from "@/constants/glitched-writer-options";
+import { GLITCHED_WRITER_OPTIONS_FAST } from "@/constants/glitched-writer-options";
 import { getCommandDataByKey } from "@/helpers/get-command-data-by-key";
 import { useComputerAutomaticTypingSound } from "@/composables/useSound";
 import { useElementsConsecutiveRender } from "@/composables/useElementsConsecutiveRender";
@@ -47,7 +47,7 @@ onUnmounted(stopTypingSound);
   <div class="general">
     <GlitchedWriter
       :text="title"
-      :options="GLITCHED_WRITER_OPTIONS_MEDIUM"
+      :options="GLITCHED_WRITER_OPTIONS_FAST"
       @finish="renderNextParagraph"
       @start="startTypingSound"
       class="general__title"
@@ -67,7 +67,7 @@ onUnmounted(stopTypingSound);
           <GlitchedWriter
             v-if="renderedParagraphs[index]"
             :text="paragraph"
-            :options="GLITCHED_WRITER_OPTIONS_MEDIUM"
+            :options="GLITCHED_WRITER_OPTIONS_FAST"
             @finish="renderNextParagraph"
             class="general__paragraph"
             appear
@@ -185,7 +185,7 @@ onUnmounted(stopTypingSound);
 
 @media screen and (max-width: 947px) {
   .general__content {
-    font-size: 17px;
+    font-size: 13px;
     margin-left: 0;
   }
 
