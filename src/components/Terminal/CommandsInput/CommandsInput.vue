@@ -106,6 +106,10 @@ const handleTabKeyPress = () => {
     setCaretPosition();
   }
 };
+
+const handleInputBlur = () => {
+  setTimeout(focusOnInput, 100);
+};
 </script>
 
 <template>
@@ -121,8 +125,7 @@ const handleTabKeyPress = () => {
       @keyup="handleArrowKeyPress"
       @keyup.enter="handleSubmit"
       @focus="() => (inputIsFocused = true)"
-      @focusout="focusOnInput"
-      @blur="focusOnInput"
+      @blur="handleInputBlur"
       @click="setCaretPosition"
     />
     <div
