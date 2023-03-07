@@ -78,6 +78,8 @@ const handleCommandInput = (event: Event) => {
 };
 
 const handleSubmit = (event: Event) => {
+  if (!inputValue.value.trim()) return;
+
   emit("submit", inputValue.value.trim());
   inputValue.value = "";
 
