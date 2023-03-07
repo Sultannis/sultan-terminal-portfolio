@@ -78,6 +78,8 @@ const handleCommandInput = (event: Event) => {
 };
 
 const handleSubmit = (event: Event) => {
+  if (!inputValue.value.trim()) return;
+
   emit("submit", inputValue.value.trim());
   inputValue.value = "";
 
@@ -104,6 +106,10 @@ const handleTabKeyPress = () => {
     setCaretPosition();
   }
 };
+
+const handleInputBlur = () => {
+  setTimeout(focusOnInput, 100);
+};
 </script>
 
 <template>
@@ -119,8 +125,7 @@ const handleTabKeyPress = () => {
       @keyup="handleArrowKeyPress"
       @keyup.enter="handleSubmit"
       @focus="() => (inputIsFocused = true)"
-      @focusout="focusOnInput"
-      @blur="focusOnInput"
+      @blur="handleInputBlur"
       @click="setCaretPosition"
     />
     <div
