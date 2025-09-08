@@ -1647,6 +1647,7 @@ export const timezones = {
   "Asia/Saigon": {
     a: "Asia/Ho_Chi_Minh",
     r: 1,
+    c: ["VN"],
   },
   "Asia/Sakhalin": {
     u: 660,
@@ -1712,6 +1713,7 @@ export const timezones = {
   "Asia/Ujung_Pandang": {
     a: "Asia/Makassar",
     r: 1,
+    c: ["ID"],
   },
   "Asia/Ulaanbaatar": {
     u: 480,
@@ -1720,6 +1722,7 @@ export const timezones = {
   "Asia/Ulan_Bator": {
     a: "Asia/Ulaanbaatar",
     r: 1,
+    c: ["MN"],
   },
   "Asia/Urumqi": {
     u: 360,

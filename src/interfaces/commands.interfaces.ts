@@ -28,3 +28,11 @@ export interface ContactDetailsCommand extends Command {
     url: string;
   }[];
 }
+
+export interface PetProjectsCommand extends Command {
+  title: string;
+  projects: {
+    name: string;
+    url: string;
+  }[];
+}

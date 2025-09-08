@@ -4,6 +4,7 @@ import type {
   ContactDetailsCommand,
   GeneralInformationCommand,
   WorkExperienceCommand,
+  PetProjectsCommand,
 } from "@/interfaces/commands.interfaces";
 import type { CommandKeys } from "@/types/command-keys-type";
 
@@ -14,6 +15,7 @@ export const getCommandDataByKey = (
   | GeneralInformationCommand
   | ContactDetailsCommand
   | CommandsListCommand
+  | PetProjectsCommand
   | null => {
   return COMMANDS[key];
 };

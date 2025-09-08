@@ -4,6 +4,7 @@ import CommandsListCommand from "@/components/Commands/CommandsListCommand/Comma
 import GeneralInformationCommand from "@/components/Commands/GeneralInformationCommand/GeneralInformationCommand.vue";
 import WorkExperienceCommand from "@/components/Commands/WorkExperienceCommand/WorkExperienceCommand.vue";
 import ContactDetailsCommand from "@/components/Commands/ContactDetailsCommand/ContactDetailsCommand.vue";
+import PetProjectsCommand from "@/components/Commands/PetProjectsCommand/PetProjectsCommand.vue";
 import NotFoundCommand from "@/components/Commands/NotFoundCommand/NotFoundCommand.vue";
 
 const commandComponents = {
@@ -11,6 +12,7 @@ const commandComponents = {
   GENERAL: GeneralInformationCommand,
   "WORK EXPERIENCE": WorkExperienceCommand,
   CONTACTS: ContactDetailsCommand,
+  "PET PROJECTS": PetProjectsCommand,
   "DOWNLOAD CV": null,
   CLEAR: null,
   "PLAY MUSIC": null,
