@@ -6,4 +6,5 @@ export type CommandKeys =
   | "DOWNLOAD CV"
   | "CLEAR"
   | "PLAY MUSIC"
-  | "STOP MUSIC";
+  | "STOP MUSIC"
+  | "PET PROJECTS";

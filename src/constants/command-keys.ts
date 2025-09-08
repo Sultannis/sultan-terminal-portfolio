@@ -5,6 +5,7 @@ export const COMMAND_KEYS: CommandKeys[] = [
   "WORK EXPERIENCE",
   "CONTACTS",
   "COMMANDS",
+  "PET PROJECTS",
   "DOWNLOAD CV",
   "CLEAR",
   "PLAY MUSIC",
